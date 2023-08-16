@@ -4,11 +4,12 @@ import {
     query,
     where,
     orderBy,
+    limit,
     onSnapshot
 } from 'firebase/firestore'
 import { db } from '../config/firebase'
 
-const useCollection = (collectionName, _query, _orderBy) => {
+const useCollection = (collectionName, _query, _orderBy, _limit) => {
     const [documents, setDocuments] = useState(null)
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(true)
@@ -29,6 +30,11 @@ const useCollection = (collectionName, _query, _orderBy) => {
         if (orderByRef.current) {
             const [field, direction] = orderByRef.current
             collectionRef = query(collectionRef, orderBy(field, direction))
+        }
+
+        // Apply limit if specified
+        if (_limit) {
+            collectionRef = query(collectionRef, limit(_limit))
         }
 
         const unsub = onSnapshot(
@@ -52,7 +58,7 @@ const useCollection = (collectionName, _query, _orderBy) => {
 
         // Cleanup unsub on unmount
         return () => unsub()
-    }, [collectionName, queryRef, orderByRef])
+    }, [collectionName, queryRef, orderByRef, _limit])
 
     return { documents, error, loading }
 }
