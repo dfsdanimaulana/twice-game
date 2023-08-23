@@ -14,6 +14,7 @@ import BackButton from '../../components/BackButton'
 import GameRecord from '../../components/GameRecord'
 import { AiOutlineLeft } from 'react-icons/ai'
 import LevelCompleteModal from '../../components/LevelCompleteModal.jsx'
+import { getRandomValuesFromArray } from '../../utils/getRandomValuesFromArray.js'
 
 function Game() {
     const { user } = useFirebaseAuth()
@@ -186,7 +187,11 @@ function Game() {
     const shuffleCards = () => {
         const currentLevelImages = images[`lv${currentLevel}`]
         if (currentLevelImages) {
-            const cardImages = images[`lv${currentLevel}`].images
+            const randomImages = getRandomValuesFromArray(
+                images[`lv${currentLevel}`].images,
+                7 + levelNumber
+            )
+            const cardImages = randomImages
             const shuffledCards = [...cardImages, ...cardImages]
                 .sort(() => Math.random() - 0.5)
                 .map((card) => ({ ...card, id: Math.random() }))
