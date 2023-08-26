@@ -19,7 +19,7 @@ const LevelCard = ({ level }) => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ ease: 'easeOut', duration: 0.3 }}
             onClick={handleClick}
-            className='p-5 border-3 rounded-lg cursor-pointer hover:shadow-md relative bg-gradient-to-tr from-tw-5 to-tw-3 border-tw-4 hover:border-tw-5 dark:bg-gradient-to-tl dark:from-dark dark:to-brown'>
+            className='p-5 border-3 rounded-lg cursor-pointer hover:shadow-md relative bg-gradient-to-tr from-tw-5 to-tw-3 border-tw-4 hover:border-tw-5 dark:border-dark-blue dark:bg-gradient-to-tr dark:from-navy dark:to-dark-blue'>
             <span className='block font-bold text-4xl mb-5'>{`LV${level.level}`}</span>
             <div className='flex gap-1 justify-between text-lg'>
                 <span>{level.star1 ? <AiFillStar /> : <AiOutlineStar />}</span>

@@ -1,4 +1,5 @@
 import { serverTimestamp } from 'firebase/firestore'
+import collectionImages from '../data/collectionImages'
 
 export const generateLevelData = () => {
     const data = []
@@ -18,11 +19,6 @@ export const generateLevelData = () => {
     return data
 }
 
-export const generateCollectionData = () => {
-    const data = []
-    for (let i = 1; i < 9; i++) {}
-    return data
-}
 
 export const generateUserData = (user) => {
     const userData = {
@@ -30,6 +26,7 @@ export const generateUserData = (user) => {
         displayName: user.displayName,
         photoURL: user.photoURL,
         levels: generateLevelData(),
+        collections: collectionImages,
         createdAt: serverTimestamp()
     }
 

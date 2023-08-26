@@ -12,18 +12,18 @@ const LevelCompleteModal = ({
     shuffleCards,
     gamePoint,
     level,
-    stars
+    stars,
+    collections
 }) => {
     const handleModalClose = () => {
         setLevelComplete(false)
     }
-
     return (
         <ReactModal
             ariaHideApp={false}
             isOpen={levelComplete}
             onRequestClose={handleModalClose}
-            className='relative bg-tw-2 px-7 py-5 lg:px-16 lg:pt-14 lg:pb-5 rounded-xl border-2 border-tw-5 dark:border-dark-blue bg-gradient-to-tr from-tw-3 to-tw-1 dark:bg-gradient-to-tr dark:from-navy dark:to-dark-blue'
+            className='relative bg-tw-2 px-7 py-5 lg:px-16 lg:pt-14 lg:pb-5 rounded-xl border-2 border-tw-5 bg-gradient-to-tr from-tw-3 to-tw-1 dark:border-dark-blue dark:bg-gradient-to-tr dark:from-navy dark:to-dark-blue'
             overlayClassName='modal-overlay'>
             <div className='absolute border-2 border-light whitespace-nowrap py-1 px-6 lg:py-2 lg:px-7 -top-6 left-1/2 transform -translate-x-1/2 bg-tw-3 rounded-lg dark:bg-navy dark:border-dark-blue'>
                 <span className='text-xl lg:text-3xl font-bold text-light'>
@@ -65,32 +65,30 @@ const LevelCompleteModal = ({
                     Score: {gamePoint}
                 </span>
                 <hr className='border border-light mx-2' />
-                <div className='flex items-center justify-evenly m-3  gap-5'>
-                    <div className='border-2 rounded-md w-12 h-16 overflow-hidden'>
-                        <img
-                            src='/img/collection/back.png'
-                            alt='back'
-                            className='w-full'
-                        />
-                    </div>
-                    <div className='border-2 rounded-md w-12 h-16 overflow-hidden'>
-                        <img
-                            src='/img/collection/back.png'
-                            alt='back'
-                            className='w-full'
-                        />
-                    </div>
-                    <div className='border-2 rounded-md w-12 h-16 overflow-hidden'>
-                        <img
-                            src='/img/collection/back.png'
-                            alt='back'
-                            className='w-full'
-                        />
-                    </div>
+                <div className='flex items-center justify-evenly m-3  gap-2'>
+                    {collections?.map((collection, index) => (
+                        <div
+                            key={index}
+                            className='border-2 rounded-md w-12 h-16 overflow-hidden'>
+                            {collection.locked ? (
+                                <img
+                                    src='/img/collection/back.png'
+                                    alt='back'
+                                    className='w-full'
+                                />
+                            ) : (
+                                <img
+                                    src={collection.src}
+                                    alt='back'
+                                    className='w-full'
+                                />
+                            )}
+                        </div>
+                    ))}
                 </div>
             </motion.div>
             <div className='flex items-center justify-around lg:scale-[1.2]'>
-                <div className='-mr-3 md:-mr-8 flex items-center'>
+                <div className='-mr-12 flex items-center'>
                     <Link
                         to='/'
                         className='block mr-1 border-2 border-tw-5 rounded-lg bg-tw-3 hover:bg-tw-4 p-2 text-light font-bold transition duration-150 ease-in-out hover:scale-[1.2] dark:bg-navy dark:hover:bg-blue-600 dark:border-dark-blue'>

@@ -2,19 +2,19 @@ import { useState, useEffect, useRef } from 'react'
 import { Fireworks } from '@fireworks-js/react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { doc, getDoc, updateDoc } from 'firebase/firestore'
-import { db } from '../../config/firebase.js'
-import useFirebaseAuth from '../../hooks/useFirebaseAuth.js'
-import useDocument from '../../hooks/useDocument.js'
+import { db } from '../../config/firebase'
+import useFirebaseAuth from '../../hooks/useFirebaseAuth'
+import useDocument from '../../hooks/useDocument'
 import { toast } from 'react-toastify'
-import images from './images.js'
+import images from '../../data/levelImages'
 
 // components
 import SingleCard from '../../components/SingleCard'
 import BackButton from '../../components/BackButton'
 import GameRecord from '../../components/GameRecord'
 import { AiOutlineLeft } from 'react-icons/ai'
-import LevelCompleteModal from '../../components/LevelCompleteModal.jsx'
-import { getRandomValuesFromArray } from '../../utils/getRandomValuesFromArray.js'
+import LevelCompleteModal from '../../components/LevelCompleteModal'
+import { getRandomValuesFromArray } from '../../utils/getRandomValuesFromArray'
 
 function Game() {
     const { user } = useFirebaseAuth()
@@ -282,6 +282,38 @@ function Game() {
         }
     }, [timer])
 
+    const updateCollectionArray = async () => {
+        const levelArray = currentLevelData?.levels
+        const collectionArray = currentLevelData?.collections
+
+        levelArray.map((level) => {
+            const star1 = level.star1
+            const star2 = level.star2
+            const star3 = level.star3
+            const completedCount = level.completedCount
+
+            collectionArray[level.level - 1].images[0].locked = !star1
+            collectionArray[level.level - 1].images[1].locked = !star2
+            collectionArray[level.level - 1].images[2].locked = !star3
+            collectionArray[level.level - 1].images[3].locked =
+                completedCount >= 3 ? false : true
+        })
+
+        // update document
+        const docRef = doc(db, 'Users/' + user?.uid)
+        try {
+            await updateDoc(docRef, {
+                collections: collectionArray
+            })
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    useEffect(() => {
+        currentLevelData && updateCollectionArray()
+    }, [currentLevelData])
+
     return (
         <>
             <div className='full-centered text-center py-12'>
@@ -342,6 +374,9 @@ function Game() {
                 goToNextLevel={goToNextLevel}
                 shuffleCards={shuffleCards}
                 level={currentLevel}
+                collections={
+                    currentLevelData?.collections[levelNumber - 1].images
+                }
                 stars={stars}
             />
             <BackButton to='/level' />

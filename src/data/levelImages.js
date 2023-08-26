@@ -1,4 +1,4 @@
-const data = {
+const levelImages = {
     lv1: {
         images: [
             { src: '/img/level/1/ny (1).png', matched: false },
@@ -237,4 +237,4 @@ const data = {
     }
 }
 
-export default data
+export default levelImages
