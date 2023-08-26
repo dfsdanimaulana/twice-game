@@ -8,8 +8,10 @@ import { toast } from 'react-toastify'
 import { auth } from '../config/firebase'
 import { validateUsername } from '../utils/validateUsername'
 import useFirestore from '../hooks/useFirestore'
+import useUpdateDocumentsByUid from '../hooks/useUpdateDocumentsByUid'
 
 const UpdateDisplayNameModal = ({ modalOpen, setModalOpen, uid }) => {
+    const { updateDocuments } = useUpdateDocumentsByUid()
     const [formLoading, setFormLoading] = useState(false)
     const { updateDocument } = useFirestore('Users')
 
@@ -29,6 +31,11 @@ const UpdateDisplayNameModal = ({ modalOpen, setModalOpen, uid }) => {
 
             // update displayName in Users collection
             await updateDocument(uid, {
+                displayName: data.newUsername
+            })
+
+            // Update displayName in chat room
+            await updateDocuments('ChatRooms', uid, {
                 displayName: data.newUsername
             })
 
@@ -64,7 +71,7 @@ const UpdateDisplayNameModal = ({ modalOpen, setModalOpen, uid }) => {
                         Update Username:
                     </label>
                     <input
-                        className='w-full border border-tw-1 rounded-md py-2 px-4 pr-10 focus:outline-none focus:ring-tw-5 focus:border-tw-5 text-tw-1'
+                        className='w-full border border-tw-1 rounded-md py-2 px-4 pr-10 focus:outline-none focus:ring-tw-5 focus:border-tw-5'
                         type='text'
                         autoComplete='off'
                         placeholder='Your new username'

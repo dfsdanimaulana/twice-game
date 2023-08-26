@@ -8,7 +8,6 @@ import useFirebaseAuth from '../../hooks/useFirebaseAuth'
 import { auth } from '../../config/firebase'
 
 // components
-import Avatar from '../../components/Avatar'
 import BackButton from '../../components/BackButton'
 import UpdatePhotoModal from '../../components/UpdatePhotoModal'
 import UpdateDisplayNameModal from '../../components/UpdateDisplayNameModal'
@@ -41,8 +40,12 @@ const Profile = () => {
             {user && (
                 <div className='flex flex-col border-2 p-6 rounded-lg border-light'>
                     <div className='flex items-center border-b-2 border-b-light pb-2 mb-2'>
-                        <div className='h-16 w-16 mr-4 relative'>
-                            <Avatar user={user} />
+                        <div className='mr-4 relative'>
+                            <img
+                                src={user?.photoURL}
+                                className='w-16 h-16 object-cover object-top rounded-full border border-tw-5'
+                                alt={user?.displayName}
+                            />
                             <button
                                 onClick={() => setPhotoModalOpen(true)}
                                 className='absolute bottom-0 right-0'
@@ -57,7 +60,7 @@ const Profile = () => {
                             </Tooltip>
                         </div>
                         <h1 className='text-2xl font-bold'>
-                            {user.displayName}
+                            {user?.displayName}
                         </h1>
                     </div>
                     <ul className='flex flex-col gap-2'>
@@ -66,7 +69,7 @@ const Profile = () => {
                                 <span className='inline-block w-24 text-sm font-semibold'>
                                     Username{' '}
                                 </span>
-                                : {user.displayName}
+                                : {user?.displayName}
                             </span>
                             <button
                                 onClick={() => setModalOpen(true)}
@@ -85,9 +88,9 @@ const Profile = () => {
                                 <span className='inline-block w-24 text-sm font-semibold'>
                                     Email{' '}
                                 </span>
-                                : {user.email}
+                                : {user?.email}
                             </span>
-                            {user.emailVerified ? (
+                            {user?.emailVerified ? (
                                 <>
                                     <span
                                         className='text-blue-500'
@@ -124,9 +127,9 @@ const Profile = () => {
                             <span className='inline-block w-24 text-sm font-semibold'>
                                 Provider{' '}
                             </span>
-                            : {user.providerData[0].providerId}
+                            : {user?.providerData[0].providerId}
                         </li>
-                        {user.providerData[0].providerId === 'password' && (
+                        {user?.providerData[0].providerId === 'password' && (
                             <li className='text-center'>
                                 <button
                                     className='form-button'

@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 const GameRecord = ({ level }) => {
     return (
         <div className='mt-3 lg:w-1/3 border-2 text-sm text-tw-5 bg-tw-2 border-tw-5 py-1 px-2 rounded-lg dark:bg-navy  dark:border-dark-blue'>
-            <span>Game Record</span>
-            <hr className='border-tw-5 mb-1' />
+            <span className='text-lg'>Game Record</span>
+            <hr className='border-tw-5 m-1' />
             <div className='flex justify-around'>
                 <span>
                     Best Time:{' '}
@@ -16,6 +16,8 @@ const GameRecord = ({ level }) => {
                     {level?.bestTurns === 100 ? 'Not Set' : level?.bestTurns}
                 </span>
             </div>
+            <hr className='border-tw-5 m-1' />
+            <span>Completed Count : {level?.completedCount}</span>
         </div>
     )
 }

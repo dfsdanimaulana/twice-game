@@ -140,8 +140,6 @@ function Game() {
                 levels: updatedLevelsArray,
                 exp
             })
-            // TODO : Show winning modal
-            // point exp, star collected, rematch button, next level, home
             setLevelComplete(true)
         } catch (error) {
             console.error('Error updating array field:', error)

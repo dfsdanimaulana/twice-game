@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types'
 import ReactModal from 'react-modal'
 import { AiFillStar, AiOutlineStar, AiOutlineClose } from 'react-icons/ai'
-import { FaRedo } from 'react-icons/fa'
+import { FaRedo, FaHome } from 'react-icons/fa'
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
 const LevelCompleteModal = ({
     levelComplete,
@@ -88,12 +89,19 @@ const LevelCompleteModal = ({
                     </div>
                 </div>
             </motion.div>
-            <div className='flex items-center justify-center lg:scale-[1.2]'>
-                <button
-                    onClick={shuffleCards}
-                    className='border-2 border-tw-5 rounded-lg bg-tw-3 hover:bg-tw-4 -mr-2 p-2 text-light font-bold transition duration-150 ease-in-out hover:scale-[1.2] dark:bg-navy dark:hover:bg-blue-600 dark:border-dark-blue'>
-                    <FaRedo />
-                </button>
+            <div className='flex items-center justify-around lg:scale-[1.2]'>
+                <div className='-mr-3 md:-mr-8 flex items-center'>
+                    <Link
+                        to='/'
+                        className='block mr-1 border-2 border-tw-5 rounded-lg bg-tw-3 hover:bg-tw-4 p-2 text-light font-bold transition duration-150 ease-in-out hover:scale-[1.2] dark:bg-navy dark:hover:bg-blue-600 dark:border-dark-blue'>
+                        <FaHome />
+                    </Link>
+                    <button
+                        onClick={shuffleCards}
+                        className='border-2 border-tw-5 rounded-lg bg-tw-3 hover:bg-tw-4 p-2 text-light font-bold transition duration-150 ease-in-out hover:scale-[1.2] dark:bg-navy dark:hover:bg-blue-600 dark:border-dark-blue'>
+                        <FaRedo />
+                    </button>
+                </div>
                 <button onClick={goToNextLevel} className='btn-primary'>
                     Continue
                 </button>

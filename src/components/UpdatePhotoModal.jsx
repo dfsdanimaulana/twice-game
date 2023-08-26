@@ -8,9 +8,13 @@ import { useState } from 'react'
 import { toast } from 'react-toastify'
 import { auth } from '../config/firebase'
 import useFirebaseAuth from '../hooks/useFirebaseAuth'
+import useFirestore from '../hooks/useFirestore'
+import useUpdateDocumentsByUid from '../hooks/useUpdateDocumentsByUid'
 
 const UpdatePhotoModal = ({ photoModalOpen, setPhotoModalOpen }) => {
     const { user } = useFirebaseAuth()
+    const { updateDocuments} = useUpdateDocumentsByUid()
+    const { updateDocument } = useFirestore('Users')
     const [formLoading, setFormLoading] = useState(false)
     const [previewImage, setPreviewImage] = useState(null)
     const [selectedFile, setSelectedFile] = useState(null)
@@ -57,6 +61,16 @@ const UpdatePhotoModal = ({ photoModalOpen, setPhotoModalOpen }) => {
                     photoURL: downloadURL
                 })
 
+                // update photoURL in Users collection
+                await updateDocument(user.uid, {
+                    photoURL: downloadURL
+                })
+
+                // Update photoURL in chat room
+                await updateDocuments('ChatRooms', user.uid, {
+                    photoURL: downloadURL
+                })
+
                 setFormLoading(false)
                 toast.success('Update Successfully')
                 handleModalClose()
@@ -88,7 +102,7 @@ const UpdatePhotoModal = ({ photoModalOpen, setPhotoModalOpen }) => {
                     <img
                         src={previewImage ? previewImage : user?.photoURL}
                         alt='Preview'
-                        className='max-w-[200px] h-auto border rounded-lg m-3'
+                        className='h-64 w-64 object-cover object-top border rounded-lg m-3 border-tw-5'
                     />
                 </label>
                 <input

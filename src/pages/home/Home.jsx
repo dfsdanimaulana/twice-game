@@ -7,13 +7,14 @@ import {
     AiOutlineUser,
     AiOutlineSetting,
     AiOutlineOrderedList,
-    AiOutlinePicture
+    AiOutlinePicture,
+    AiOutlineMessage
 } from 'react-icons/ai'
 import GoogleButton from '../../components/GoogleButton'
 import Logout from '../../components/Logout'
 import Loading from '../../components/Loading'
 import GithubButton from '../../components/GithubButton'
-import Avatar from '../../components/Avatar'
+import ImageWithFallback from '../../components/ImageWithFallBack'
 
 const Home = () => {
     const { user, loading } = useFirebaseAuth()
@@ -23,7 +24,7 @@ const Home = () => {
             {!loading ? (
                 <div className='home relative overflow-hidden'>
                     {user ? (
-                        <div className='absolute w-full min-h-screen lg:bg-[url("/img/bg/bg-1.jpg")] bg-cover -z-10'></div>
+                        <div className='absolute w-full min-h-screen md:bg-[url("/img/bg/bg-1.jpg")] bg-cover -z-10'></div>
                     ) : (
                         <>
                             <video
@@ -42,9 +43,11 @@ const Home = () => {
                     <div className='flex flex-col items-center'>
                         {user && (
                             <div className='absolute top-5 left-5 flex items-center border rounded-md px-2 py-1 border-tw-5'>
-                                <div className='max-w-[30px] mr-2'>
-                                    <Avatar user={user} />
-                                </div>
+                                <ImageWithFallback
+                                    imageUrl={user.photoURL}
+                                    imageClasses='w-8 h-8 object-cover object-top rounded-full mr-2'
+                                    alt='photoURL'
+                                />
                                 <span className='font-bold text-1xl text-tw-5'>
                                     {user.displayName}
                                 </span>
@@ -108,6 +111,18 @@ const Home = () => {
                                         anchorSelect='#collection'
                                         place='bottom'>
                                         Collection Cards
+                                    </Tooltip>
+
+                                    <Link
+                                        to='/chat'
+                                        id='chat'
+                                        className='menu-icon'>
+                                        <AiOutlineMessage />
+                                    </Link>
+                                    <Tooltip
+                                        anchorSelect='#chat'
+                                        place='bottom'>
+                                        Chats Room
                                     </Tooltip>
 
                                     <Link

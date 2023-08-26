@@ -28,6 +28,7 @@ export const generateUserData = (user) => {
     const userData = {
         exp: 0,
         displayName: user.displayName,
+        photoURL: user.photoURL,
         levels: generateLevelData(),
         createdAt: serverTimestamp()
     }

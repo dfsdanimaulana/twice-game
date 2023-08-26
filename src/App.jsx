@@ -13,6 +13,7 @@ import ProtectedRoute from './pages/ProtectedRoute'
 import Collection from './pages/collection/Collection'
 import ForgetPassword from './pages/auth/ForgetPassword'
 import ScoreBoard from './pages/scoreboard/ScoreBoard'
+import Chat from './pages/chat/Chat'
 
 function App() {
     const _ = useDarkMode()
@@ -38,6 +39,7 @@ function App() {
                         <Route path='/collection' element={<Collection />} />
                         <Route path='/scoreboard' element={<ScoreBoard />} />
                         <Route path='/setting' element={<Setting />} />
+                        <Route path='/chat' element={<Chat />} />
                         <Route path='*' element={<ErrorPage />} />
                     </Route>
                 </Routes>
