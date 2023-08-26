@@ -24,7 +24,10 @@ const Home = () => {
             {!loading ? (
                 <div className='home relative overflow-hidden'>
                     {user ? (
-                        <div className='absolute w-full min-h-screen md:bg-[url("/img/bg/bg-1.jpg")] bg-cover -z-10'></div>
+                        <>
+                            <div className='absolute w-full min-h-screen bg-[url("/img/bg/bg-sm-2.jpg")] md:bg-[url("/img/bg/all.jpeg")] dark:md:bg-[url(/img/bg/bg-1.jpg)] bg-cover bg-center -z-20'></div>
+                            <div className='absolute w-full min-h-screen bg-[rgba(0,0,0,0.2)] bg-cover bg-center -z-10'></div>
+                        </>
                     ) : (
                         <>
                             <video
@@ -52,13 +55,13 @@ const Home = () => {
                     )}
                     <div className='flex flex-col items-center'>
                         {user && (
-                            <div className='absolute top-5 left-5 flex items-center border rounded-md px-2 py-1 border-tw-5'>
+                            <div className='absolute top-5 left-5 flex items-center border rounded-md px-2 py-1 border-light dark:border-dark-blue'>
                                 <ImageWithFallback
                                     imageUrl={user.photoURL}
                                     imageClasses='w-8 h-8 object-cover object-top rounded-full mr-2'
                                     alt='photoURL'
                                 />
-                                <span className='font-bold text-1xl text-tw-5'>
+                                <span className='font-bold text-1xl text-light'>
                                     {user.displayName}
                                 </span>
                             </div>
@@ -83,13 +86,10 @@ const Home = () => {
                             <>
                                 <Link
                                     to='/level'
-                                    className='font-bold font-bn tracking-widest
-                                     text-white text-3xl bg-gradient-to-r from-tw-4 via-tw-3 to-tw-2 hover:bg-gradient-to-r hover:from-tw-5 hover:via-tw-4 hover:to-tw-3
-                                     dark:bg-gradient-to-tr dark:from-dark-blue dark:to-navy 
-                                      py-2 px-10 my-10 uppercase rounded-xl hover:shadow-md transition duration-150 ease-in-out hover:scale-[1.2]'>
+                                    className='border border-light font-bold font-bn tracking-widest text-white text-3xl bg-gradient-to-r from-tw-4 via-tw-3 to-tw-2 hover:bg-gradient-to-r hover:from-tw-5 hover:via-tw-4 hover:to-tw-3 dark:bg-gradient-to-tr dark:from-dark-blue dark:to-navy py-2 px-10 my-10 uppercase rounded-xl hover:shadow-md transition duration-150 ease-in-out hover:scale-[1.2]'>
                                     Start
                                 </Link>
-                                <div className='flex w-56 justify-between'>
+                                <div className='flex justify-between gap-3'>
                                     <Link
                                         to='/profile'
                                         id='profile'
@@ -159,7 +159,13 @@ const Home = () => {
                 <Loading />
             )}
             <p className='fixed bottom-1 left-1 text-white text-sm '>
-                © 2023 by dnm17_
+                © 2023 by{' '}
+                <a
+                    href='https://www.instagram.com/dnm17_/'
+                    target='_blank'
+                    rel='noopener noreferrer'>
+                    @dnm17_
+                </a>
             </p>
         </>
     )

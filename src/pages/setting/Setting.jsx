@@ -7,7 +7,6 @@ import ToggleDarkMode from '../../components/ToggleDarkMode'
 import { MdToggleOn } from 'react-icons/md'
 
 const Setting = () => {
-
     return (
         <div className='full-centered'>
             <div className='border border-tw-5 dark:border-dark-blue p-4 rounded-lg'>
@@ -32,7 +31,7 @@ const Setting = () => {
                 </ul>
             </div>
 
-            <BackButton />
+            <BackButton to='/' />
         </div>
     )
 }

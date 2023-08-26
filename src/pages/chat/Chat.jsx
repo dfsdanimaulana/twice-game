@@ -7,6 +7,7 @@ import { db } from '../../config/firebase'
 import { toast } from 'react-toastify'
 import BackButton from '../../components/BackButton'
 import ImageWithFallback from '../../components/ImageWithFallBack'
+import { BsSend } from 'react-icons/bs'
 
 function Chat() {
     const { user } = useFirebaseAuth()
@@ -149,20 +150,16 @@ function Chat() {
                             </div>
                             <form
                                 ref={formRef}
-                                className='flex gap-1 justify-between px-3 py-1'
+                                className='flex mx-5 mt-5'
                                 onSubmit={handleSubmit}>
                                 <input
                                     type='text'
                                     onChange={(e) => setMessage(e.target.value)}
-                                    className='basis-3/4 rounded-md focus:outline-none px-2'
+                                    className='basis-3/4 focus:outline-none p-2 rounded-tl-md rounded-bl-md'
                                 />
                                 {/* Bottom right button */}
-                                <button className='basis-1/4 inline-flex items-center text-sm font-medium text-white bg-indigo-500 hover:bg-indigo-600 rounded-full text-center px-3 py-2 shadow-lg focus:outline-none focus-visible:ring-2'>
-                                    <svg
-                                        className='w-3 h-3 fill-current text-indigo-300 flex-shrink-0 mr-2'
-                                        viewBox='0 0 12 12'>
-                                        <path d='M11.866.146a.5.5 0 0 0-.437-.139c-.26.044-6.393 1.1-8.2 2.913a4.145 4.145 0 0 0-.617 5.062L.305 10.293a1 1 0 1 0 1.414 1.414L7.426 6l-2 3.923c.242.048.487.074.733.077a4.122 4.122 0 0 0 2.933-1.215c1.81-1.809 2.87-7.94 2.913-8.2a.5.5 0 0 0-.139-.439Z' />
-                                    </svg>
+                                <button className='basis-1/4 flex items-center justify-center py-2 px-0 rounded-tr-md rounded-br-md gap-2 text-sm font-medium text-white bg-indigo-500 hover:bg-indigo-600 text-center shadow-lg focus:outline-none focus-visible:ring-2'>
+                                    <BsSend />
                                     <span>Send</span>
                                 </button>
                             </form>

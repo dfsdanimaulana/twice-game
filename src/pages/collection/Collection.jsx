@@ -2,10 +2,21 @@ import BackButton from '../../components/BackButton'
 import useDocument from '../../hooks/useDocument'
 import useFirebaseAuth from '../../hooks/useFirebaseAuth'
 import Loading from '../../components/Loading'
+import Swal from 'sweetalert2'
 
 const Collection = () => {
     const { user } = useFirebaseAuth()
     const { document, loading, error } = useDocument('Users', user?.uid)
+
+    const showImage = (src) => {
+        Swal.fire({
+            imageUrl: src,
+            imageWidth: 300,
+            imageHeight: 400,
+            showConfirmButton: false,
+            imageAlt: 'Custom image'
+        })
+    }
 
     return (
         <>
@@ -15,11 +26,11 @@ const Collection = () => {
                         {document?.collections.map((row, rowIndex) => (
                             <div
                                 key={rowIndex}
-                                className='flex gap-2 my-3 lg:my-2 p-3 rounded-lg bg-gradient-to-tr from-tw-2 to-tw-3 shadow-md dark:bg-gradient-to-tr dark:from-dark-blue dark:to-navy '>
+                                className='flex flex-wrap justify-around gap-2 my-3 lg:my-2 p-3 rounded-lg bg-gradient-to-tr from-tw-2 to-tw-3 shadow-md dark:bg-gradient-to-tr dark:from-dark-blue dark:to-navy '>
                                 {row.images.map((image, columnIndex) => (
                                     <div
                                         key={columnIndex}
-                                        className='aspect-w-3 aspect-h-4 w-28 rounded-md overflow-hidden shadow-md'>
+                                        className='aspect-w-3 aspect-h-4 w-28 rounded-md overflow-hidden shadow-md hover:scale-[1.05]'>
                                         {image.locked ? (
                                             <img
                                                 className='w-full h-full object-cover object-top'
@@ -28,9 +39,12 @@ const Collection = () => {
                                             />
                                         ) : (
                                             <img
-                                                className='w-full h-full object-cover object-top'
+                                                className='w-full h-full object-cover object-top cursor-pointer'
                                                 src={image.src}
                                                 alt='collection image'
+                                                onClick={() =>
+                                                    showImage(image.src)
+                                                }
                                             />
                                         )}
                                     </div>
@@ -43,7 +57,7 @@ const Collection = () => {
                 {error && <div>{error}</div>}
             </div>
             <div className='fixed top-1 left-1'>
-                <BackButton />
+                <BackButton to='/' />
             </div>
         </>
     )

@@ -142,7 +142,7 @@ const Profile = () => {
                 </div>
             )}
             {loading && <Loading />}
-            <BackButton />
+            <BackButton to='/' />
             <UpdateDisplayNameModal
                 modalOpen={modalOpen}
                 setModalOpen={setModalOpen}

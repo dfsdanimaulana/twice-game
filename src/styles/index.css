@@ -17,7 +17,7 @@ body {
 }
 
 .btn-secondary {
-    @apply text-2xl border border-tw-5 dark:border-dark-blue p-1 rounded-md bg-transparent hover:bg-semi-transparent text-tw-5 shadow-sm hover:shadow-md hover:scale-[1.1];
+    @apply text-2xl border border-light dark:border-dark-blue p-1 rounded-md bg-transparent hover:bg-semi-transparent text-tw-5 shadow-sm hover:shadow-md hover:scale-[1.1];
 }
 
 .home {
@@ -25,7 +25,7 @@ body {
 }
 
 .menu-icon {
-    @apply text-2xl text-white p-1 rounded-md border-2 border-light bg-transparent hover:bg-semi-transparent hover:shadow-md transition duration-150 ease-in-out hover:scale-[1.2];
+    @apply text-3xl text-light border-light p-1 rounded-md border-2 bg-gradient-to-r from-tw-4 via-tw-3 to-tw-2 dark:bg-gradient-to-tr dark:from-dark-blue dark:to-navy hover:bg-gradient-to-r hover:from-tw-5 hover:via-tw-4 hover:to-tw-3 hover:shadow-md transition duration-150 ease-in-out hover:scale-[1.2];
 }
 
 .form-title {

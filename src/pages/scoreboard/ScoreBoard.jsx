@@ -21,7 +21,7 @@ const ScoreBoard = () => {
             )}
             {loading && <Loading />}
             {error && <Error error={error} />}
-            <BackButton />
+            <BackButton to='/' />
         </>
     )
 }
