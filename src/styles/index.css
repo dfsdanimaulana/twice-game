@@ -33,7 +33,7 @@ body {
 }
 
 .form-input {
-    @apply w-full border border-tw-1  rounded-md py-2 px-4 pr-10 focus:outline-none focus:ring-tw-5 focus:border-tw-5 bg-transparent text-tw-1;
+    @apply w-full border border-tw-1  rounded-md py-2 px-4 pr-10 focus:outline-none focus:ring-tw-5 focus:border-tw-5 bg-light text-dark;
 }
 
 .form-button {
@@ -53,7 +53,7 @@ body {
 }
 
 .modal-content {
-    @apply p-7 rounded-lg bg-tw-1 relative;
+    @apply p-7 rounded-lg bg-tw-1 dark:bg-dark-blue relative;
 }
 
 .modal-overlay {

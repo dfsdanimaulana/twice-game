@@ -37,7 +37,17 @@ const Home = () => {
                                     type='video/mp4'
                                 />
                             </video>
-                            <div className='absolute w-full min-h-screen bg-[rgba(0,0,0,0.4)] -z-10 hidden md:block'></div>
+                            <video
+                                className='absolute w-full h-auto object-cover -z-20 block md:hidden'
+                                autoPlay
+                                loop
+                                muted>
+                                <source
+                                    src='/video/videoplayback-sm.mp4'
+                                    type='video/mp4'
+                                />
+                            </video>
+                            <div className='absolute w-full min-h-screen bg-[rgba(0,0,0,0.4)] -z-10'></div>
                         </>
                     )}
                     <div className='flex flex-col items-center'>
@@ -73,7 +83,10 @@ const Home = () => {
                             <>
                                 <Link
                                     to='/level'
-                                    className='font-bold font-bn tracking-widest text-white text-3xl bg-gradient-to-r from-tw-4 via-tw-3 to-tw-2 hover:bg-gradient-to-r hover:from-tw-5 hover:via-tw-4 hover:to-tw-3 py-2 px-10 my-10 uppercase rounded-xl hover:shadow-md transition duration-150 ease-in-out hover:scale-[1.2]'>
+                                    className='font-bold font-bn tracking-widest
+                                     text-white text-3xl bg-gradient-to-r from-tw-4 via-tw-3 to-tw-2 hover:bg-gradient-to-r hover:from-tw-5 hover:via-tw-4 hover:to-tw-3
+                                     dark:bg-gradient-to-tr dark:from-dark-blue dark:to-navy 
+                                      py-2 px-10 my-10 uppercase rounded-xl hover:shadow-md transition duration-150 ease-in-out hover:scale-[1.2]'>
                                     Start
                                 </Link>
                                 <div className='flex w-56 justify-between'>
@@ -145,6 +158,9 @@ const Home = () => {
             ) : (
                 <Loading />
             )}
+            <p className='fixed bottom-1 left-1 text-white text-sm '>
+                © 2023 by dnm17_
+            </p>
         </>
     )
 }

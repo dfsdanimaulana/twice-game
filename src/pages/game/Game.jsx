@@ -15,6 +15,8 @@ import GameRecord from '../../components/GameRecord'
 import { AiOutlineLeft } from 'react-icons/ai'
 import LevelCompleteModal from '../../components/LevelCompleteModal'
 import { getRandomValuesFromArray } from '../../utils/getRandomValuesFromArray'
+import HelpButtonModal from '../../components/HelpButtonModal'
+import { BiSolidHelpCircle } from 'react-icons/bi'
 
 function Game() {
     const { user } = useFirebaseAuth()
@@ -34,6 +36,7 @@ function Game() {
     const [incorrectGuess, setIncorrectGuess] = useState(0)
     const [levelComplete, setLevelComplete] = useState(false)
     const [gamePoint, setGamePoint] = useState(0)
+    const [helpOpen, setHelpOpen] = useState(false)
     const [stars, setStars] = useState({
         star1: false,
         star2: false,
@@ -296,7 +299,7 @@ function Game() {
             collectionArray[level.level - 1].images[1].locked = !star2
             collectionArray[level.level - 1].images[2].locked = !star3
             collectionArray[level.level - 1].images[3].locked =
-                completedCount >= 3 ? false : true
+                completedCount >= 5 ? false : true
         })
 
         // update document
@@ -367,6 +370,18 @@ function Game() {
                     </div>
                 )}
             </div>
+            <div className='fixed bottom-3 right-3'>
+                <BiSolidHelpCircle
+                    className='text-pink-700 w-10 h-10 transition duration-150 ease-in-out hover:scale-[1.2] cursor-pointer'
+                    onClick={() => setHelpOpen(true)}
+                />
+            </div>
+            <HelpButtonModal
+                time={time}
+                helpOpen={helpOpen}
+                setHelpOpen={setHelpOpen}
+            />
+
             <LevelCompleteModal
                 levelComplete={levelComplete}
                 gamePoint={gamePoint}

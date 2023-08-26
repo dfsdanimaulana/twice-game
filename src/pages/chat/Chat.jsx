@@ -56,7 +56,7 @@ function Chat() {
                 <BackButton to='/' />
                 <div className='h-full'>
                     {/* Card */}
-                    <div className='relative w-[340px] lg:w-1/3 mx-auto bg-gradient-to-br from-tw-2 to-tw-4 shadow-lg rounded-lg'>
+                    <div className='relative w-[340px] lg:w-1/3 mx-auto bg-gradient-to-br from-tw-2 to-tw-4 shadow-lg rounded-lg dark:bg-gradient-to-tr dark:from-dark-blue dark:to-navy '>
                         {/* Card header */}
                         <header className='pt-6 pb-4 px-5 border-b border-dark'>
                             <div className='flex justify-between items-center'>

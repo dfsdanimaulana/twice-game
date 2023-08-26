@@ -15,11 +15,11 @@ const Collection = () => {
                         {document?.collections.map((row, rowIndex) => (
                             <div
                                 key={rowIndex}
-                                className='flex gap-1 my-3 lg:my-2 border p-3 rounded-sm'>
+                                className='flex gap-2 my-3 lg:my-2 p-3 rounded-lg bg-gradient-to-tr from-tw-2 to-tw-3 shadow-md dark:bg-gradient-to-tr dark:from-dark-blue dark:to-navy '>
                                 {row.images.map((image, columnIndex) => (
                                     <div
                                         key={columnIndex}
-                                        className='border aspect-w-3 aspect-h-4 w-28 rounded-md overflow-hidden'>
+                                        className='aspect-w-3 aspect-h-4 w-28 rounded-md overflow-hidden shadow-md'>
                                         {image.locked ? (
                                             <img
                                                 className='w-full h-full object-cover object-top'

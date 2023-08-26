@@ -13,7 +13,7 @@ const PasswordInput = forwardRef((props, ref) => {
             <input
                 type={showPassword ? 'text' : 'password'}
                 placeholder='password'
-                className='w-full border border-tw-1 rounded-md py-2 px-4 pr-10 focus:outline-none focus:ring-tw-5 focus:border-tw-5'
+                className='w-full border border-tw-1 rounded-md py-2 px-4 pr-10 focus:outline-none focus:ring-tw-5 focus:border-tw-5 bg-light text-dark'
                 {...props}
             />
             <button
