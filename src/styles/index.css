@@ -131,7 +131,7 @@ body {
 
 /* Toogle Switch Dark Mode */
 .switch {
-    @apply w-[45px] h-[25px] flex justify-start border items-center p-1 border-dark rounded-[50px] cursor-pointer;
+    @apply w-[45px] h-[25px] flex justify-start border items-center p-1 border-tw-5 dark:border-light rounded-[50px] cursor-pointer;
 }
 
 .switch[data-is-on='true'] {

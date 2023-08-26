@@ -20,12 +20,22 @@ const SingleCard = ({ card, handleChoice, flipped, disabled }) => {
                     src={card.src}
                     alt='card front'
                 />
-                <img
-                    className='back w-full block border-2 border-white rounded-lg hover:shadow-lg'
-                    src='/img/cover.jpg'
-                    onClick={handleClick}
-                    alt='cover'
-                />
+                <div className='hidden dark:block'>
+                    <img
+                        className='back w-full block border-2 border-white rounded-lg hover:shadow-lg'
+                        src='/img/cover.jpg'
+                        onClick={handleClick}
+                        alt='cover'
+                    />
+                </div>
+                <div className='block dark:hidden'>
+                    <img
+                        className='back w-full block border-2 border-white rounded-lg hover:shadow-lg'
+                        src='/img/cover-light.jpg'
+                        onClick={handleClick}
+                        alt='cover'
+                    />
+                </div>
             </div>
         </motion.div>
     )

@@ -19,7 +19,7 @@ export default function ToggleDarkMode() {
                 className='handle grid place-items-center'
                 layout
                 transition={spring}>
-                {isDarkMode ? <MdModeNight /> : <MdLightMode />}
+                {isDarkMode ? <MdModeNight /> : <MdLightMode className='text-tw-5' />}
             </motion.div>
         </div>
     )

@@ -6,6 +6,7 @@ import BackButton from '../../components/BackButton'
 import LevelCard from '../../components/LevelCard'
 import Loading from '../../components/Loading'
 import Error from '../../components/Error'
+import ToggleDarkMode from '../../components/ToggleDarkMode'
 
 const Level = () => {
     const { user, loading: userLoading } = useFirebaseAuth()
@@ -23,6 +24,9 @@ const Level = () => {
             {(loading || userLoading) && <Loading />}
             {error && <Error error={error} />}
             <BackButton to='/' />
+            <div className='absolute top-3 right-3'>
+                <ToggleDarkMode />
+            </div>
         </div>
     )
 }

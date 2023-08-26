@@ -13,6 +13,7 @@ import UpdatePhotoModal from '../../components/UpdatePhotoModal'
 import UpdateDisplayNameModal from '../../components/UpdateDisplayNameModal'
 import UpdatePasswordModal from '../../components/UpdatePasswordModal'
 import Loading from '../../components/Loading'
+import ToggleDarkMode from '../../components/ToggleDarkMode'
 
 const Profile = () => {
     const { user, loading } = useFirebaseAuth()
@@ -142,6 +143,9 @@ const Profile = () => {
                 </div>
             )}
             {loading && <Loading />}
+            <div className='absolute top-3 right-3'>
+                <ToggleDarkMode />
+            </div>
             <BackButton to='/' />
             <UpdateDisplayNameModal
                 modalOpen={modalOpen}

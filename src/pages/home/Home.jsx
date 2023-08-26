@@ -11,10 +11,10 @@ import {
     AiOutlineMessage
 } from 'react-icons/ai'
 import GoogleButton from '../../components/GoogleButton'
-import Logout from '../../components/Logout'
 import Loading from '../../components/Loading'
 import GithubButton from '../../components/GithubButton'
 import ImageWithFallback from '../../components/ImageWithFallBack'
+import ToggleDarkMode from '../../components/ToggleDarkMode'
 
 const Home = () => {
     const { user, loading } = useFirebaseAuth()
@@ -152,11 +152,15 @@ const Home = () => {
                                 </div>
                             </>
                         )}
-                        {user && <Logout />}
                     </div>
                 </div>
             ) : (
                 <Loading />
+            )}
+            {user && (
+                <div className='absolute top-3 right-3'>
+                    <ToggleDarkMode />
+                </div>
             )}
             <p className='fixed bottom-1 left-1 text-white text-sm '>
                 © 2023 by{' '}

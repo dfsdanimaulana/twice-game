@@ -8,6 +8,7 @@ import { toast } from 'react-toastify'
 import BackButton from '../../components/BackButton'
 import ImageWithFallback from '../../components/ImageWithFallBack'
 import { BsSend } from 'react-icons/bs'
+import ToggleDarkMode from '../../components/ToggleDarkMode'
 
 function Chat() {
     const { user } = useFirebaseAuth()
@@ -158,7 +159,7 @@ function Chat() {
                                     className='basis-3/4 focus:outline-none p-2 rounded-tl-md rounded-bl-md'
                                 />
                                 {/* Bottom right button */}
-                                <button className='basis-1/4 flex items-center justify-center py-2 px-0 rounded-tr-md rounded-br-md gap-2 text-sm font-medium text-white bg-indigo-500 hover:bg-indigo-600 text-center shadow-lg focus:outline-none focus-visible:ring-2'>
+                                <button className='basis-1/4 flex items-center justify-center py-2 px-0 rounded-tr-md rounded-br-md gap-2 text-sm font-medium text-white bg-indigo-500 hover:bg-indigo-600 dark:bg-tw-3 dark:hover:bg-tw-5 text-center shadow-lg focus:outline-none focus-visible:ring-2'>
                                     <BsSend />
                                     <span>Send</span>
                                 </button>
@@ -167,6 +168,9 @@ function Chat() {
                     </div>
                 </div>
             </section>
+            <div className='absolute top-3 right-3'>
+                <ToggleDarkMode />
+            </div>
         </div>
     )
 }

@@ -1,10 +1,14 @@
-import { AiOutlineSetting, AiOutlineUserDelete } from 'react-icons/ai'
+import {
+    AiOutlineLogout,
+    AiOutlineSetting,
+    AiOutlineUserDelete
+} from 'react-icons/ai'
 import BackButton from '../../components/BackButton'
 import { BiReset } from 'react-icons/bi'
 import DeleteAccount from '../../components/DeleteAccount'
 import ResetGameData from '../../components/ResetGameData'
 import ToggleDarkMode from '../../components/ToggleDarkMode'
-import { MdToggleOn } from 'react-icons/md'
+import Logout from '../../components/Logout'
 
 const Setting = () => {
     return (
@@ -17,8 +21,8 @@ const Setting = () => {
                 <hr className='border-tw-5 dark:border-dark-blue my-3' />
                 <ul className='flex flex-col gap-3'>
                     <li className='setting-list'>
-                        <MdToggleOn />
-                        Theme Mode <ToggleDarkMode />
+                        <AiOutlineLogout />
+                        <Logout />
                     </li>
                     <li className='setting-list'>
                         <BiReset />
@@ -30,7 +34,9 @@ const Setting = () => {
                     </li>
                 </ul>
             </div>
-
+            <div className='absolute top-3 right-3'>
+                <ToggleDarkMode />
+            </div>
             <BackButton to='/' />
         </div>
     )

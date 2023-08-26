@@ -17,6 +17,7 @@ import LevelCompleteModal from '../../components/LevelCompleteModal'
 import { getRandomValuesFromArray } from '../../utils/getRandomValuesFromArray'
 import HelpButtonModal from '../../components/HelpButtonModal'
 import { BiSolidHelpCircle } from 'react-icons/bi'
+import ToggleDarkMode from '../../components/ToggleDarkMode'
 
 function Game() {
     const { user } = useFirebaseAuth()
@@ -372,9 +373,12 @@ function Game() {
             </div>
             <div className='fixed bottom-3 right-3'>
                 <BiSolidHelpCircle
-                    className='text-pink-700 w-10 h-10 transition duration-150 ease-in-out hover:scale-[1.2] cursor-pointer'
+                    className='text-pink-700 dark:text-dark-blue w-10 h-10 transition duration-150 ease-in-out hover:scale-[1.2] cursor-pointer'
                     onClick={() => setHelpOpen(true)}
                 />
+            </div>
+            <div className='absolute top-3 right-3'>
+                <ToggleDarkMode />
             </div>
             <HelpButtonModal
                 time={time}
@@ -395,6 +399,7 @@ function Game() {
                 stars={stars}
             />
             <BackButton to='/level' />
+
             {/* https://fireworks.js.org/ */}
             <Fireworks
                 ref={fireRef}

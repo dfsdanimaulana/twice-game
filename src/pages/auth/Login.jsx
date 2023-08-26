@@ -50,7 +50,27 @@ const Login = () => {
     }, [user, navigate])
 
     return (
-        <div className='home lg:bg-[url("/img/bg/bg-1.jpg")] bg-cover'>
+        <div className='home relative overflow-hidden'>
+            <>
+                <video
+                    className='absolute w-full h-auto object-cover -z-20 hidden md:block'
+                    autoPlay
+                    loop
+                    muted>
+                    <source src='/video/videoplayback.mp4' type='video/mp4' />
+                </video>
+                <video
+                    className='absolute w-full h-auto object-cover -z-20 block md:hidden'
+                    autoPlay
+                    loop
+                    muted>
+                    <source
+                        src='/video/videoplayback-sm.mp4'
+                        type='video/mp4'
+                    />
+                </video>
+                <div className='absolute w-full min-h-screen bg-[rgba(0,0,0,0.4)] -z-10'></div>
+            </>
             <div className='text-center'>
                 <h1 className='form-title'>Login</h1>
                 <form

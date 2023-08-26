@@ -7,7 +7,7 @@ const BackButton = ({ to = -1 }) => {
     const navigate = useNavigate()
 
     return (
-        <div className='back-button absolute top-5 left-5'>
+        <div className='back-button absolute top-2 left-2 md:top-5 md:left-5'>
             <button
                 className='btn-secondary'
                 onClick={() => navigate(to)}

@@ -3,6 +3,7 @@ import useDocument from '../../hooks/useDocument'
 import useFirebaseAuth from '../../hooks/useFirebaseAuth'
 import Loading from '../../components/Loading'
 import Swal from 'sweetalert2'
+import ToggleDarkMode from '../../components/ToggleDarkMode'
 
 const Collection = () => {
     const { user } = useFirebaseAuth()
@@ -22,7 +23,7 @@ const Collection = () => {
         <>
             <div className='full-centered'>
                 {document && (
-                    <div className='flex flex-wrap max-w-full justify-center gap-x-3 m-10'>
+                    <div className='flex flex-wrap max-w-full justify-center gap-x-3 mx-5 my-10'>
                         {document?.collections.map((row, rowIndex) => (
                             <div
                                 key={rowIndex}
@@ -58,6 +59,9 @@ const Collection = () => {
             </div>
             <div className='fixed top-1 left-1'>
                 <BackButton to='/' />
+            </div>
+            <div className='absolute top-3 right-3'>
+                <ToggleDarkMode />
             </div>
         </>
     )

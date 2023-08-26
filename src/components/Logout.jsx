@@ -1,21 +1,28 @@
 import { signOut } from 'firebase/auth'
 import { auth } from '../config/firebase'
-import { AiOutlineLogout } from 'react-icons/ai'
-import { Tooltip } from 'react-tooltip'
+import Swal from 'sweetalert2'
+
 const Logout = () => {
-    const signOutGoogle = () => {
-        signOut(auth)
+    const handleLogout = () => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Stay a bit longer! Your game data is securely saved, and there's more fun ahead. Keep the excitement going – we're here whenever you're ready to play again!",
+            showCancelButton: true,
+            confirmButtonText: 'Yes'
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                signOut(auth)
+                Swal.fire(
+                    'Your game data has been saved. We look forward to seeing you again!',
+                    '',
+                    'success'
+                )
+            }
+        })
     }
-    return (
-        <div className='logout absolute top-5 right-5'>
-            <button className='btn-secondary' onClick={signOutGoogle}>
-                <AiOutlineLogout className='dark:text-light' />
-            </button>
-            <Tooltip anchorSelect='.logout' place='bottom-end'>
-                Logout
-            </Tooltip>
-        </div>
-    )
+
+    return <button onClick={handleLogout}>Logout</button>
 }
 
 export default Logout
