@@ -5,6 +5,7 @@ import { doc, getDoc, updateDoc } from 'firebase/firestore'
 import { db } from '../../config/firebase'
 import useFirebaseAuth from '../../hooks/useFirebaseAuth'
 import useDocument from '../../hooks/useDocument'
+import useAudioPlayer from '../../hooks/useAudioPlayer'
 import { toast } from 'react-toastify'
 import images from '../../data/levelImages'
 
@@ -19,8 +20,13 @@ import HelpButtonModal from '../../components/HelpButtonModal'
 import { BiSolidHelpCircle } from 'react-icons/bi'
 import ToggleDarkMode from '../../components/ToggleDarkMode'
 
+const matchAudioPath = '/audio/match.mp3'
+const flipAudioPath = '/audio/flipcard.mp3'
+const successAudioPath = '/audio/success.mp3'
+    
 function Game() {
     const { user } = useFirebaseAuth()
+    const playAudio = useAudioPlayer()
     const { document: currentLevelData } = useDocument('Users', user?.uid) // [{{},{},{}}]
     const { level: currentLevel } = useParams()
     const levelNumber = parseInt(currentLevel)
@@ -53,7 +59,7 @@ function Game() {
     const fireRef = useRef(null)
     const intervalTimer = useRef(null)
     const countTimer = useRef(null)
-
+    
     // prevent user writing level in url more than available level
     useEffect(() => {
         // Check if the levelNumber is a valid number within the desired range
@@ -225,6 +231,7 @@ function Game() {
         if (timeCount === 0) {
             countTimeStart()
         }
+        playAudio(flipAudioPath)
         choiceOne ? setChoiceTwo(card) : setChoiceOne(card)
     }
 
@@ -235,6 +242,7 @@ function Game() {
             cards.length !== 0 &&
             cards.filter((card) => card.matched === false).length < 1
         ) {
+            playAudio(successAudioPath)
             launchFireworks()
             updateUserData()
             timeStop()
@@ -255,6 +263,7 @@ function Game() {
                         }
                     })
                 })
+                playAudio(matchAudioPath)
                 resetTurn()
             } else {
                 // not matched
