@@ -102,8 +102,8 @@ function Game() {
                         ? true
                         : false
 
-                    // complete game 5 times
-                    const star3 = completedCount >= 5 ? true : false
+                    // complete game 3 times
+                    const star3 = completedCount >= 3 ? true : false
 
                     setStars({
                         star1,
