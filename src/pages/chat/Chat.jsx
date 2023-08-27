@@ -151,17 +151,16 @@ function Chat() {
                             </div>
                             <form
                                 ref={formRef}
-                                className='flex mx-5 mt-5'
+                                className='flex mx-5 mt-5 h-10'
                                 onSubmit={handleSubmit}>
                                 <input
                                     type='text'
                                     onChange={(e) => setMessage(e.target.value)}
-                                    className='basis-3/4 focus:outline-none p-2 rounded-tl-md rounded-bl-md'
+                                    className='focus:outline-none px-2 rounded-tl-md rounded-bl-md text-dark'
                                 />
                                 {/* Bottom right button */}
-                                <button className='basis-1/4 flex items-center justify-center py-2 px-0 rounded-tr-md rounded-br-md gap-2 text-sm font-medium text-white bg-indigo-500 hover:bg-indigo-600 dark:bg-tw-3 dark:hover:bg-tw-5 text-center shadow-lg focus:outline-none focus-visible:ring-2'>
+                                <button className='flex items-center justify-center py-2 px-3 rounded-tr-md rounded-br-md text-sm font-medium text-white bg-indigo-500 hover:bg-indigo-600 dark:bg-tw-3 dark:hover:bg-tw-5 shadow-lg focus:outline-none focus-visible:ring-2'>
                                     <BsSend />
-                                    <span>Send</span>
                                 </button>
                             </form>
                         </div>

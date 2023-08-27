@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import ReactModal from 'react-modal'
 import { useForm } from 'react-hook-form'
+import { BiLoader } from 'react-icons/bi'
 import {
     updatePassword,
     reauthenticateWithCredential,
@@ -87,7 +88,7 @@ const UpdatePasswordModal = ({ passwordOpen, setPasswordOpen }) => {
                 </span>
                 <div className='text-end'>
                     {formLoading ? (
-                        <button className='form-button'>Loading</button>
+                        <button className='form-button'>Updating <BiLoader className='animate-spin' /></button>
                     ) : (
                         <button className='form-button'>Update</button>
                     )}

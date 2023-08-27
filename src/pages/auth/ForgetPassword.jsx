@@ -25,6 +25,7 @@ const ForgetPassword = () => {
         }
     }
     return (
+        <div className="full-centered">
         <div>
             <h1 className='text-xl text-tw-5 font-medium mb-3'>
                 Send Password Reset Email
@@ -45,6 +46,7 @@ const ForgetPassword = () => {
                     )}
                 </div>
             </form>
+        </div>
             <BackButton to='/login' />
         </div>
     )

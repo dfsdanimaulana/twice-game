@@ -13,11 +13,10 @@ const Logout = () => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
                 signOut(auth)
-                Swal.fire(
-                    'Your game data has been saved. We look forward to seeing you again!',
-                    '',
-                    'success'
-                )
+                Swal.fire({
+                    text:'Your game data has been saved. We look forward to seeing you again!',
+                    icon:'success'
+                })
             }
         })
     }

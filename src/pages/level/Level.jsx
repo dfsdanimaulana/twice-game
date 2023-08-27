@@ -15,7 +15,7 @@ const Level = () => {
     return (
         <div className='full-centered'>
             {document && (
-                <div className='grid grid-cols-3 grid-rows-3 gap-10'>
+                <div className='grid grid-cols-3 grid-rows-3 gap-10 mx-3'>
                     {document?.levels.map((level) => (
                         <LevelCard key={level.level} level={level} />
                     ))}

@@ -25,7 +25,7 @@ const Home = () => {
                 <div className='home relative overflow-hidden'>
                     {user ? (
                         <>
-                            <div className='absolute w-full min-h-screen bg-[url("/img/bg/bg-sm-2.jpg")] md:bg-[url("/img/bg/all.jpeg")] dark:md:bg-[url(/img/bg/bg-1.jpg)] bg-cover bg-center -z-20'></div>
+                            <div className='absolute w-full min-h-screen bg-[url("/img/bg/bg-sm-2.jpg")] dark:bg-[url("/img/bg/bg-sm-dark.jpg")] md:bg-[url("/img/bg/all.jpeg")] dark:md:bg-[url(/img/bg/bg-1.jpg)] bg-cover bg-center -z-20'></div>
                             <div className='absolute w-full min-h-screen bg-[rgba(0,0,0,0.2)] bg-cover bg-center -z-10'></div>
                         </>
                     ) : (

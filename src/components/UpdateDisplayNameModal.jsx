@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import ReactModal from 'react-modal'
+import { BiLoader } from 'react-icons/bi'
 import { useForm } from 'react-hook-form'
 import { updateProfile } from 'firebase/auth'
 import { AiOutlineCloseCircle } from 'react-icons/ai'
@@ -88,7 +89,7 @@ const UpdateDisplayNameModal = ({ modalOpen, setModalOpen, uid }) => {
                 </span>
                 <div className='text-end'>
                     {formLoading ? (
-                        <button className='form-button'>Loading</button>
+                        <button className='form-button'>Updating{' '}<BiLoader className='animate-spin' /></button>
                     ) : (
                         <button className='form-button'>Update</button>
                     )}

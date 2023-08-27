@@ -4,6 +4,7 @@ import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
 import { storage } from '../config/firebase'
 import { updateProfile } from 'firebase/auth'
 import { AiOutlineCloseCircle } from 'react-icons/ai'
+import { BiLoader } from 'react-icons/bi'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 import { auth } from '../config/firebase'
@@ -114,7 +115,7 @@ const UpdatePhotoModal = ({ photoModalOpen, setPhotoModalOpen }) => {
 
                 <div className='text-center'>
                     {formLoading ? (
-                        <button className='form-button'>Loading...</button>
+                        <button className='form-button'>Updating{' '}<BiLoader className='animate-spin' /></button>
                     ) : (
                         <button className='form-button'>Update</button>
                     )}
