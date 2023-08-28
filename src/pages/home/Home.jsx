@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { useEffect, useState} from 'react'
+import { useEffect, useState } from 'react'
 import { Tooltip } from 'react-tooltip'
 import Joyride from 'react-joyride'
 import useFirebaseAuth from '../../hooks/useFirebaseAuth'
@@ -18,45 +18,70 @@ import GithubButton from '../../components/GithubButton'
 import ImageWithFallback from '../../components/ImageWithFallBack'
 import ToggleDarkMode from '../../components/ToggleDarkMode'
 
+const steps = [
+    {
+        target: '.guide-start',
+        content: "Click the 'Start' button to begin your game!"
+    },
+    {
+        target: '.guide-profile',
+        content:
+            'View and edit your profile details here. Update your information and avatar easily.'
+    },
+    {
+        target: '.guide-scoreboard',
+        content: 'Check out the highest scores achieved by players.'
+    },
+    {
+        target: '.guide-collection',
+        content: 'Explore your collected cards.'
+    },
+    {
+        target: '.guide-chat',
+        content:
+            'Connect with other players in real-time. Join chat rooms to discuss strategies and more.'
+    },
+    {
+        target: '.guide-settings',
+        content:
+            'Customize your gaming experience. Adjust sound, notifications, and themes to your preference.'
+    }
+]
+
 const Home = () => {
     const { user, loading } = useFirebaseAuth()
-    
-    const steps = [
-      { target: ".guide-start", content: "Click the 'Start' button to begin your game!" },
-      { target: ".guide-profile", content: "View and edit your profile details here. Update your information and avatar easily." },
-      { target: ".guide-scoreboard", content: "Check out the highest scores achieved by players." },
-      { target: ".guide-collection", content: "Explore your collected cards." },
-      { target: ".guide-chat", content: "Connect with other players in real-time. Join chat rooms to discuss strategies and more." },
-      { target: ".guide-settings", content: "Customize your gaming experience. Adjust sound, notifications, and themes to your preference." }
-    ]
 
-  const [isGuideVisible, setIsGuideVisible] = useState(false)
+    const [isGuideVisible, setIsGuideVisible] = useState(false)
 
-  useEffect(() => {
-    const hasSeenGuide = localStorage.getItem('hasSeenGuide')
-    if (!hasSeenGuide) {
-      setIsGuideVisible(true)
-      localStorage.setItem('hasSeenGuide', 'true')
+    useEffect(() => {
+        const hasSeenGuide = localStorage.getItem('hasSeenGuide')
+        if (!hasSeenGuide) {
+            setIsGuideVisible(true)
+        }
+    }, [])
+
+    const closeGuide = (e) => {
+        if (e.action === 'reset') {
+            setIsGuideVisible(false)
+            localStorage.setItem('hasSeenGuide', 'true')
+        }
     }
-  }, [])
-
-  const closeGuide = (e) => {
-    if(e.step.target === 'reset') setIsGuideVisible(false)
-  }
 
     return (
         <>
             {!loading ? (
                 <div className='home relative overflow-hidden'>
-                    {user && <Joyride 
-                                steps={steps} 
-                                showSkipButton 
-                                showProgress 
-                                run={isGuideVisible}
-                                continuous
-                                disableScrolling
-                                callback={closeGuide}
-                                /> }
+                    {user && (
+                        <Joyride
+                            steps={steps}
+                            showSkipButton
+                            showProgress
+                            run={isGuideVisible}
+                            continuous
+                            disableScrolling
+                            callback={closeGuide}
+                        />
+                    )}
                     {user ? (
                         <>
                             <div className='absolute w-full min-h-screen bg-[url("/img/bg/bg-sm-2.jpg")] dark:bg-[url("/img/bg/bg-sm-dark.jpg")] md:bg-[url("/img/bg/all.jpeg")] dark:md:bg-[url(/img/bg/bg-1.jpg)] bg-cover bg-center -z-20'></div>

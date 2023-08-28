@@ -61,7 +61,13 @@ const Register = () => {
             })
         } catch (error) {
             setLoading(false)
-            toast.error(error?.message)
+            if (error.code === 'auth/email-already-in-use') {
+                toast.error(
+                    'The email address is already in use by another account.'
+                )
+            } else {
+                console.log(error.message)
+            }
         }
     }
 

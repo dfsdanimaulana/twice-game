@@ -12,8 +12,8 @@ const Collection = () => {
     const showImage = (src) => {
         Swal.fire({
             imageUrl: src,
-            imageWidth: 300,
-            imageHeight: 400,
+            imageWidth: 336,
+            imageHeight: 448,
             showConfirmButton: false,
             imageAlt: 'Custom image'
         })

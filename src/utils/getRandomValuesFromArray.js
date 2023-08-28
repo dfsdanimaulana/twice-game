@@ -1,4 +1,4 @@
-export function getRandomValuesFromArray(arr, numValues = 0) {
+export default function getRandomValuesFromArray(arr, numValues = 0) {
     if (numValues >= arr.length || numValues === 0) {
         return arr // Return all values if requested count is more than or equal to array length
     }

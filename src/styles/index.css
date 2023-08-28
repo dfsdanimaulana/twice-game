@@ -172,3 +172,9 @@ body {
   object-fit: cover;
   z-index: -1;
 }
+
+/* Custom style for sweet alert 2 modal */
+.swal2-modal {
+  @apply bg-light dark:bg-gradient-to-tl dark:from-dark dark:to-slate-800 dark:text-light;
+
+}

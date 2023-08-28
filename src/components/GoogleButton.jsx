@@ -24,7 +24,15 @@ const GoogleButton = () => {
             })
         } catch (error) {
             // Handle any errors that occurred during the sign-up process
-            toast.error(error?.message)
+            if (
+                error.code === 'auth/account-exists-with-different-credential'
+            ) {
+                toast.error(
+                    'The email address is already in use by another account.'
+                )
+            } else {
+                console.log(error.message)
+            }
         }
     }
 

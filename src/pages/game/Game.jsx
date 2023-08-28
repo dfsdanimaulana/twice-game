@@ -1,29 +1,35 @@
+import { doc, getDoc, updateDoc } from 'firebase/firestore'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
 import { Fireworks } from '@fireworks-js/react'
-import { useParams, useNavigate } from 'react-router-dom'
-import { doc, getDoc, updateDoc } from 'firebase/firestore'
 import { db } from '../../config/firebase'
+import Swal from 'sweetalert2'
+
+// icons
+import { BiSolidHelpCircle } from 'react-icons/bi'
+import { AiOutlineLeft } from 'react-icons/ai'
+
+// hooks
 import useFirebaseAuth from '../../hooks/useFirebaseAuth'
-import useDocument from '../../hooks/useDocument'
 import useAudioPlayer from '../../hooks/useAudioPlayer'
-import { toast } from 'react-toastify'
+import useDocument from '../../hooks/useDocument'
+
+// utils & datas
+import getRandomValuesFromArray from '../../utils/getRandomValuesFromArray'
 import images from '../../data/levelImages'
 
 // components
+import LevelCompleteModal from '../../components/LevelCompleteModal'
+import HelpButtonModal from '../../components/HelpButtonModal'
+import ToggleDarkMode from '../../components/ToggleDarkMode'
 import SingleCard from '../../components/SingleCard'
 import BackButton from '../../components/BackButton'
 import GameRecord from '../../components/GameRecord'
-import { AiOutlineLeft } from 'react-icons/ai'
-import LevelCompleteModal from '../../components/LevelCompleteModal'
-import { getRandomValuesFromArray } from '../../utils/getRandomValuesFromArray'
-import HelpButtonModal from '../../components/HelpButtonModal'
-import { BiSolidHelpCircle } from 'react-icons/bi'
-import ToggleDarkMode from '../../components/ToggleDarkMode'
 
 const matchAudioPath = '/audio/match.mp3'
 const flipAudioPath = '/audio/flipcard.mp3'
 const successAudioPath = '/audio/success.mp3'
-    
+
 function Game() {
     const { user } = useFirebaseAuth()
     const playAudio = useAudioPlayer()
@@ -39,7 +45,6 @@ function Game() {
     const [disabled, setDisabled] = useState(false)
     const [timer, setTimer] = useState(time)
     const [timeCount, setTimeCount] = useState(0)
-    const [timeOut, setTimeOut] = useState(false)
     const [incorrectGuess, setIncorrectGuess] = useState(0)
     const [levelComplete, setLevelComplete] = useState(false)
     const [gamePoint, setGamePoint] = useState(0)
@@ -59,7 +64,7 @@ function Game() {
     const fireRef = useRef(null)
     const intervalTimer = useRef(null)
     const countTimer = useRef(null)
-    
+
     // prevent user writing level in url more than available level
     useEffect(() => {
         // Check if the levelNumber is a valid number within the desired range
@@ -139,9 +144,7 @@ function Game() {
                 return level
             })
 
-            const point = Math.round(
-                (levelNumber * timer) * 10 - incorrectGuess
-            )
+            const point = Math.round(levelNumber * timer * 10 - incorrectGuess)
 
             setGamePoint(point)
             const exp = data.exp + point
@@ -152,8 +155,7 @@ function Game() {
             })
             setLevelComplete(true)
         } catch (error) {
-            console.error('Error updating array field:', error)
-            toast.error('Failed to update user data: ' + error.message)
+            console.log('Error updating array field:', error)
         }
     }
 
@@ -210,7 +212,6 @@ function Game() {
             setTurns(0)
 
             setDisabled(false)
-            setTimeOut(false)
             timeStop()
             countStop()
             setTimeCount(0)
@@ -290,8 +291,11 @@ function Game() {
     useEffect(() => {
         if (timer < 1) {
             timeStop()
-            setTimeOut(true)
             setDisabled(true)
+            Swal.fire({
+                title: 'Time Out ☹',
+                allowOutsideClick: false
+            })
         }
     }, [timer])
 
@@ -330,9 +334,6 @@ function Game() {
     return (
         <>
             <div className='full-centered text-center py-12'>
-                {timeOut && (
-                    <div className='text-xl text-red-400'>Time out ☹</div>
-                )}
                 <div>
                     <span className='indicator-box'>Turns: {turns}</span>
                     <button className='btn-primary' onClick={shuffleCards}>

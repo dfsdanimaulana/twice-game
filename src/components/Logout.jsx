@@ -15,8 +15,8 @@ const Logout = () => {
                 localStorage.removeItem('hasSeenGuide')
                 signOut(auth)
                 Swal.fire({
-                    text:'Your game data has been saved. We look forward to seeing you again!',
-                    icon:'success'
+                    text: 'Your game data has been saved. We look forward to seeing you again!',
+                    icon: 'success'
                 })
             }
         })
