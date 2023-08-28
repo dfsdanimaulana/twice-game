@@ -4,11 +4,9 @@ const List = ({ documents }) => {
     return (
         <ul className='w-10/12 lg:w-1/3 text-sm font-medium text-gray-900 bg-tw-3 border border-tw-5 rounded-lg dark:bg-navy dark:border-dark-blue dark:text-white'>
             <li className='w-full font-bold  px-4 py-2 border-b border-tw-5 rounded-t-lg dark:border-dark-blue flex justify-between'>
-                <div className='text-1xl basis-1/2 flex justify-between'>
-                    User
-                    <span>|</span>
-                </div>
-                <span className='basis-1/2 text-center'>exp</span>
+                <span className='basis-1/2 text-center'>User</span>
+                <span>|</span>
+                <span className='basis-1/2 text-center'>Score</span>
             </li>
             {documents.map((doc, index) => (
                 <li

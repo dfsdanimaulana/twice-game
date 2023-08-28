@@ -140,7 +140,7 @@ function Game() {
             })
 
             const point = Math.round(
-                (levelNumber * timer - incorrectGuess) * 10
+                (levelNumber * timer) * 10 - incorrectGuess
             )
 
             setGamePoint(point)
