@@ -9,6 +9,7 @@ import BackButton from '../../components/BackButton'
 import ImageWithFallback from '../../components/ImageWithFallBack'
 import { BsSend } from 'react-icons/bs'
 import ToggleDarkMode from '../../components/ToggleDarkMode'
+import Swal from 'sweetalert2'
 
 function Chat() {
     const { user } = useFirebaseAuth()
@@ -50,6 +51,17 @@ function Chat() {
         const messageContainer = messageContainerRef.current
         messageContainer.scrollTop = messageContainer.scrollHeight
     }, [documents, messageContainerRef])
+
+    const showImage = (src) => {
+        Swal.fire({
+            imageUrl: src,
+            imageWidth: 336,
+            imageHeight: 336,
+            showConfirmButton: false,
+            imageAlt: 'User image',
+            showCloseButton: true
+        })
+    }
 
     return (
         <div>
@@ -118,7 +130,11 @@ function Chat() {
                                         <div
                                             key={chat?.id}
                                             className='w-full text-left py-2 focus:outline-none focus-visible:bg-indigo-50'>
-                                            <div className='flex items-start'>
+                                            <div
+                                                className='flex items-start cursor-pointer'
+                                                onClick={() =>
+                                                    showImage(chat?.photoURL)
+                                                }>
                                                 <ImageWithFallback
                                                     imageClasses='rounded-full items-start flex-shrink-0 mr-3 mt-1 w-8 h-8 object-cover object-top'
                                                     imageUrl={chat?.photoURL}
@@ -156,7 +172,7 @@ function Chat() {
                                 <input
                                     type='text'
                                     onChange={(e) => setMessage(e.target.value)}
-                                    className='focus:outline-none px-2 rounded-tl-md rounded-bl-md text-dark'
+                                    className='flex-auto focus:outline-none px-2 rounded-tl-md rounded-bl-md text-dark'
                                 />
                                 {/* Bottom right button */}
                                 <button className='flex items-center justify-center py-2 px-3 rounded-tr-md rounded-br-md text-sm font-medium text-white bg-indigo-500 hover:bg-indigo-600 dark:bg-tw-3 dark:hover:bg-tw-5 shadow-lg focus:outline-none focus-visible:ring-2'>

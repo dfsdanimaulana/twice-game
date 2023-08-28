@@ -178,3 +178,7 @@ body {
   @apply bg-light dark:bg-gradient-to-tl dark:from-dark dark:to-slate-800 dark:text-light;
 
 }
+
+.swal2-image {
+  @apply object-cover object-top;
+}

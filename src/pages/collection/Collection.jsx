@@ -12,10 +12,11 @@ const Collection = () => {
     const showImage = (src) => {
         Swal.fire({
             imageUrl: src,
-            imageWidth: 336,
-            imageHeight: 448,
+            imageWidth: 350,
+            imageHeight: 500,
             showConfirmButton: false,
-            imageAlt: 'Custom image'
+            imageAlt: 'Collection image',
+            showCloseButton: true
         })
     }
 

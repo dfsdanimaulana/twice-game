@@ -2,7 +2,7 @@ import useCollection from '../../hooks/useCollection'
 import BackButton from '../../components/BackButton'
 import Loading from '../../components/Loading'
 import Error from '../../components/Error'
-import List from '../../components/List'
+import ScoreboardList from '../../components/ScoreboardList'
 import ToggleDarkMode from '../../components/ToggleDarkMode'
 
 const ScoreBoard = () => {
@@ -17,7 +17,7 @@ const ScoreBoard = () => {
         <>
             {documents && (
                 <div className='full-centered'>
-                    <List documents={documents} />
+                    <ScoreboardList documents={documents} />
                 </div>
             )}
             {loading && <Loading />}
