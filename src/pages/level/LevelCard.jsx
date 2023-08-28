@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types'
-import { AiFillStar, AiOutlineStar } from 'react-icons/ai'
-import { useNavigate } from 'react-router-dom'
-import lockSVG from '../assets/svg/lock.svg'
 import { motion } from 'framer-motion'
+import PropTypes from 'prop-types'
+import { useNavigate } from 'react-router-dom'
+import { AiFillStar, AiOutlineStar } from 'react-icons/ai'
+import lockSVG from '../../assets/svg/lock.svg'
 
 const LevelCard = ({ level }) => {
     const navigate = useNavigate()

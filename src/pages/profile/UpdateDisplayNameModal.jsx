@@ -6,10 +6,10 @@ import { updateProfile } from 'firebase/auth'
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
-import { auth } from '../config/firebase'
-import { validateUsername } from '../utils/validateUsername'
-import useFirestore from '../hooks/useFirestore'
-import useUpdateDocumentsByUid from '../hooks/useUpdateDocumentsByUid'
+import { auth } from '../../config/firebase'
+import { validateUsername } from '../../utils/validateUsername'
+import useFirestore from '../../hooks/useFirestore'
+import useUpdateDocumentsByUid from '../../hooks/useUpdateDocumentsByUid'
 
 const UpdateDisplayNameModal = ({ modalOpen, setModalOpen, uid }) => {
     const { updateDocuments } = useUpdateDocumentsByUid()

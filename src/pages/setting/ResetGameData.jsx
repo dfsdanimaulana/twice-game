@@ -2,10 +2,10 @@ import { useRef } from 'react'
 import { doc, updateDoc } from 'firebase/firestore'
 import { toast } from 'react-toastify'
 import Swal from 'sweetalert2'
-import useFirebaseAuth from '../hooks/useFirebaseAuth'
-import { generateLevelData } from '../utils/generateUserData'
-import { db } from '../config/firebase'
-import collectionImages from '../data/collectionImages'
+import useFirebaseAuth from '../../hooks/useFirebaseAuth'
+import { generateLevelData } from '../../utils/generateUserData'
+import { db } from '../../config/firebase'
+import collectionImages from '../../data/collectionImages'
 
 const ResetGameData = () => {
     const { user } = useFirebaseAuth()

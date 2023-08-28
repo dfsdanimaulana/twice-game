@@ -1,5 +1,5 @@
 import Swal from 'sweetalert2'
-import ImageWithFallback from './ImageWithFallBack'
+import ImageWithFallback from '../../components/ImageWithFallBack'
 
 const ScoreboardList = ({ documents }) => {
     const showImage = (src) => {

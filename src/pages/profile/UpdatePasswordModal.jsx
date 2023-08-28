@@ -10,8 +10,8 @@ import {
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
-import { auth } from '../config/firebase'
-import PasswordInput from './PasswordInput'
+import { auth } from '../../config/firebase'
+import PasswordInput from '../../components/PasswordInput'
 
 const UpdatePasswordModal = ({ passwordOpen, setPasswordOpen }) => {
     const [formLoading, setFormLoading] = useState(false)

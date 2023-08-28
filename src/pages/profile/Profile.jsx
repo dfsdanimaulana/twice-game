@@ -8,12 +8,12 @@ import useFirebaseAuth from '../../hooks/useFirebaseAuth'
 import { auth } from '../../config/firebase'
 
 // components
-import BackButton from '../../components/BackButton'
-import UpdatePhotoModal from '../../components/UpdatePhotoModal'
-import UpdateDisplayNameModal from '../../components/UpdateDisplayNameModal'
-import UpdatePasswordModal from '../../components/UpdatePasswordModal'
-import Loading from '../../components/Loading'
 import ToggleDarkMode from '../../components/ToggleDarkMode'
+import BackButton from '../../components/BackButton'
+import Loading from '../../components/Loading'
+import UpdateDisplayNameModal from './UpdateDisplayNameModal'
+import UpdatePasswordModal from './UpdatePasswordModal'
+import UpdatePhotoModal from './UpdatePhotoModal'
 
 const Profile = () => {
     const { user, loading } = useFirebaseAuth()

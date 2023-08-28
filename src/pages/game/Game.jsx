@@ -19,12 +19,12 @@ import getRandomValuesFromArray from '../../utils/getRandomValuesFromArray'
 import images from '../../data/levelImages'
 
 // components
-import LevelCompleteModal from '../../components/LevelCompleteModal'
-import HelpButtonModal from '../../components/HelpButtonModal'
 import ToggleDarkMode from '../../components/ToggleDarkMode'
-import SingleCard from '../../components/SingleCard'
 import BackButton from '../../components/BackButton'
-import GameRecord from '../../components/GameRecord'
+import LevelCompleteModal from './LevelCompleteModal'
+import HelpButtonModal from './HelpButtonModal'
+import SingleCard from './SingleCard'
+import GameRecord from './GameRecord'
 
 const matchAudioPath = '/audio/match.mp3'
 const flipAudioPath = '/audio/flipcard.mp3'

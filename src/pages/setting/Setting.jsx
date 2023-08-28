@@ -3,19 +3,19 @@ import {
     AiOutlineSetting,
     AiOutlineUserDelete
 } from 'react-icons/ai'
-import BackButton from '../../components/BackButton'
 import { BiReset } from 'react-icons/bi'
-import DeleteAccount from '../../components/DeleteAccount'
-import ResetGameData from '../../components/ResetGameData'
 import ToggleDarkMode from '../../components/ToggleDarkMode'
-import Logout from '../../components/Logout'
+import BackButton from '../../components/BackButton'
+import ResetGameData from './ResetGameData'
+import DeleteAccount from './DeleteAccount'
+import Logout from './Logout'
 
 const Setting = () => {
     return (
         <div className='full-centered'>
             <div className='border border-tw-5 dark:border-dark-blue p-4 rounded-lg'>
                 <span className='font-bold text-2xl flex items-center'>
-                    <AiOutlineSetting className='mr-1' />
+                    <AiOutlineSetting className='mr-1 hover:animate-spin' />
                     Setting
                 </span>
                 <hr className='border-tw-5 dark:border-dark-blue my-3' />
