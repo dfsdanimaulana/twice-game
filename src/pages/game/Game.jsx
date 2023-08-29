@@ -34,7 +34,7 @@ const failAudioPath = '/audio/fail.mp3'
 
 function Game() {
     const { user } = useFirebaseAuth()
-    const {playAudio, muted, setMuted} = useAudioPlayer()
+    const { playAudio, muted, setMuted } = useAudioPlayer()
     const { document: currentLevelData } = useDocument('Users', user?.uid) // [{{},{},{}}]
     const { level: currentLevel } = useParams()
     const levelNumber = parseInt(currentLevel)
@@ -391,12 +391,14 @@ function Game() {
                 />
             </div>
             <div className='absolute top-3 right-3 flex items-center gap-3'>
-                <div className='border border-tw-5 dark:border-light rounded-full p-1 cursor-pointer' onClick={()=> setMuted(!muted)}>
-                  {muted ? (
-                    <GoMute className='text-tw-5 dark:text-light'/>
-                    ):(
-                    <GoUnmute className='text-tw-5 dark:text-light'/>
-                  )}
+                <div
+                    className='border border-tw-5 dark:border-light rounded-full p-1 cursor-pointer hover:bg-semi-transparent'
+                    onClick={() => setMuted(!muted)}>
+                    {muted ? (
+                        <GoMute className='text-tw-5 dark:text-light' />
+                    ) : (
+                        <GoUnmute className='text-tw-5 dark:text-light' />
+                    )}
                 </div>
                 <ToggleDarkMode />
             </div>

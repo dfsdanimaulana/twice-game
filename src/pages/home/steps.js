@@ -25,5 +25,15 @@ export const steps = [
         target: '.guide-settings',
         content:
             'Customize your gaming experience. Adjust sound, notifications, and themes to your preference.'
+    },
+    {
+        target: '.guide-full',
+        content:
+            'Enter and exit fullscreen mode.'
+    },
+    {
+        target: '.guide-theme',
+        content:
+            'Toggle between dark mode and light mode.'
     }
 ]

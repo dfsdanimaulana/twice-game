@@ -52,7 +52,7 @@ function FormInput({ user }) {
     return (
         <form
             ref={formRef}
-            className='flex mx-5 mt-5 h-10'
+            className='flex md:mx-5 mt-5 h-10'
             onSubmit={handleSubmit}>
             <button
                 onClick={openEmojiPicker}
@@ -66,7 +66,7 @@ function FormInput({ user }) {
                 required
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                className='flex-auto focus:outline-none px-2 text-dark'
+                className='grow focus:outline-none px-2 text-dark'
             />
             {/* Bottom right button */}
             <button className='flex items-center justify-center py-2 px-3 rounded-e-md text-sm font-medium text-white bg-indigo-500 hover:bg-indigo-600 dark:bg-tw-3 dark:hover:bg-tw-5 shadow-lg focus:outline-none focus-visible:ring-2'>
