@@ -3,7 +3,7 @@ import ReactModal from 'react-modal'
 import { AiOutlineClose } from 'react-icons/ai'
 
 const HelpButtonModal = ({ helpOpen, setHelpOpen, time }) => {
-    const halfTime = Math.round(time * 0.5)
+    const halfTime = Math.round(time * 2/3)
     const handleCloseModal = () => {
         setHelpOpen(false)
     }

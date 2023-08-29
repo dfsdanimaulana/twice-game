@@ -111,7 +111,7 @@ function Game() {
                     // finish in time/2 or less
                     const star2 = level.star2
                         ? level.star2
-                        : timeCount <= Math.round(time / 2)
+                        : timeCount <= Math.round(time*2/3)
                         ? true
                         : false
 

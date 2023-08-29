@@ -62,21 +62,21 @@ const LevelCompleteModal = ({
             </div>
             <motion.div
                 whileHover={{ scale: 1.05 }}
-                className='text-center border-2 border-light rounded my-3 lg:my-6'>
+                className='text-center border-2 border-light rounded rounded-t-xl my-3 lg:my-6'>
                 <span className='text-lg text-light font-bold'>
                     Score: {gamePoint}
                 </span>
                 <hr className='border border-light mx-2' />
-                <div className="flex justify-around items-center my-1">
-                    <span className='text-lg text-light font-bold'>
+                <div className="flex justify-evenly items-center my-1">
+                    <span className='text-sm text-light font-bold'>
                       Turns: {turns}
                     </span>
                     <span>|</span>
-                    <span className='text-lg text-light font-bold'>
+                    <span className='text-sm text-light font-bold'>
                       Time: {timeCount}s
                     </span>
                 </div>
-                <hr className='border border-light mx-2' />
+                <hr className='border border-light' />
                 <div className='flex items-center justify-evenly m-3  gap-2'>
                     {collections?.map((collection, index) => (
                         <div

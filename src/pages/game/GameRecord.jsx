@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 const GameRecord = ({ level }) => {
     return (
         <div className='mt-3 lg:w-1/3 border-2 text-sm text-light bg-tw-2 border-tw-5 py-1 px-2 rounded-lg dark:bg-navy  dark:border-dark-blue'>
-            <span className='text-lg'>Game Record</span>
+            <span className='text-lg'>Game Records</span>
             <hr className='border-tw-5 m-1' />
             <div className='flex justify-around'>
                 <span>
