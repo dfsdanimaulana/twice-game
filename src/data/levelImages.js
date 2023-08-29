@@ -143,7 +143,6 @@ const levelImages = {
             { src: '/img/level/6/mn (11).png', matched: false },
             { src: '/img/level/6/mn (12).png', matched: false },
             { src: '/img/level/6/mn (13).png', matched: false },
-            { src: '/img/level/6/mn (13).png', matched: false },
             { src: '/img/level/6/mn (14).png', matched: false },
             { src: '/img/level/6/mn (15).png', matched: false },
             { src: '/img/level/6/mn (16).png', matched: false },
