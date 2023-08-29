@@ -101,7 +101,7 @@ function Game() {
 
                     // condition
                     const bestTime =
-                        level.bestTime > timeCount ? timeCount : level.bestTime
+                        level.bestTime > timeCount ? timeCount : (level.bestTime === 60 ? timeCount : level.bestTime)
                     const bestTurns =
                         level.bestTurns > turns ? turns : level.bestTurns
 
@@ -420,6 +420,8 @@ function Game() {
                     currentLevelData?.collections[levelNumber - 1].images
                 }
                 stars={stars}
+                turns={turns}
+                timeCount={timeCount}
             />
             <BackButton to='/level' />
 

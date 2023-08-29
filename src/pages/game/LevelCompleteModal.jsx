@@ -13,7 +13,9 @@ const LevelCompleteModal = ({
     gamePoint,
     level,
     stars,
-    collections
+    collections,
+    turns,
+    timeCount
 }) => {
     const handleModalClose = () => {
         setLevelComplete(false)
@@ -64,6 +66,16 @@ const LevelCompleteModal = ({
                 <span className='text-lg text-light font-bold'>
                     Score: {gamePoint}
                 </span>
+                <hr className='border border-light mx-2' />
+                <div className="flex justify-around items-center my-1">
+                    <span className='text-lg text-light font-bold'>
+                      Turns: {turns}
+                    </span>
+                    <span>|</span>
+                    <span className='text-lg text-light font-bold'>
+                      Time: {timeCount}s
+                    </span>
+                </div>
                 <hr className='border border-light mx-2' />
                 <div className='flex items-center justify-evenly m-3  gap-2'>
                     {collections?.map((collection, index) => (
