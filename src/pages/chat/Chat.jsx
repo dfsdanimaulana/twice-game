@@ -1,57 +1,26 @@
 import useFirebaseAuth from '../../hooks/useFirebaseAuth'
 import useCollection from '../../hooks/useCollection'
-import { useState, useRef, useEffect } from 'react'
-import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
-import { db } from '../../config/firebase'
-import { toast } from 'react-toastify'
+import { useRef, useEffect } from 'react'
 import BackButton from '../../components/BackButton'
-import { BsSend } from 'react-icons/bs'
 import ToggleDarkMode from '../../components/ToggleDarkMode'
 import Header from './Header'
 import Message from './Message'
+import FormInput from './FormInput'
 
 function Chat() {
     const { user } = useFirebaseAuth()
     const messageContainerRef = useRef(null)
-    const formRef = useRef(null)
     const { documents, loading, error } = useCollection(
         'ChatRooms',
         ['createdAt', '!=', null],
         ['createdAt', 'asc']
     )
-    const [message, setMessage] = useState(null)
-
-    const resetForm = () => {
-        formRef.current.reset()
-        setMessage(null)
-    }
-
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        if (message === null || message === ' ') return
-        try {
-            const messagesRef = collection(db, 'ChatRooms')
-            await addDoc(messagesRef, {
-                uid: user.uid,
-                displayName: user.displayName,
-                photoURL: user.photoURL,
-                message: message.replace(/\s+/g, ' ').trim(),
-                createdAt: serverTimestamp()
-            })
-            resetForm()
-        } catch (err) {
-            toast.error('Error sending message:', err.message)
-            resetForm()
-        }
-    }
 
     // Automatically scroll to the bottom when messages change
     useEffect(() => {
         const messageContainer = messageContainerRef.current
         messageContainer.scrollTop = messageContainer.scrollHeight
     }, [documents, messageContainerRef])
-
-    
 
     return (
         <div>
@@ -71,7 +40,7 @@ function Chat() {
                             {/* Chat list */}
                             <div
                                 ref={messageContainerRef}
-                                className='divide-y divide-dark overflow-auto max-h-[300px]'>
+                                className='divide-y divide-dark overflow-auto max-h-[300px] relative'>
                                 {/* User */}
                                 {documents &&
                                     documents.map((chat) => (
@@ -80,21 +49,7 @@ function Chat() {
                                 {loading && <span>Loading...</span>}
                                 {error && <span>{error}</span>}
                             </div>
-                            <form
-                                ref={formRef}
-                                className='flex mx-5 mt-5 h-10'
-                                onSubmit={handleSubmit}>
-                                <input
-                                    type='text'
-                                    required
-                                    onChange={(e) => setMessage(e.target.value)}
-                                    className='flex-auto focus:outline-none px-2 rounded-tl-md rounded-bl-md text-dark'
-                                />
-                                {/* Bottom right button */}
-                                <button className='flex items-center justify-center py-2 px-3 rounded-tr-md rounded-br-md text-sm font-medium text-white bg-indigo-500 hover:bg-indigo-600 dark:bg-tw-3 dark:hover:bg-tw-5 shadow-lg focus:outline-none focus-visible:ring-2'>
-                                    <BsSend />
-                                </button>
-                            </form>
+                            <FormInput user={user} />
                         </div>
                     </div>
                 </div>

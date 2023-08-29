@@ -176,7 +176,7 @@ body {
 /* Custom style for sweet alert 2 modal */
 .swal2-modal {
   @apply bg-light dark:bg-gradient-to-tl dark:from-dark dark:to-slate-800 dark:text-light;
-
+  
 }
 
 .swal2-image {
