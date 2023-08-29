@@ -3,13 +3,14 @@ import Swal from 'sweetalert2'
 import ImageWithFallback from '../../components/ImageWithFallBack'
 
 function Message({ chat }) {
-    const showImage = (src) => {
+    const showImage = (src, name) => {
         Swal.fire({
             imageUrl: src,
             imageWidth: 336,
             imageHeight: 336,
             showConfirmButton: false,
             imageAlt: 'User image',
+            text: name,
             showCloseButton: true
         })
     }
@@ -17,7 +18,7 @@ function Message({ chat }) {
         <div className='w-full text-left py-2 focus:outline-none focus-visible:bg-indigo-50'>
             <div
                 className='flex items-start cursor-pointer'
-                onClick={() => showImage(chat?.photoURL)}>
+                onClick={() => showImage(chat?.photoURL, chat?.displayName)}>
                 <ImageWithFallback
                     imageClasses='rounded-full items-start flex-shrink-0 mr-3 mt-1 w-8 h-8 object-cover object-top'
                     imageUrl={chat?.photoURL}

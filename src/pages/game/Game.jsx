@@ -8,6 +8,7 @@ import Swal from 'sweetalert2'
 // icons
 import { BiSolidHelpCircle } from 'react-icons/bi'
 import { AiOutlineLeft } from 'react-icons/ai'
+import { GoUnmute, GoMute } from 'react-icons/go'
 
 // hooks
 import useFirebaseAuth from '../../hooks/useFirebaseAuth'
@@ -29,10 +30,11 @@ import GameRecord from './GameRecord'
 const matchAudioPath = '/audio/match.mp3'
 const flipAudioPath = '/audio/flipcard.mp3'
 const successAudioPath = '/audio/success.mp3'
+const failAudioPath = '/audio/fail.mp3'
 
 function Game() {
     const { user } = useFirebaseAuth()
-    const playAudio = useAudioPlayer()
+    const {playAudio, muted, setMuted} = useAudioPlayer()
     const { document: currentLevelData } = useDocument('Users', user?.uid) // [{{},{},{}}]
     const { level: currentLevel } = useParams()
     const levelNumber = parseInt(currentLevel)
@@ -292,6 +294,7 @@ function Game() {
         if (timer < 1) {
             timeStop()
             setDisabled(true)
+            playAudio(failAudioPath)
             Swal.fire({
                 title: 'Time Out ☹',
                 allowOutsideClick: false
@@ -387,9 +390,17 @@ function Game() {
                     onClick={() => setHelpOpen(true)}
                 />
             </div>
-            <div className='absolute top-3 right-3'>
+            <div className='absolute top-3 right-3 flex items-center gap-3'>
+                <div className='border border-tw-5 dark:border-light rounded-full p-1 cursor-pointer' onClick={()=> setMuted(!muted)}>
+                  {muted ? (
+                    <GoMute className='text-tw-5 dark:text-light'/>
+                    ):(
+                    <GoUnmute className='text-tw-5 dark:text-light'/>
+                  )}
+                </div>
                 <ToggleDarkMode />
             </div>
+
             <HelpButtonModal
                 time={time}
                 helpOpen={helpOpen}

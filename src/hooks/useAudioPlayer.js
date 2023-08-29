@@ -1,10 +1,11 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 
 const useAudioPlayer = () => {
   const [audio] = useState(new Audio());
+  const [muted, setMuted] = useState(false)
   
   const playAudio = (audioUrl) => {
-    if (audioUrl) {
+    if (audioUrl && !muted) {
       audio.pause(); // Pause the current audio
       audio.currentTime = 0; // Reset playback position
       audio.src = audioUrl;
@@ -18,7 +19,7 @@ const useAudioPlayer = () => {
     }
   };
 
-  return playAudio;
+  return {playAudio, muted, setMuted};
 };
 
 export default useAudioPlayer;
