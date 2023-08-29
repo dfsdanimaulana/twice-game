@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const ImageWithFallback = ({ imageUrl, imageClasses }) => {
+const ImageWithFallback = ({ imageUrl, imageClasses, onClick }) => {
     const [error, setError] = useState(false)
     const [currentImageUrl, setCurrentImageUrl] = useState(imageUrl)
 
@@ -11,9 +11,16 @@ const ImageWithFallback = ({ imageUrl, imageClasses }) => {
         }
     }
 
+    const handleClick = () => {
+        if (onClick) {
+            onClick()
+        }
+    }
+
     return (
         <img
             src={currentImageUrl}
+            onClick={handleClick}
             className={imageClasses}
             alt='Image'
             onError={handleImageError}

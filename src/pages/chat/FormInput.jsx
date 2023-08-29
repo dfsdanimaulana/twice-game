@@ -62,6 +62,7 @@ function FormInput({ user }) {
             </button>
             <input
                 type='text'
+                placeholder='Type something...'
                 required
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
