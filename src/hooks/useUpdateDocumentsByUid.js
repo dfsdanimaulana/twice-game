@@ -8,7 +8,7 @@ import {
     getDocs
 } from 'firebase/firestore'
 
-import { db } from '../config/firebase'
+import { db } from '@config/firebase'
 
 const useUpdateDocumentsByUid = () => {
     const [updateStatus, setUpdateStatus] = useState({

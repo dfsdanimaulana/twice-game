@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Joyride from 'react-joyride'
-import useFirebaseAuth from '../../hooks/useFirebaseAuth'
+import useFirebaseAuth from '@hooks/useFirebaseAuth'
 import { steps } from './steps'
 
 // components
-import ImageWithFallback from '../../components/ImageWithFallBack'
-import ToggleDarkMode from '../../components/ToggleDarkMode'
-import Loading from '../../components/Loading'
+import ImageWithFallback from '@components/ImageWithFallBack'
+import ToggleDarkMode from '@components/ToggleDarkMode'
+import Loading from '@components/Loading'
 import Background from './Background'
 import AuthButton from './AuthButton'
 import Copyright from './Copyright'

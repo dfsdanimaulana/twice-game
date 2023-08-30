@@ -7,7 +7,7 @@ import {
     limit,
     onSnapshot
 } from 'firebase/firestore'
-import { db } from '../config/firebase'
+import { db } from '@config/firebase'
 
 const useCollection = (collectionName, _query, _orderBy, _limit) => {
     const [documents, setDocuments] = useState(null)

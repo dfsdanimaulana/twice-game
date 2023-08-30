@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Swal from 'sweetalert2'
 import { formatDistanceToNow } from 'date-fns'
-import ImageWithFallback from '../../components/ImageWithFallBack'
+import ImageWithFallback from '@components/ImageWithFallBack'
 import MessageModal from './MessageModal'
 
 function Message({ chat }) {

@@ -2,7 +2,7 @@ import { doc, getDoc, updateDoc } from 'firebase/firestore'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
 import { Fireworks } from '@fireworks-js/react'
-import { db } from '../../config/firebase'
+import { db } from '@config/firebase'
 import Swal from 'sweetalert2'
 
 // icons
@@ -11,17 +11,17 @@ import { AiOutlineLeft } from 'react-icons/ai'
 import { GoUnmute, GoMute } from 'react-icons/go'
 
 // hooks
-import useFirebaseAuth from '../../hooks/useFirebaseAuth'
-import useAudioPlayer from '../../hooks/useAudioPlayer'
-import useDocument from '../../hooks/useDocument'
+import useFirebaseAuth from '@hooks/useFirebaseAuth'
+import useAudioPlayer from '@hooks/useAudioPlayer'
+import useDocument from '@hooks/useDocument'
 
 // utils & datas
-import getRandomValuesFromArray from '../../utils/getRandomValuesFromArray'
-import images from '../../data/levelImages'
+import getRandomValuesFromArray from '@utils/getRandomValuesFromArray'
+import images from '@data/levelImages'
 
 // components
-import ToggleDarkMode from '../../components/ToggleDarkMode'
-import BackButton from '../../components/BackButton'
+import ToggleDarkMode from '@components/ToggleDarkMode'
+import BackButton from '@components/BackButton'
 import LevelCompleteModal from './LevelCompleteModal'
 import HelpButtonModal from './HelpButtonModal'
 import SingleCard from './SingleCard'

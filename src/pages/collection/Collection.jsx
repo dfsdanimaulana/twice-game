@@ -1,9 +1,9 @@
-import BackButton from '../../components/BackButton'
-import useDocument from '../../hooks/useDocument'
-import useFirebaseAuth from '../../hooks/useFirebaseAuth'
-import Loading from '../../components/Loading'
+import BackButton from '@components/BackButton'
+import useDocument from '@hooks/useDocument'
+import useFirebaseAuth from '@hooks/useFirebaseAuth'
+import Loading from '@components/Loading'
 import Swal from 'sweetalert2'
-import ToggleDarkMode from '../../components/ToggleDarkMode'
+import ToggleDarkMode from '@components/ToggleDarkMode'
 
 const Collection = () => {
     const { user } = useFirebaseAuth()

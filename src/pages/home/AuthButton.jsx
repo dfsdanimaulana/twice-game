@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { AiOutlineUser } from 'react-icons/ai'
-import GoogleButton from '../../components/GoogleButton'
-import GithubButton from '../../components/GithubButton'
+import GoogleButton from '@components/GoogleButton'
+import GithubButton from '@components/GithubButton'
 
 function AuthButton() {
     return (

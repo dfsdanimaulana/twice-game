@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { MdLightMode, MdModeNight } from 'react-icons/md'
-import useDarkMode from '../hooks/useDarkMode'
+import useDarkMode from '@hooks/useDarkMode'
 import FullscreenButton from './FullscreenButton'
 
 const spring = {

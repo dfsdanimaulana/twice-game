@@ -1,9 +1,9 @@
 import { GithubAuthProvider, signInWithPopup } from 'firebase/auth'
-import { BsGithub } from 'react-icons/bs'
-import { auth, db } from '../config/firebase'
-import { toast } from 'react-toastify'
 import { doc, getDoc, setDoc } from 'firebase/firestore'
-import { generateUserData } from '../utils/generateUserData'
+import { BsGithub } from 'react-icons/bs'
+import { toast } from 'react-toastify'
+import { generateUserData } from '@utils/generateUserData'
+import { auth, db } from '@config/firebase'
 
 const GithubButton = () => {
     const signUpWithGithub = async () => {

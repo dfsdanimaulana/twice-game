@@ -6,11 +6,10 @@ import { updateProfile } from 'firebase/auth'
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 import { toast } from 'react-toastify'
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
-import { storage } from '../../config/firebase'
-import { auth } from '../../config/firebase'
-import useFirebaseAuth from '../../hooks/useFirebaseAuth'
-import useFirestore from '../../hooks/useFirestore'
-import useUpdateDocumentsByUid from '../../hooks/useUpdateDocumentsByUid'
+import { auth, storage } from '@config/firebase'
+import useFirebaseAuth from '@hooks/useFirebaseAuth'
+import useFirestore from '@hooks/useFirestore'
+import useUpdateDocumentsByUid from '@hooks/useUpdateDocumentsByUid'
 
 const UpdatePhotoModal = ({ photoModalOpen, setPhotoModalOpen }) => {
     const { user } = useFirebaseAuth()
@@ -26,24 +25,32 @@ const UpdatePhotoModal = ({ photoModalOpen, setPhotoModalOpen }) => {
         setSelectedFile(null)
     }
 
-    const handleFileSelect = (e) => {
-        setSelectedFile(e.target.files[0])
+    const handleFileSelect = (file) => {
+      setSelectedFile(file)
     }
 
-    const handleImagePreview = (e) => {
-        const file = e.target.files[0]
-        if (file) {
-            const reader = new FileReader()
-            reader.onloadend = () => {
-                setPreviewImage(reader.result)
-            }
-            reader.readAsDataURL(file)
-        }
+    const handleImagePreview = (file) => {
+      const reader = new FileReader()
+      reader.onloadend = () => {
+          setPreviewImage(reader.result)
+      }
+      reader.readAsDataURL(file)
     }
 
     const handleImageChange = (e) => {
-        handleImagePreview(e)
-        handleFileSelect(e)
+      const file = e.target.files[0]
+      const maxSize = 5 * 1024 * 1024 // 5mb
+      
+      if (!file) {
+        toast.warn('Please select a file.');
+      } else if (!file.type.startsWith('image/')) {
+        toast.warn('Please select an image file.');
+      } else if (file.size > maxSize) {
+        toast.warn('File size exceeds 5 MB.');
+      } else {
+        handleImagePreview(file)
+        handleFileSelect(file)
+      }
     }
 
     const handleFileUpload = async () => {
@@ -110,6 +117,7 @@ const UpdatePhotoModal = ({ photoModalOpen, setPhotoModalOpen }) => {
                     className='form-input hidden'
                     type='file'
                     id='profile_image'
+                    accept="image/*"
                     onChange={handleImageChange}
                 />
 

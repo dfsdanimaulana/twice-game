@@ -1,10 +1,10 @@
-import { useState } from 'react'
 import { sendPasswordResetEmail } from 'firebase/auth'
-import { useForm } from 'react-hook-form'
-import { auth } from '../../config/firebase'
-import { toast } from 'react-toastify'
-import BackButton from '../../components/BackButton'
 import { useNavigate } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
+import { useState } from 'react'
+import { auth } from '@config/firebase'
+import BackButton from '@components/BackButton'
 
 const ForgetPassword = () => {
     const { register, handleSubmit } = useForm()

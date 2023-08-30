@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
 import ReactModal from 'react-modal'
 import { AiOutlineClose } from 'react-icons/ai'
-import ImageWithFallback from '../../components/ImageWithFallBack'
-import useFirebaseAuth from '../../hooks/useFirebaseAuth'
-import useFirestore from '../../hooks/useFirestore'
+import ImageWithFallback from '@components/ImageWithFallBack'
+import useFirebaseAuth from '@hooks/useFirebaseAuth'
+import useFirestore from '@hooks/useFirestore'
 
 const MessageModal = ({ modalOpen, setModalOpen, chat }) => {
     const { user } = useFirebaseAuth()

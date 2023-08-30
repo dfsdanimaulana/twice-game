@@ -5,16 +5,16 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { doc, setDoc } from 'firebase/firestore'
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
 import { Link, useNavigate } from 'react-router-dom'
-import { auth, db, storage } from '../../config/firebase'
-import useFirebaseAuth from '../../hooks/useFirebaseAuth'
-import { validateUsername } from '../../utils/validateUsername'
-import createImageFromInitials from '../../utils/createImageFromInitials'
-import { generateUserData } from '../../utils/generateUserData'
+import { auth, db, storage } from '@config/firebase'
+import useFirebaseAuth from '@hooks/useFirebaseAuth'
+import { validateUsername } from '@utils/validateUsername'
+import createImageFromInitials from '@utils/createImageFromInitials'
+import { generateUserData } from '@utils/generateUserData'
 
 // components
 import { AiOutlineUser } from 'react-icons/ai'
-import PasswordInput from '../../components/PasswordInput'
-import BackButton from '../../components/BackButton'
+import PasswordInput from '@components/PasswordInput'
+import BackButton from '@components/BackButton'
 
 const Register = () => {
     const navigate = useNavigate()

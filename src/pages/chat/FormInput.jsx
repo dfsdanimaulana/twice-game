@@ -3,8 +3,8 @@ import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 import { toast } from 'react-toastify'
 import { BsSend, BsEmojiSmile } from 'react-icons/bs'
 import EmojiPicker from 'emoji-picker-react'
-import useOnClickOutside from '../../hooks/useOnClickOutside'
-import { db } from '../../config/firebase'
+import useOnClickOutside from '@hooks/useOnClickOutside'
+import { db } from '@config/firebase'
 
 function FormInput({ user }) {
     const formRef = useRef(null)
