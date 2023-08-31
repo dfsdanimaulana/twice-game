@@ -7,7 +7,6 @@ import Swal from 'sweetalert2'
 
 // icons
 import { BiSolidHelpCircle } from 'react-icons/bi'
-import { AiOutlineLeft } from 'react-icons/ai'
 import { GoUnmute, GoMute } from 'react-icons/go'
 
 // hooks
@@ -24,63 +23,66 @@ import ToggleDarkMode from '@components/ToggleDarkMode'
 import BackButton from '@components/BackButton'
 import LevelCompleteModal from './LevelCompleteModal'
 import HelpButtonModal from './HelpButtonModal'
+import LevelNavigator from './LevelNavigator'
 import SingleCard from './SingleCard'
 import GameRecord from './GameRecord'
 
+// audio path
 const matchAudioPath = '/audio/match.mp3'
 const flipAudioPath = '/audio/flipcard.mp3'
 const successAudioPath = '/audio/success.mp3'
 const failAudioPath = '/audio/fail.mp3'
 
 function Game() {
+    // data
     const { user } = useFirebaseAuth()
-    const { playAudio, muted, setMuted } = useAudioPlayer()
-    const { document: currentLevelData } = useDocument('Users', user?.uid) // [{{},{},{}}]
-    const { level: currentLevel } = useParams()
-    const levelNumber = parseInt(currentLevel)
-    const time = 60 + levelNumber * 5
+    const { document } = useDocument('Users', user?.uid) // [{{},{},{}}]
+    
+    // function
     const navigate = useNavigate()
+    const { playAudio, muted, setMuted } = useAudioPlayer()
+    
+    // modal state
+    const [helpOpen, setHelpOpen] = useState(false)
+    
+    // card state
     const [cards, setCards] = useState([])
     const [turns, setTurns] = useState(0)
     const [choiceOne, setChoiceOne] = useState(null)
     const [choiceTwo, setChoiceTwo] = useState(null)
     const [disabled, setDisabled] = useState(false)
-    const [timer, setTimer] = useState(time)
-    const [timeCount, setTimeCount] = useState(0)
+    
+    // game state
     const [incorrectGuess, setIncorrectGuess] = useState(0)
     const [levelComplete, setLevelComplete] = useState(false)
     const [gamePoint, setGamePoint] = useState(0)
-    const [helpOpen, setHelpOpen] = useState(false)
     const [stars, setStars] = useState({
         star1: false,
         star2: false,
         star3: false
     })
-
-    const currentLevelDataLevels = currentLevelData?.levels || []
-    const currentLevelDataLevel = currentLevelDataLevels.find(
+    
+   // level state
+    const { level: levelString } = useParams()
+    const levelNumber = parseInt(levelString)
+    const levels = document?.levels || []
+    const levelsCount = levels.length
+    const currentLevel = levels.find(
         (level) => level.level === levelNumber
     )
-    const isLevelCompleted = currentLevelDataLevel?.completed || false
+    const isLevelCompleted = currentLevel?.completed || false
 
+    // time state
+    const time = 60 + levelNumber * 5
+    const [timer, setTimer] = useState(time)
+    const [timeCount, setTimeCount] = useState(0)
+ 
     const fireRef = useRef(null)
     const intervalTimer = useRef(null)
     const countTimer = useRef(null)
-
-    // prevent user writing level in url more than available level
-    useEffect(() => {
-        // Check if the levelNumber is a valid number within the desired range
-        const isValidLevel =
-            !isNaN(levelNumber) && levelNumber >= 1 && levelNumber <= 9
-
-        // Redirect to the appropriate page if the level is invalid
-        if (!isValidLevel) {
-            navigate('/')
-        }
-    }, [levelNumber, navigate])
-
+    
     const goToNextLevel = () => {
-        navigate('/game/' + `${levelNumber !== 9 ? levelNumber + 1 : 9}`)
+        navigate('/game/' + `${levelNumber !== levelsCount ? levelNumber + 1 : levelsCount}`)
     }
 
     const goToPrevLevel = () => {
@@ -197,32 +199,32 @@ function Game() {
 
     // shuffle cards for new game
     const shuffleCards = () => {
-        const currentLevelImages = images[`lv${currentLevel}`]
-        if (currentLevelImages) {
-            const randomImages = getRandomValuesFromArray(
-                images[`lv${currentLevel}`].images,
-                7 + levelNumber
-            )
-            const cardImages = randomImages
-            const shuffledCards = [...cardImages, ...cardImages]
-                .sort(() => Math.random() - 0.5)
-                .map((card) => ({ ...card, id: Math.random() }))
+        const currentLevelImages = images[`lv${levelString}`]
+        if (!currentLevelImages) return
+        const randomImages = getRandomValuesFromArray(
+            images[`lv${levelString}`].images,
+            7 + levelNumber
+        )
+        const cardImages = randomImages
+        const shuffledCards = [...cardImages, ...cardImages]
+            .sort(() => Math.random() - 0.5)
+            .map((card) => ({ ...card, id: Math.random() }))
 
-            setChoiceOne(null)
-            setChoiceTwo(null)
-            setCards(shuffledCards)
-            setTurns(0)
+        setChoiceOne(null)
+        setChoiceTwo(null)
+        setCards(shuffledCards)
+        setTurns(0)
 
-            setDisabled(false)
-            timeStop()
-            countStop()
-            setTimeCount(0)
-            setTimer(time)
-            stopFireworks()
-            setIncorrectGuess(0)
-            setLevelComplete(false)
-            setGamePoint(0)
-        }
+        setDisabled(false)
+        timeStop()
+        countStop()
+        setTimeCount(0)
+        setTimer(time)
+        stopFireworks()
+        setIncorrectGuess(0)
+        setLevelComplete(false)
+        setGamePoint(0)
+        
     }
 
     // handle a choice
@@ -238,6 +240,41 @@ function Game() {
         choiceOne ? setChoiceTwo(card) : setChoiceOne(card)
     }
 
+
+    // reset choices & increase turn
+    const resetTurn = () => {
+        setChoiceOne(null)
+        setChoiceTwo(null)
+        setTurns((prevTurns) => prevTurns + 1)
+        setDisabled(false)
+    }
+
+    const updateCollectionArray = async () => {
+        const levelArray = document?.levels
+        const collections = document?.collections
+
+        levelArray.map((level) => {
+            const star1 = level.star1
+            const star2 = level.star2
+            const star3 = level.star3
+            const completedCount = level.completedCount
+
+            collections[level.level - 1].images[0].locked = !star1
+            collections[level.level - 1].images[1].locked = !star2
+            collections[level.level - 1].images[2].locked = !star3
+            collections[level.level - 1].images[3].locked =
+                completedCount >= 5 ? false : true
+        })
+
+        // update document
+        const docRef = doc(db, 'Users/' + user?.uid)
+        try {
+            await updateDoc(docRef, { collections })
+        } catch (err) {
+            console.log('Error updating document: ', err)
+        }
+    }
+    
     // compare 2 selected cards
     useEffect(() => {
         // game finished if all matched
@@ -275,19 +312,11 @@ function Game() {
             }
         }
     }, [choiceOne, choiceTwo, cards])
-
-    // reset choices & increase turn
-    const resetTurn = () => {
-        setChoiceOne(null)
-        setChoiceTwo(null)
-        setTurns((prevTurns) => prevTurns + 1)
-        setDisabled(false)
-    }
-
+    
     // start new game automatically
     useEffect(() => {
         shuffleCards()
-    }, [currentLevel])
+    }, [levelString])
 
     // time out handler
     useEffect(() => {
@@ -301,38 +330,23 @@ function Game() {
             })
         }
     }, [timer])
-
-    const updateCollectionArray = async () => {
-        const levelArray = currentLevelData?.levels
-        const collectionArray = currentLevelData?.collections
-
-        levelArray.map((level) => {
-            const star1 = level.star1
-            const star2 = level.star2
-            const star3 = level.star3
-            const completedCount = level.completedCount
-
-            collectionArray[level.level - 1].images[0].locked = !star1
-            collectionArray[level.level - 1].images[1].locked = !star2
-            collectionArray[level.level - 1].images[2].locked = !star3
-            collectionArray[level.level - 1].images[3].locked =
-                completedCount >= 5 ? false : true
-        })
-
-        // update document
-        const docRef = doc(db, 'Users/' + user?.uid)
-        try {
-            await updateDoc(docRef, {
-                collections: collectionArray
-            })
-        } catch (err) {
-            console.log(err)
-        }
-    }
-
+    
+    // prevent user writing level in url more than available level
     useEffect(() => {
-        currentLevelData && updateCollectionArray()
-    }, [currentLevelData])
+        // Check if the levelNumber is a valid number within the desired range
+        const isValidLevel =
+            !isNaN(levelNumber) && levelNumber >= 1 && levelNumber <= 9
+
+        // Redirect to the appropriate page if the level is invalid
+        if (!isValidLevel) {
+            navigate('/')
+        }
+    }, [levelNumber])
+
+    // update user collection 
+    useEffect(() => {
+        document && updateCollectionArray()
+    }, [document])
 
     return (
         <>
@@ -366,23 +380,8 @@ function Game() {
                         />
                     ))}
                 </div>
-                <GameRecord level={currentLevelDataLevel} />
-                {isLevelCompleted && (
-                    <div className='flex items-center'>
-                        {levelNumber !== 1 && (
-                            <button
-                                onClick={goToPrevLevel}
-                                className='border-2 border-tw-5 rounded-lg bg-tw-3 hover:bg-tw-4 -mr-2 py-2 px-1 text-light font-bold transition duration-150 ease-in-out hover:scale-[1.2] dark:bg-navy dark:hover:bg-blue-600 dark:border-dark-blue'>
-                                <AiOutlineLeft />
-                            </button>
-                        )}
-                        <button className='btn-primary' onClick={goToNextLevel}>
-                            {currentLevel !== '9'
-                                ? 'Next Level'
-                                : 'Coming Soon'}
-                        </button>
-                    </div>
-                )}
+                <GameRecord level={currentLevel} />
+                {isLevelCompleted && <LevelNavigator levelNumber={levelNumber} next={goToNextLevel} prev={goToPrevLevel} max={levelsCount}/>}
             </div>
             <div className='fixed bottom-3 right-3'>
                 <BiSolidHelpCircle
@@ -415,9 +414,9 @@ function Game() {
                 setLevelComplete={setLevelComplete}
                 goToNextLevel={goToNextLevel}
                 shuffleCards={shuffleCards}
-                level={currentLevel}
+                level={levelString}
                 collections={
-                    currentLevelData?.collections[levelNumber - 1].images
+                    document?.collections[levelNumber - 1].images
                 }
                 stars={stars}
                 turns={turns}

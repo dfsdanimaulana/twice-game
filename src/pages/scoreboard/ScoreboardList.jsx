@@ -27,7 +27,7 @@ const ScoreboardList = ({ documents }) => {
                     className={`w-full flex items-center px-4 py-2 border-b border-tw-5 ${
                         index === documents.length - 1 && 'rounded-b-md'
                     } dark:border-dark-blue flex justify-between`}>
-                    <div className='basis-1/2 flex justify-between items-center'>
+                    <div className='basis-1/2 flex overflow-hidden justify-between items-center'>
                         <div
                             className='flex items-center cursor-pointer'
                             onClick={() => showImage(doc?.photoURL, doc?.displayName)}>
@@ -39,9 +39,13 @@ const ScoreboardList = ({ documents }) => {
                               {doc?.displayName}
                             </span>
                         </div>
-                        <span>:</span>
                     </div>
-                    <span className='basis-1/2 text-center'>{doc?.exp}</span>
+                    <div>:</div>
+                    <div className='basis-1/2 text-center'>
+                      <span>
+                        {doc?.exp}
+                      </span>
+                    </div>
                 </li>
             ))}
         </ul>
