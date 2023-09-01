@@ -3,13 +3,13 @@ import { BsQuestionCircle } from 'react-icons/bs'
 
 function Header({ user }) {
     return (
-        <header className='pt-6 pb-4 px-5 border-b border-dark'>
+        <header className='pt-3 pb-2 px-5 border-b border-tw-5 dark:border-light '>
             <div className='flex justify-between items-center'>
                 {/* Image + name */}
                 <div className='flex items-center'>
                     <a className='inline-flex items-start mr-3' href='#0'>
                         <img
-                            className='rounded-full w-14 h-14 object-cover object-top'
+                            className='rounded-full w-11 h-11 object-cover object-top'
                             src={user?.photoURL}
                             alt='photoURL'
                         />

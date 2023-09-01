@@ -19,7 +19,7 @@ function Message({ chat }) {
     }
 
     return (
-        <div className='w-full text-left py-2 focus:outline-none focus-visible:bg-indigo-50'>
+        <div className='w-full text-left p-2 md:p-3 focus:outline-none focus-visible:bg-indigo-50'>
             <div className='flex items-start'>
                 <ImageWithFallback
                     imageClasses='rounded-full items-start flex-shrink-0 mr-3 mt-1 w-8 h-8 object-cover object-top hover:border hover:border-tw-5 cursor-pointer'
@@ -30,12 +30,20 @@ function Message({ chat }) {
                 <div
                     className='w-full cursor-pointer'
                     onClick={() => setModalOpen(true)}>
-                    <h4 className='text-sm font-semibold text-gray-900'>
+                    <h4 className='text-sm font-semibold'>
                         {chat?.displayName}
                     </h4>
                     <div className='text-[14px] flex flex-col'>
-                        <span className='text-start'>{chat?.message} </span>
-                        <span className='text-[12px] text-end'>
+                        <div className='block md:flex gap-3'>
+                            {chat?.image && (
+                                <img
+                                    src={chat?.image}
+                                    className='object-fit max-h-48 max-w-fit rounded-md'
+                                />
+                            )}
+                            <span className='text-start'>{chat?.message} </span>
+                        </div>
+                        <span className='text-[12px] text-end text-brown dark:text-slate-300'>
                             {chat?.createdAt !== null &&
                                 formatDistanceToNow(chat?.createdAt?.toDate(), {
                                     addSuffix: true

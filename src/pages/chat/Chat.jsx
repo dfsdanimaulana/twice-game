@@ -29,7 +29,7 @@ function Chat() {
                 <BackButton to='/' />
                 <div className='h-full'>
                     {/* Card */}
-                    <div className='relative w-[340px] lg:w-1/3 mx-auto bg-gradient-to-br from-tw-2 to-tw-4 shadow-lg rounded-lg dark:bg-gradient-to-tr dark:from-dark-blue dark:to-navy '>
+                    <div className='relative w-[340px] lg:w-2/3 mx-auto bg-gradient-to-br from-tw-2 to-tw-4 shadow-lg rounded-lg dark:bg-gradient-to-tr dark:from-dark-blue dark:to-navy '>
                         {/* Card header */}
                         <Header user={user} />
                         {/* Card body */}
@@ -40,7 +40,7 @@ function Chat() {
                             {/* Chat list */}
                             <div
                                 ref={messageContainerRef}
-                                className='divide-y divide-dark overflow-auto max-h-[300px] relative'>
+                                className='divide-y divide-tw-5 dark:divide-light overflow-auto max-h-[300px] md:max-h-[350px] relative'>
                                 {/* User */}
                                 {documents &&
                                     documents.map((chat) => (
