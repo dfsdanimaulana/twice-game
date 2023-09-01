@@ -4,9 +4,10 @@ import { useState, useEffect, useRef } from 'react'
 import { Fireworks } from '@fireworks-js/react'
 import { db } from '@config/firebase'
 import Swal from 'sweetalert2'
+import { toast } from 'react-toastify'
 
 // icons
-import { BiSolidHelpCircle } from 'react-icons/bi'
+import { BiSolidHelpCircle, BiListUl } from 'react-icons/bi'
 import { GoUnmute, GoMute } from 'react-icons/go'
 
 // hooks
@@ -22,6 +23,7 @@ import images from '@data/levelImages'
 import ToggleDarkMode from '@components/ToggleDarkMode'
 import BackButton from '@components/BackButton'
 import LevelCompleteModal from './LevelCompleteModal'
+import RecordListModal from './RecordListModal'
 import HelpButtonModal from './HelpButtonModal'
 import LevelNavigator from './LevelNavigator'
 import SingleCard from './SingleCard'
@@ -44,6 +46,7 @@ function Game() {
     
     // modal state
     const [helpOpen, setHelpOpen] = useState(false)
+    const [recordListOpen, setRecordListOpen] = useState(false)
     
     // card state
     const [cards, setCards] = useState([])
@@ -147,18 +150,20 @@ function Game() {
 
                 return level
             })
-
+            
+            // calculate user point
             const point = Math.round(levelNumber * timer * 10 - incorrectGuess)
-
             setGamePoint(point)
             const exp = data.exp + point
-
+            
+            // update user data
             await updateDoc(docRef, {
                 levels: updatedLevelsArray,
                 exp
             })
             setLevelComplete(true)
         } catch (error) {
+            toast.error('Something went wrong!')
             console.log('Error updating array field:', error)
         }
     }
@@ -271,6 +276,7 @@ function Game() {
         try {
             await updateDoc(docRef, { collections })
         } catch (err) {
+            toast.error('Something went wrong!')
             console.log('Error updating document: ', err)
         }
     }
@@ -389,6 +395,12 @@ function Game() {
                     onClick={() => setHelpOpen(true)}
                 />
             </div>
+            <div className='fixed bottom-3 left-3'>
+                <BiListUl
+                    className='border rounded-md border-pink-700 dark:border-dark-blue text-pink-700 dark:text-dark-blue w-9 h-9 transition duration-150 ease-in-out hover:scale-[1.2] cursor-pointer'
+                    onClick={() => setRecordListOpen(true)}
+                />
+            </div>
             <div className='absolute top-3 right-3 flex items-center gap-3'>
                 <div
                     className='border border-tw-5 dark:border-light rounded-full p-1 cursor-pointer hover:bg-semi-transparent'
@@ -407,7 +419,12 @@ function Game() {
                 helpOpen={helpOpen}
                 setHelpOpen={setHelpOpen}
             />
-
+            <RecordListModal
+                level={levelNumber}
+                recordListOpen={recordListOpen}
+                setRecordListOpen={setRecordListOpen}
+            />
+            
             <LevelCompleteModal
                 levelComplete={levelComplete}
                 gamePoint={gamePoint}

@@ -1,5 +1,5 @@
 import Swal from 'sweetalert2'
-import ImageWithFallback from '@components/ImageWithFallBack'
+import ImageWithFallBack from '@components/ImageWithFallBack'
 
 const ScoreboardList = ({ documents }) => {
     const showImage = (src, name) => {
@@ -15,8 +15,8 @@ const ScoreboardList = ({ documents }) => {
     }
 
     return (
-        <ul className='w-11/12 lg:w-1/3 text-sm font-medium text-gray-900 bg-gradient-to-br from-tw-3 to-tw-4 border border-tw-5 rounded-md dark:bg-gradient-to-br dark:from-dark-blue dark:to-navy dark:border-dark-blue dark:text-white'>
-            <li className='w-full font-bold  px-4 py-2 border-b border-tw-5 rounded-t-md dark:border-dark-blue flex justify-between shadow-md uppercase bg-tw-4 dark:bg-navy'>
+        <ul className='max-h-[600px] overflow-auto w-11/12 lg:w-1/3 text-sm font-medium text-gray-900 bg-gradient-to-br from-tw-3 to-tw-4 border border-tw-5 rounded-md dark:bg-gradient-to-br dark:from-dark-blue dark:to-navy dark:border-dark-blue dark:text-white'>
+            <li className='w-full sticky top-0 font-bold  px-4 py-2 border-b border-tw-5 rounded-t-md dark:border-dark-blue flex justify-between shadow-md uppercase bg-tw-4 dark:bg-navy'>
                 <span className='basis-1/2 text-center'>User</span>
                 <span>|</span>
                 <span className='basis-1/2 text-center'>Score</span>
@@ -31,7 +31,7 @@ const ScoreboardList = ({ documents }) => {
                         <div
                             className='flex items-center cursor-pointer'
                             onClick={() => showImage(doc?.photoURL, doc?.displayName)}>
-                            <ImageWithFallback
+                            <ImageWithFallBack
                                 imageUrl={doc?.photoURL}
                                 imageClasses='w-10 h-10 object-cover object-top rounded-full border border-tw-5 mr-4'
                             />

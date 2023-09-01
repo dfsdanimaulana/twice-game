@@ -9,8 +9,7 @@ const ScoreBoard = () => {
     const { documents, error, loading } = useCollection(
         'Users',
         ['exp', '>=', 1],
-        ['exp', 'desc'],
-        10
+        ['exp', 'desc']
     )
 
     return (
