@@ -15,7 +15,7 @@ const ScoreboardList = ({ documents }) => {
     }
 
     return (
-        <ul className='max-h-[600px] overflow-auto w-11/12 lg:w-1/3 text-sm font-medium text-gray-900 bg-gradient-to-br from-tw-3 to-tw-4 border border-tw-5 rounded-md dark:bg-gradient-to-br dark:from-dark-blue dark:to-navy dark:border-dark-blue dark:text-white'>
+        <ul className='max-h-[580px] overflow-auto w-11/12 lg:w-1/2 text-sm font-medium text-gray-900 bg-gradient-to-br from-tw-3 to-tw-4 border border-tw-5 rounded-md dark:bg-gradient-to-br dark:from-dark-blue dark:to-navy dark:border-dark-blue dark:text-white'>
             <li className='w-full sticky top-0 font-bold  px-4 py-2 border-b border-tw-5 rounded-t-md dark:border-dark-blue flex justify-between shadow-md uppercase bg-tw-4 dark:bg-navy'>
                 <span className='basis-1/2 text-center'>User</span>
                 <span>|</span>
@@ -24,7 +24,7 @@ const ScoreboardList = ({ documents }) => {
             {documents.map((doc, index) => (
                 <li
                     key={doc?.id}
-                    className={`w-full flex items-center px-4 py-2 border-b border-tw-5 ${
+                    className={`w-full font-semibold flex items-center px-3 py-1 border-b border-tw-5 ${
                         index === documents.length - 1 && 'rounded-b-md'
                     } dark:border-dark-blue flex justify-between`}>
                     <div className='basis-1/2 flex overflow-hidden justify-between items-center'>
