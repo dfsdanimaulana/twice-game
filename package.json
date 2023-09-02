@@ -16,6 +16,7 @@
         "emoji-picker-react": "^4.4.12",
         "firebase": "^9.23.0",
         "framer-motion": "^10.12.22",
+        "nsfwjs": "^2.4.2",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-floater": "^0.8.2",
