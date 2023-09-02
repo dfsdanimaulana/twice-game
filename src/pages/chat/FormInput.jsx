@@ -115,30 +115,30 @@ function FormInput({ user }) {
     return (
         <form
             ref={formRef}
-            className='flex md:mx-5 mt-5 h-10 relative'
+            className='flex mt-5 h-10 relative'
             onSubmit={handleSubmit}>
             <button
                 onClick={openEmojiPicker}
                 type='button'
-                className='flex flex-1 px-3 items-center justify-center text-sm font-medium text-white bg-indigo-500 hover:bg-indigo-600 dark:bg-tw-3 dark:hover:bg-tw-5 shadow-lg focus:outline-none focus-visible:ring-2 rounded-s-md border-r border-indigo-800 dark:border-tw-5'>
-                <BsEmojiSmile />
+                className='basis-1/12 flex items-center justify-center text-sm font-medium text-white bg-indigo-500 hover:bg-indigo-600 dark:bg-tw-3 dark:hover:bg-tw-5 shadow-lg focus:outline-none focus-visible:ring-2 rounded-s-md border-r border-indigo-800 dark:border-tw-5'>
+                <BsEmojiSmile className="mx-2 md:mx-3"/>
             </button>
             <button
                 onClick={handleClick}
                 type='button'
-                className='flex flex-1 px-3 items-center justify-center text-sm font-medium text-white bg-indigo-500 hover:bg-indigo-600 dark:bg-tw-3 dark:hover:bg-tw-5 shadow-lg focus:outline-none focus-visible:ring-2'>
-                <BiImageAdd />
+                className='basis-1/12 flex items-center justify-center text-sm font-medium text-white bg-indigo-500 hover:bg-indigo-600 dark:bg-tw-3 dark:hover:bg-tw-5 shadow-lg focus:outline-none focus-visible:ring-2'>
+                <BiImageAdd className="mx-2 md:mx-3"/>
             </button>
             <input
                 type='text'
                 placeholder='Type something...'
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                className='flex-1 focus:outline-none text-dark'
+                className='basis-9/12 pl-1 focus:outline-none text-dark'
             />
             {/* Bottom right button */}
-            <button className='flex items-center justify-center py-2 px-3 rounded-e-md text-sm font-medium text-white bg-indigo-500 hover:bg-indigo-600 dark:bg-tw-3 dark:hover:bg-tw-5 shadow-lg focus:outline-none focus-visible:ring-2'>
-                {isLoading ? <BiLoader className='animate-spin' /> : <BsSend />}
+            <button className='basis-1/12 flex items-center justify-center rounded-e-md text-sm font-medium text-white bg-indigo-500 hover:bg-indigo-600 dark:bg-tw-3 dark:hover:bg-tw-5 shadow-lg focus:outline-none focus-visible:ring-2'>
+                {isLoading ? <BiLoader className='mx-3 md:mx-4 animate-spin' /> : <BsSend className="mx-3 md:mx-4"/>}
             </button>
             {selectedFile && (
                 <ImagePreview

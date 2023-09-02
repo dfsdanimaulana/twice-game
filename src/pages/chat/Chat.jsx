@@ -40,7 +40,7 @@ function Chat() {
                             {/* Chat list */}
                             <div
                                 ref={messageContainerRef}
-                                className='max-h-[500px] md:max-h-[350px] divide-y divide-tw-5 dark:divide-light overflow-auto relative shadow-inner rounded-md'>
+                                className='max-h-[500px] divide-y divide-tw-5 dark:divide-light overflow-auto relative shadow-inner rounded-md'>
                                 {/* User */}
                                 {documents &&
                                     documents.map((chat) => (
