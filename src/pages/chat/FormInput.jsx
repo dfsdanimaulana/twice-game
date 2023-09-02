@@ -120,14 +120,25 @@ function FormInput({ user }) {
             <button
                 onClick={openEmojiPicker}
                 type='button'
-                className='flex items-center justify-center py-2 px-3 text-sm font-medium text-white bg-indigo-500 hover:bg-indigo-600 dark:bg-tw-3 dark:hover:bg-tw-5 shadow-lg focus:outline-none focus-visible:ring-2 rounded-s-md border-r border-indigo-800 dark:border-tw-5'>
+                className='flex flex-1 px-3 items-center justify-center text-sm font-medium text-white bg-indigo-500 hover:bg-indigo-600 dark:bg-tw-3 dark:hover:bg-tw-5 shadow-lg focus:outline-none focus-visible:ring-2 rounded-s-md border-r border-indigo-800 dark:border-tw-5'>
                 <BsEmojiSmile />
             </button>
             <button
                 onClick={handleClick}
                 type='button'
-                className='flex items-center justify-center py-2 px-3 text-sm font-medium text-white bg-indigo-500 hover:bg-indigo-600 dark:bg-tw-3 dark:hover:bg-tw-5 shadow-lg focus:outline-none focus-visible:ring-2'>
+                className='flex flex-1 px-3 items-center justify-center text-sm font-medium text-white bg-indigo-500 hover:bg-indigo-600 dark:bg-tw-3 dark:hover:bg-tw-5 shadow-lg focus:outline-none focus-visible:ring-2'>
                 <BiImageAdd />
+            </button>
+            <input
+                type='text'
+                placeholder='Type something...'
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                className='flex-1 focus:outline-none text-dark'
+            />
+            {/* Bottom right button */}
+            <button className='flex items-center justify-center py-2 px-3 rounded-e-md text-sm font-medium text-white bg-indigo-500 hover:bg-indigo-600 dark:bg-tw-3 dark:hover:bg-tw-5 shadow-lg focus:outline-none focus-visible:ring-2'>
+                {isLoading ? <BiLoader className='animate-spin' /> : <BsSend />}
             </button>
             {selectedFile && (
                 <ImagePreview
@@ -142,17 +153,6 @@ function FormInput({ user }) {
                 onChange={handleImageChange}
                 className='hidden'
             />
-            <input
-                type='text'
-                placeholder='Type something...'
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                className='grow focus:outline-none px-2 text-dark'
-            />
-            {/* Bottom right button */}
-            <button className='flex items-center justify-center py-2 px-3 rounded-e-md text-sm font-medium text-white bg-indigo-500 hover:bg-indigo-600 dark:bg-tw-3 dark:hover:bg-tw-5 shadow-lg focus:outline-none focus-visible:ring-2'>
-                {isLoading ? <BiLoader className='animate-spin' /> : <BsSend />}
-            </button>
             {isEmojiPickerOpen && (
                 <div
                     className='fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'

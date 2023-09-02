@@ -41,7 +41,7 @@ function Message({ chat }) {
                                     className='object-fit max-h-48 max-w-fit rounded-md'
                                 />
                             )}
-                            <span className='text-start'>{chat?.message} </span>
+                            <span className='text-start whitespace-normal'>{chat?.message} </span>
                         </div>
                         <span className='text-[12px] text-end text-brown dark:text-slate-300'>
                             {chat?.createdAt !== null &&

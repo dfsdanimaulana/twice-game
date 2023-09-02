@@ -48,9 +48,9 @@ const MessageModal = ({ modalOpen, setModalOpen, chat }) => {
             <div className='p-3 text-dark dark:text-light flex items-start justify-center gap-2 shadow-lg m-2 min-w-[300px] rounded-md'>
                 <ImageWithFallback
                     imageUrl={chat?.photoURL}
-                    imageClasses='w-20 h-20 object-cover object-top rounded-full'
+                    imageClasses='w-10 h-10 md:w-20 md:h-20 object-cover object-top rounded-full'
                 />
-                <div className='flex flex-col grow'>
+                <div className='flex flex-col grow flex-1'>
                     <span>{chat?.displayName}</span>
                     <hr className='w-full my-1' />
                     <div className='block md:flex items-start gap-3 m-1'>
@@ -60,7 +60,7 @@ const MessageModal = ({ modalOpen, setModalOpen, chat }) => {
                                 className='object-fit max-h-48 max-w-fit rounded-md'
                             />
                         )}
-                        <span className='text-2xl'>{chat?.message}</span>
+                        <span className='text-lg md:text-xl'>{chat?.message}</span>
                     </div>
                 </div>
             </div>

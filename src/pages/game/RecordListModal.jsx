@@ -42,53 +42,43 @@ const RecordListModal = ({ recordListOpen, setRecordListOpen, level }) => {
             overlayClassName='modal-overlay'>
             <div className='text-light min-w-[300px] md:min-w-[600px]'>
                 <ul className='list-board text-sm md:text-base text-gray-900 max-h-64 md:max-h-96 overflow-auto bg-gradient-to-br from-tw-3 to-tw-4 border border-tw-5 rounded-md dark:bg-gradient-to-br dark:from-dark-blue dark:to-navy dark:border-dark-blue dark:text-white'>
-                    <li className='font-semibold sticky top-0 border-b px-1 py-2 border-tw-5 rounded-t-md dark:border-dark-blue flex justify-between shadow-md bg-tw-4 dark:bg-navy'>
-                        <span className='basis-1/3 text-center'>User</span>
-                        <span>|</span>
-                        <div className='basis-2/3 text-center flex justify-center'>
-                            <span className='basis-1/2 text-center'>
-                                Best Time
-                            </span>
-                            <span>|</span>
-                            <span className='basis-1/2 text-center'>
-                                Best Turns
-                            </span>
-                        </div>
+                    <li className='font-semibold sticky flex text-center  top-0 border-b px-1 py-2 border-tw-5 rounded-t-md dark:border-dark-blue shadow-md bg-tw-4 dark:bg-navy'>
+                          <span className='basis-1/12 border-r'>No</span>
+                          <span className='basis-5/12 border-r'>User</span>
+                          <span className='basis-3/12 border-r'>Best Time</span>
+                          <span className='basis-3/12'>Best Turns</span>
                     </li>
                     {documents &&
                         filterDocuments().map((doc, index) => (
                             <li
                                 key={doc?.id}
-                                className={`flex items-center px-2 py-1 md:px-2 md:py-2 border-b border-tw-5 ${
+                                className={`flex text-center px-1 py-2 md:px-2 md:py-2 border-b border-tw-5 ${
                                     index === documents.length - 1 &&
                                     'rounded-b-md'
                                 } dark:border-dark-blue flex justify-between`}>
-                                <div className='basis-1/3 flex overflow-hidden justify-between items-center border-r border-tw-5 dark:border-dark-blue'>
-                                    <div
-                                        className='flex items-center cursor-pointer'
-                                        onClick={() =>
-                                            showImage(
-                                                doc?.photoURL,
-                                                doc?.displayName
-                                            )
-                                        }>
-                                        <ImageWithFallBack
-                                            imageUrl={doc?.photoURL}
-                                            imageClasses='w-5 h-5 md:w-8 md:h-8 object-cover object-top rounded-full border border-tw-5 mr-4'
-                                        />
-                                        <span className='truncate'>
-                                            {doc?.displayName}
-                                        </span>
-                                    </div>
+                                <span className='basis-1/12 border-r border-tw-5 dark:border-dark-blue'>{index+1}</span>
+                                <div 
+                                  className='basis-5/12 flex items-center overflow-hidden border-r border-tw-5 dark:border-dark-blue cursor-pointer'
+                                  onClick={() =>
+                                    showImage(
+                                        doc?.photoURL,
+                                        doc?.displayName
+                                  )}
+                                >
+                                  <ImageWithFallBack
+                                      imageUrl={doc?.photoURL}
+                                      imageClasses='w-5 h-5 md:w-8 md:h-8 object-cover object-top rounded-full border border-tw-5 mx-2'
+                                  />
+                                  <span className='truncate'>
+                                      {doc?.displayName}
+                                  </span>
                                 </div>
-                                <div className='basis-2/3 text-center flex justify-center'>
-                                    <span className='basis-1/2 text-center border-r border-tw-5 dark:border-dark-blue'>
-                                        {doc?.levels[level - 1]?.bestTime}s
-                                    </span>
-                                    <span className='basis-1/2 text-center'>
-                                        {doc?.levels[level - 1]?.bestTurns}
-                                    </span>
-                                </div>
+                                <span className='basis-3/12 border-r border-tw-5 dark:border-dark-blue'>
+                                    {doc?.levels[level - 1]?.bestTime}s
+                                </span>
+                                <span className='basis-3/12'>
+                                    {doc?.levels[level - 1]?.bestTurns}
+                                </span>
                             </li>
                         ))}
                     {loading && <p>Loading...</p>}
