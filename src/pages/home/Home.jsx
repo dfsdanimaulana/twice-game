@@ -54,13 +54,11 @@ const Home = () => {
                             TWICE MEMORY CARD GAME
                         </h1>
 
-                        {!user && (
-                           <AuthButton />
-                        )}
+                        {!user && <AuthButton />}
                         {user && (
                             <>
                                 <Link
-                                    to='/level'
+                                    to={isGuideVisible ? '/' : '/level'}
                                     className='guide-start border border-light font-bold font-bn tracking-widest text-white text-3xl bg-gradient-to-r from-tw-4 via-tw-3 to-tw-2 hover:bg-gradient-to-r hover:from-tw-5 hover:via-tw-4 hover:to-tw-3 dark:bg-gradient-to-tr dark:from-dark-blue dark:to-navy py-2 px-10 my-10 uppercase rounded-xl hover:shadow-md transition duration-150 ease-in-out hover:scale-[1.2]'>
                                     Start
                                 </Link>
