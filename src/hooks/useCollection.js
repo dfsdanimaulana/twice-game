@@ -1,4 +1,3 @@
-import { useState, useEffect, useRef } from 'react'
 import {
     collection,
     query,
@@ -7,6 +6,8 @@ import {
     limit,
     onSnapshot
 } from 'firebase/firestore'
+import { useState, useEffect, useRef } from 'react'
+
 import { db } from '@config/firebase'
 
 const useCollection = (collectionName, _query, _orderBy, _limit) => {

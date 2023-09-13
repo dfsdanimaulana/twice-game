@@ -1,9 +1,9 @@
-import ToggleDarkMode from '../../components/ToggleDarkMode'
-import BackButton from '../../components/BackButton'
-import Loading from '../../components/Loading'
-import Error from '../../components/Error'
-import useCollection from '../../hooks/useCollection'
 import ScoreboardList from './ScoreboardList'
+import BackButton from '../../components/BackButton'
+import Error from '../../components/Error'
+import Loading from '../../components/Loading'
+import ToggleDarkMode from '../../components/ToggleDarkMode'
+import useCollection from '../../hooks/useCollection'
 
 const ScoreBoard = () => {
     const { documents, error, loading } = useCollection(

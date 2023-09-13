@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { AiOutlineClose } from 'react-icons/ai'
 
 const ImagePreview = ({ imgSrc, handleClick }) => {
@@ -15,6 +16,11 @@ const ImagePreview = ({ imgSrc, handleClick }) => {
             </div>
         </div>
     )
+}
+
+ImagePreview.propTypes = {
+    imgSrc: PropTypes.string,
+    handleClick: PropTypes.func
 }
 
 export default ImagePreview

@@ -1,17 +1,18 @@
-import PropTypes from 'prop-types'
-import ReactModal from 'react-modal'
-import { useForm } from 'react-hook-form'
-import { BiLoader } from 'react-icons/bi'
 import {
     updatePassword,
     reauthenticateWithCredential,
     EmailAuthProvider
 } from 'firebase/auth'
-import { AiOutlineCloseCircle } from 'react-icons/ai'
+import PropTypes from 'prop-types'
 import { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { AiOutlineCloseCircle } from 'react-icons/ai'
+import { BiLoader } from 'react-icons/bi'
+import ReactModal from 'react-modal'
 import { toast } from 'react-toastify'
-import { auth } from '../../config/firebase'
+
 import PasswordInput from '../../components/PasswordInput'
+import { auth } from '../../config/firebase'
 
 const UpdatePasswordModal = ({ passwordOpen, setPasswordOpen }) => {
     const [formLoading, setFormLoading] = useState(false)

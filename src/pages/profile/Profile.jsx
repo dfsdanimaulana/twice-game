@@ -1,19 +1,20 @@
+import { sendEmailVerification } from 'firebase/auth'
 import { useRef, useState } from 'react'
-import { toast } from 'react-toastify'
 import { BiEdit } from 'react-icons/bi'
 import { MdVerified } from 'react-icons/md'
+import { toast } from 'react-toastify'
 import { Tooltip } from 'react-tooltip'
-import { sendEmailVerification } from 'firebase/auth'
-import useFirebaseAuth from '../../hooks/useFirebaseAuth'
-import { auth } from '../../config/firebase'
+
 
 // components
-import ToggleDarkMode from '../../components/ToggleDarkMode'
-import BackButton from '../../components/BackButton'
-import Loading from '../../components/Loading'
 import UpdateDisplayNameModal from './UpdateDisplayNameModal'
 import UpdatePasswordModal from './UpdatePasswordModal'
 import UpdatePhotoModal from './UpdatePhotoModal'
+import BackButton from '../../components/BackButton'
+import Loading from '../../components/Loading'
+import ToggleDarkMode from '../../components/ToggleDarkMode'
+import { auth } from '../../config/firebase'
+import useFirebaseAuth from '../../hooks/useFirebaseAuth'
 
 const Profile = () => {
     const { user, loading } = useFirebaseAuth()

@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import {
     AiOutlineSetting,
     AiOutlineOrderedList,
@@ -6,6 +5,7 @@ import {
     AiOutlineMessage,
     AiOutlineUser
 } from 'react-icons/ai'
+import { Link } from 'react-router-dom'
 import { Tooltip } from 'react-tooltip'
 
 function MenuList() {

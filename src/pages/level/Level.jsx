@@ -1,11 +1,10 @@
-import useFirebaseAuth from '@hooks/useFirebaseAuth'
-import useDocument from '@hooks/useDocument'
-
-// components
-import ToggleDarkMode from '@components/ToggleDarkMode'
 import BackButton from '@components/BackButton'
-import Loading from '@components/Loading'
 import Error from '@components/Error'
+import Loading from '@components/Loading'
+import ToggleDarkMode from '@components/ToggleDarkMode'
+import useDocument from '@hooks/useDocument'
+import useFirebaseAuth from '@hooks/useFirebaseAuth'
+
 import LevelCard from './LevelCard'
 
 const Level = () => {

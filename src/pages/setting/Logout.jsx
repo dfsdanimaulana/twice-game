@@ -1,6 +1,7 @@
 import { signOut } from 'firebase/auth'
-import { auth } from '@config/firebase'
 import Swal from 'sweetalert2'
+
+import { auth } from '@config/firebase'
 
 const Logout = () => {
     const handleLogout = () => {

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { useState } from 'react'
 
 const ImageWithFallback = ({ imageUrl, imageClasses, onClick }) => {
@@ -26,6 +27,12 @@ const ImageWithFallback = ({ imageUrl, imageClasses, onClick }) => {
             onError={handleImageError}
         />
     )
+}
+
+ImageWithFallback.propTypes = {
+    imageUrl: PropTypes.string,
+    imageClasses: PropTypes.string,
+    onClick: PropTypes.func
 }
 
 export default ImageWithFallback

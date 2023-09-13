@@ -1,4 +1,4 @@
-import {useNavigate} from 'react-router-dom'
+import PropTypes from 'prop-types'
 import { AiOutlineLeft } from 'react-icons/ai'
 
 const LevelNavigator = ({levelNumber, next, prev, max}) => {
@@ -19,6 +19,13 @@ const LevelNavigator = ({levelNumber, next, prev, max}) => {
           </button>
       </div>
     )
+}
+
+LevelNavigator.propTypes = {
+    levelNumber: PropTypes.number,
+    next : PropTypes.func,
+    prev : PropTypes.func,
+    max : PropTypes.number,
 }
 
 export default LevelNavigator

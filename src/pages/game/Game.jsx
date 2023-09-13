@@ -1,35 +1,28 @@
-import { doc, getDoc, updateDoc } from 'firebase/firestore'
-import { useParams, useNavigate } from 'react-router-dom'
-import { useState, useEffect, useRef } from 'react'
 import { Fireworks } from '@fireworks-js/react'
-import { db } from '@config/firebase'
-import Swal from 'sweetalert2'
-import { toast } from 'react-toastify'
-
-// icons
+import { doc, getDoc, updateDoc } from 'firebase/firestore'
+import { useState, useEffect, useRef } from 'react'
 import { BiSolidHelpCircle, BiListUl } from 'react-icons/bi'
 import { GoUnmute, GoMute } from 'react-icons/go'
+import { useParams, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import Swal from 'sweetalert2'
 
-// hooks
-import useFirebaseAuth from '@hooks/useFirebaseAuth'
+import BackButton from '@components/BackButton'
+import ToggleDarkMode from '@components/ToggleDarkMode'
+import { db } from '@config/firebase'
+import images from '@data/levelImages'
 import useAudioPlayer from '@hooks/useAudioPlayer'
 import useDocument from '@hooks/useDocument'
-
-// utils & datas
+import useFirebaseAuth from '@hooks/useFirebaseAuth'
 import getRandomValuesFromArray from '@utils/getRandomValuesFromArray'
-import images from '@data/levelImages'
 
-// components
-import ToggleDarkMode from '@components/ToggleDarkMode'
-import BackButton from '@components/BackButton'
-import LevelCompleteModal from './LevelCompleteModal'
-import RecordListModal from './RecordListModal'
-import HelpButtonModal from './HelpButtonModal'
-import LevelNavigator from './LevelNavigator'
-import SingleCard from './SingleCard'
 import GameRecord from './GameRecord'
+import HelpButtonModal from './HelpButtonModal'
+import LevelCompleteModal from './LevelCompleteModal'
+import LevelNavigator from './LevelNavigator'
+import RecordListModal from './RecordListModal'
+import SingleCard from './SingleCard'
 
-// audio path
 const matchAudioPath = '/audio/match.mp3'
 const flipAudioPath = '/audio/flipcard.mp3'
 const successAudioPath = '/audio/success.mp3'

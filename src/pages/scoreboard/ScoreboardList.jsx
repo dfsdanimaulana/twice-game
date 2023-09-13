@@ -1,4 +1,6 @@
+import PropTypes from 'prop-types'
 import Swal from 'sweetalert2'
+
 import ImageWithFallBack from '@components/ImageWithFallBack'
 
 const ScoreboardList = ({ documents }) => {
@@ -47,6 +49,10 @@ const ScoreboardList = ({ documents }) => {
             ))}
         </ul>
     )
+}
+
+ScoreboardList.propTypes = {
+    documents: PropTypes.array
 }
 
 export default ScoreboardList

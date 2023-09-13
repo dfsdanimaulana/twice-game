@@ -2,8 +2,9 @@ import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 import { doc, getDoc, setDoc } from 'firebase/firestore'
 import { FcGoogle } from 'react-icons/fc'
 import { toast } from 'react-toastify'
-import { generateUserData } from '@utils/generateUserData'
+
 import { auth, db } from '@config/firebase'
+import { generateUserData } from '@utils/generateUserData'
 
 const GoogleButton = () => {
     const signUpWithGoogle = async () => {
@@ -20,7 +21,7 @@ const GoogleButton = () => {
                 await setDoc(userRef, userData)
             }
             toast.success(`Welcome ${user?.displayName}`, {
-                hideProgressBar: true
+                hideProgressBar: true,
             })
         } catch (error) {
             // Handle any errors that occurred during the sign-up process
@@ -28,7 +29,7 @@ const GoogleButton = () => {
                 error.code === 'auth/account-exists-with-different-credential'
             ) {
                 toast.error(
-                    'The email address is already in use by another account.'
+                    'The email address is already in use by another account.',
                 )
             } else {
                 console.log(error.message)
@@ -37,8 +38,8 @@ const GoogleButton = () => {
     }
 
     return (
-        <button onClick={signUpWithGoogle} className='auth-button'>
-            <span className='mr-2 text-lg'>
+        <button onClick={signUpWithGoogle} className="auth-button">
+            <span className="mr-2 text-lg">
                 <FcGoogle />
             </span>
             Continue with Google

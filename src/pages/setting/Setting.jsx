@@ -4,11 +4,13 @@ import {
     AiOutlineUserDelete
 } from 'react-icons/ai'
 import { BiReset } from 'react-icons/bi'
-import ToggleDarkMode from '@components/ToggleDarkMode'
+
 import BackButton from '@components/BackButton'
-import ResetGameData from './ResetGameData'
+import ToggleDarkMode from '@components/ToggleDarkMode'
+
 import DeleteAccount from './DeleteAccount'
 import Logout from './Logout'
+import ResetGameData from './ResetGameData'
 
 const Setting = () => {
     return (

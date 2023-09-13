@@ -1,15 +1,16 @@
-import PropTypes from 'prop-types'
-import ReactModal from 'react-modal'
-import { BiLoader } from 'react-icons/bi'
-import { useForm } from 'react-hook-form'
 import { updateProfile } from 'firebase/auth'
-import { AiOutlineCloseCircle } from 'react-icons/ai'
+import PropTypes from 'prop-types'
 import { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { AiOutlineCloseCircle } from 'react-icons/ai'
+import { BiLoader } from 'react-icons/bi'
+import ReactModal from 'react-modal'
 import { toast } from 'react-toastify'
+
 import { auth } from '../../config/firebase'
-import { validateUsername } from '../../utils/validateUsername'
 import useFirestore from '../../hooks/useFirestore'
 import useUpdateDocumentsByUid from '../../hooks/useUpdateDocumentsByUid'
+import { validateUsername } from '../../utils/validateUsername'
 
 const UpdateDisplayNameModal = ({ modalOpen, setModalOpen, uid }) => {
     const { updateDocuments } = useUpdateDocumentsByUid()

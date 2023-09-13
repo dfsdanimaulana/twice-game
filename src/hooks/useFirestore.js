@@ -1,4 +1,3 @@
-import { useReducer, useEffect, useState } from 'react'
 import {
     collection,
     doc,
@@ -7,6 +6,8 @@ import {
     serverTimestamp,
     setDoc
 } from 'firebase/firestore'
+import { useReducer, useEffect, useState } from 'react'
+
 import { db } from '@config/firebase'
 
 const initialValue = {

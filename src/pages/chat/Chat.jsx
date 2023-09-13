@@ -1,11 +1,13 @@
-import useFirebaseAuth from '@hooks/useFirebaseAuth'
-import useCollection from '@hooks/useCollection'
 import { useRef, useEffect } from 'react'
+
 import BackButton from '@components/BackButton'
 import ToggleDarkMode from '@components/ToggleDarkMode'
+import useCollection from '@hooks/useCollection'
+import useFirebaseAuth from '@hooks/useFirebaseAuth'
+
+import FormInput from './FormInput'
 import Header from './Header'
 import Message from './Message'
-import FormInput from './FormInput'
 
 function Chat() {
     const { user } = useFirebaseAuth()

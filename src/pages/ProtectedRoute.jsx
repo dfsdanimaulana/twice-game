@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types'
 import { Navigate, Outlet } from 'react-router-dom'
-import useFirebaseAuth from '@hooks/useFirebaseAuth'
+
 import Loading from '@components/Loading'
+import useFirebaseAuth from '@hooks/useFirebaseAuth'
 
 const ProtectedRoute = ({ children, redirectPath = '/', admin }) => {
     const { user, loading } = useFirebaseAuth()

@@ -1,4 +1,5 @@
 import { serverTimestamp } from 'firebase/firestore'
+
 import collectionImages from '../data/collectionImages'
 
 export const generateLevelData = () => {

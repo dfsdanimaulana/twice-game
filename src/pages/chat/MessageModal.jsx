@@ -1,12 +1,14 @@
+import { deleteObject, getMetadata, ref } from 'firebase/storage'
 import PropTypes from 'prop-types'
-import ReactModal from 'react-modal'
 import { AiOutlineClose } from 'react-icons/ai'
+import ReactModal from 'react-modal'
+import { toast } from 'react-toastify'
+
 import ImageWithFallback from '@components/ImageWithFallBack'
+import { storage } from '@config/firebase'
 import useFirebaseAuth from '@hooks/useFirebaseAuth'
 import useFirestore from '@hooks/useFirestore'
-import { deleteObject, getMetadata, ref } from 'firebase/storage'
-import { storage } from '@config/firebase'
-import { toast } from 'react-toastify'
+
 
 const MessageModal = ({ modalOpen, setModalOpen, chat }) => {
     const { user } = useFirebaseAuth()
@@ -85,7 +87,7 @@ const MessageModal = ({ modalOpen, setModalOpen, chat }) => {
 MessageModal.propTypes = {
     modalOpen: PropTypes.bool,
     setModalOpen: PropTypes.func,
-    uid: PropTypes.string
+    chat: PropTypes.object
 }
 
 export default MessageModal

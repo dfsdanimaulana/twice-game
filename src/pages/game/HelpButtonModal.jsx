@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
-import ReactModal from 'react-modal'
 import { AiOutlineClose } from 'react-icons/ai'
+import ReactModal from 'react-modal'
 
 const HelpButtonModal = ({ helpOpen, setHelpOpen, time }) => {
     const halfTime = Math.round(time * 2/3)
@@ -43,7 +43,7 @@ const HelpButtonModal = ({ helpOpen, setHelpOpen, time }) => {
 HelpButtonModal.propTypes = {
     helpOpen: PropTypes.bool,
     setHelpOpen: PropTypes.func,
-    uid: PropTypes.string
+    time: PropTypes.number
 }
 
 export default HelpButtonModal

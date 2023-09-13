@@ -1,15 +1,16 @@
-import { useEffect, useState } from 'react'
 import { signInWithEmailAndPassword } from 'firebase/auth'
-import { auth } from '@config/firebase'
+import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { AiOutlineUser } from 'react-icons/ai'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import useFirebaseAuth from '@hooks/useFirebaseAuth'
+
 
 //components
-import { AiOutlineUser } from 'react-icons/ai'
-import PasswordInput from '@components/PasswordInput'
 import BackButton from '@components/BackButton'
+import PasswordInput from '@components/PasswordInput'
+import { auth } from '@config/firebase'
+import useFirebaseAuth from '@hooks/useFirebaseAuth'
 
 const Login = () => {
     const navigate = useNavigate()

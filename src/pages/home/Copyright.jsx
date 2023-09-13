@@ -1,5 +1,3 @@
-import React from 'react'
-
 function Copyright() {
     return (
         <span className='fixed bottom-1 right-1 text-white text-sm '>
