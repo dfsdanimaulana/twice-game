@@ -15,7 +15,7 @@ function Chat() {
     const { documents, loading, error } = useCollection(
         'ChatRooms',
         ['createdAt', '!=', null],
-        ['createdAt', 'asc']
+        ['createdAt', 'asc'],
     )
 
     // Automatically scroll to the bottom when messages change
@@ -27,22 +27,23 @@ function Chat() {
     return (
         <div>
             {/* Snippet */}
-            <section className='flex flex-col justify-center antialiased min-h-screen p-4'>
-                <BackButton to='/' />
-                <div className='h-full'>
+            <section className="flex min-h-screen flex-col justify-center p-4 antialiased">
+                <BackButton to="/" />
+                <div className="h-full">
                     {/* Card */}
-                    <div className='relative lg:w-2/3 mx-auto bg-gradient-to-br from-tw-2 to-tw-4 shadow-lg rounded-lg dark:bg-gradient-to-tr dark:from-dark-blue dark:to-navy '>
+                    <div className="relative mx-auto rounded-lg bg-gradient-to-br from-tw-2 to-tw-4 shadow-lg dark:bg-gradient-to-tr dark:from-dark-blue dark:to-navy lg:w-2/3 ">
                         {/* Card header */}
                         <Header user={user} />
                         {/* Card body */}
-                        <div className='py-3 px-5'>
-                            <h3 className='text-xs font-semibold uppercase text-gray-400 mb-1'>
+                        <div className="px-5 py-3">
+                            <h3 className="text-gray-400 mb-1 text-xs font-semibold uppercase">
                                 Chats
                             </h3>
                             {/* Chat list */}
                             <div
                                 ref={messageContainerRef}
-                                className='max-h-[500px] divide-y divide-tw-5 dark:divide-light overflow-auto relative shadow-inner rounded-md'>
+                                className="relative max-h-[500px] divide-y divide-tw-5 overflow-auto rounded-md shadow-inner dark:divide-light"
+                            >
                                 {/* User */}
                                 {documents &&
                                     documents.map((chat) => (
@@ -56,7 +57,7 @@ function Chat() {
                     </div>
                 </div>
             </section>
-            <div className='absolute top-3 right-3'>
+            <div className="absolute right-3 top-3">
                 <ToggleDarkMode />
             </div>
         </div>

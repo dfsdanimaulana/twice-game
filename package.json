@@ -9,8 +9,8 @@
         "build": "vite build",
         "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
         "preview": "vite preview",
-        "prettier-check": "prettier --check '**/*.{js,jsx,ts,tsx,json,css,scss,html}'",
-        "prettier": "prettier --write '**/*.{js,jsx,ts,tsx,json,css,scss,html}'"
+        "prettier-check": "prettier --check 'src/**/*.{js,jsx,ts,tsx,json,css,scss,html}'",
+        "prettier": "prettier --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,html}'"
     },
     "dependencies": {
         "@fireworks-js/react": "^2.10.7",
@@ -44,6 +44,7 @@
         "eslint-plugin-react-refresh": "^0.3.4",
         "postcss": "^8.4.24",
         "prettier": "^3.0.3",
+        "prettier-plugin-tailwindcss": "^0.5.4",
         "tailwindcss": "^3.3.2",
         "vite": "^4.3.9"
     }

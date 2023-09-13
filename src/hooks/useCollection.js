@@ -4,7 +4,7 @@ import {
     where,
     orderBy,
     limit,
-    onSnapshot
+    onSnapshot,
 } from 'firebase/firestore'
 import { useState, useEffect, useRef } from 'react'
 
@@ -43,7 +43,7 @@ const useCollection = (collectionName, _query, _orderBy, _limit) => {
             (snapshot) => {
                 const results = snapshot.docs.map((doc) => ({
                     ...doc.data(),
-                    id: doc.id
+                    id: doc.id,
                 }))
 
                 setDocuments(results)
@@ -54,7 +54,7 @@ const useCollection = (collectionName, _query, _orderBy, _limit) => {
                 console.log(err)
                 setLoading(false)
                 setError(err.message)
-            }
+            },
         )
 
         // Cleanup unsub on unmount

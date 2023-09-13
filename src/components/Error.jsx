@@ -5,8 +5,7 @@ const Error = ({ error }) => {
 }
 
 Error.propTypes = {
-    error: PropTypes.any
+    error: PropTypes.any,
 }
-
 
 export default Error

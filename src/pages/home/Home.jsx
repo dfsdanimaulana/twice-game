@@ -35,22 +35,22 @@ const Home = () => {
     return (
         <>
             {!loading ? (
-                <div className='home relative overflow-hidden'>
+                <div className="home relative overflow-hidden">
                     <Background user={user} />
-                    <div className='flex flex-col items-center'>
+                    <div className="flex flex-col items-center">
                         {user && (
-                            <div className='absolute top-5 left-5 flex items-center border rounded-md px-2 py-1 border-light'>
+                            <div className="absolute left-5 top-5 flex items-center rounded-md border border-light px-2 py-1">
                                 <ImageWithFallback
                                     imageUrl={user.photoURL}
-                                    imageClasses='w-8 h-8 object-cover object-top rounded-full mr-2'
-                                    alt='photoURL'
+                                    imageClasses="mr-2 h-8 w-8 rounded-full object-cover object-top"
+                                    alt="photoURL"
                                 />
-                                <span className='font-bold text-1xl text-light'>
+                                <span className="text-1xl font-bold text-light">
                                     {user.displayName}
                                 </span>
                             </div>
                         )}
-                        <h1 className='text-center text-5xl md:text-7xl text-light font-bn uppercase mb-5 drop-shadow-lg'>
+                        <h1 className="mb-5 text-center font-bn text-5xl uppercase text-light drop-shadow-lg md:text-7xl">
                             TWICE MEMORY CARD GAME
                         </h1>
 
@@ -59,7 +59,8 @@ const Home = () => {
                             <>
                                 <Link
                                     to={isGuideVisible ? '/' : '/level'}
-                                    className='guide-start border border-light font-bold font-bn tracking-widest text-white text-3xl bg-gradient-to-r from-tw-4 via-tw-3 to-tw-2 hover:bg-gradient-to-r hover:from-tw-5 hover:via-tw-4 hover:to-tw-3 dark:bg-gradient-to-tr dark:from-dark-blue dark:to-navy py-2 px-10 my-10 uppercase rounded-xl hover:shadow-md transition duration-150 ease-in-out hover:scale-[1.2]'>
+                                    className="guide-start my-10 rounded-xl border border-light bg-gradient-to-r from-tw-4 via-tw-3 to-tw-2 px-10 py-2 font-bn text-3xl font-bold uppercase tracking-widest text-white transition duration-150 ease-in-out hover:scale-[1.2] hover:bg-gradient-to-r hover:from-tw-5 hover:via-tw-4 hover:to-tw-3 hover:shadow-md dark:bg-gradient-to-tr dark:from-dark-blue dark:to-navy"
+                                >
                                     Start
                                 </Link>
                                 <MenuList />
@@ -72,7 +73,7 @@ const Home = () => {
                 <Loading />
             )}
             {user && (
-                <div className='absolute top-3 right-3'>
+                <div className="absolute right-3 top-3">
                     <ToggleDarkMode />
                 </div>
             )}

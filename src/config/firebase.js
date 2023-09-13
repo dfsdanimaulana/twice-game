@@ -10,7 +10,7 @@ const firebaseConfig = {
     projectId: 'twice-card',
     storageBucket: 'twice-card.appspot.com',
     messagingSenderId: '203630509256',
-    appId: '1:203630509256:web:36c7fc16f421d7e22a79fd'
+    appId: '1:203630509256:web:36c7fc16f421d7e22a79fd',
 }
 
 // Initialize Firebase

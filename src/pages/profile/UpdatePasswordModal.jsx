@@ -1,7 +1,7 @@
 import {
     updatePassword,
     reauthenticateWithCredential,
-    EmailAuthProvider
+    EmailAuthProvider,
 } from 'firebase/auth'
 import PropTypes from 'prop-types'
 import { useState } from 'react'
@@ -24,7 +24,7 @@ const UpdatePasswordModal = ({ passwordOpen, setPasswordOpen }) => {
         const user = auth.currentUser
         const credential = EmailAuthProvider.credential(
             user.email,
-            data.oldPassword
+            data.oldPassword,
         )
 
         try {
@@ -60,44 +60,49 @@ const UpdatePasswordModal = ({ passwordOpen, setPasswordOpen }) => {
             isOpen={passwordOpen}
             shouldCloseOnOverlayClick={true}
             onRequestClose={handleCloseModal}
-            className='modal-content'
-            overlayClassName='modal-overlay'>
+            className="modal-content"
+            overlayClassName="modal-overlay"
+        >
             <form
                 onSubmit={handleSubmit(updateUserPassword)}
-                className='flex flex-col gap-4'>
+                className="flex flex-col gap-4"
+            >
                 <span>
-                    <label className='block text-start mb-3'>
+                    <label className="mb-3 block text-start">
                         Old Password:
                     </label>
                     <PasswordInput
-                        placeholder='Your previous password'
+                        placeholder="Your previous password"
                         {...register('oldPassword', {
-                            required: true
+                            required: true,
                         })}
                     />
                 </span>
                 <span>
-                    <label className='block text-start mb-3'>
+                    <label className="mb-3 block text-start">
                         New Password:
                     </label>
                     <PasswordInput
-                        placeholder='Your new password'
+                        placeholder="Your new password"
                         {...register('newPassword', {
-                            required: true
+                            required: true,
                         })}
                     />
                 </span>
-                <div className='text-end'>
+                <div className="text-end">
                     {formLoading ? (
-                        <button className='form-button'>Updating <BiLoader className='animate-spin' /></button>
+                        <button className="form-button">
+                            Updating <BiLoader className="animate-spin" />
+                        </button>
                     ) : (
-                        <button className='form-button'>Update</button>
+                        <button className="form-button">Update</button>
                     )}
                 </div>
             </form>
             <button
-                className='absolute top-2 right-2 text-2xl text-tw-5'
-                onClick={handleCloseModal}>
+                className="absolute right-2 top-2 text-2xl text-tw-5"
+                onClick={handleCloseModal}
+            >
                 <AiOutlineCloseCircle />
             </button>
         </ReactModal>
@@ -106,7 +111,7 @@ const UpdatePasswordModal = ({ passwordOpen, setPasswordOpen }) => {
 
 UpdatePasswordModal.propTypes = {
     passwordOpen: PropTypes.bool,
-    setPasswordOpen: PropTypes.func
+    setPasswordOpen: PropTypes.func,
 }
 
 export default UpdatePasswordModal

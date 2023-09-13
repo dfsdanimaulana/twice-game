@@ -118,20 +118,20 @@ function FormInput({ user }) {
     return (
         <form
             ref={formRef}
-            className="flex mt-5 h-10 relative"
+            className="relative mt-5 flex h-10"
             onSubmit={handleSubmit}
         >
             <button
                 onClick={openEmojiPicker}
                 type="button"
-                className="basis-1/12 flex items-center justify-center text-sm font-medium text-white bg-indigo-500 hover:bg-indigo-600 dark:bg-tw-3 dark:hover:bg-tw-5 shadow-lg focus:outline-none focus-visible:ring-2 rounded-s-md border-r border-indigo-800 dark:border-tw-5"
+                className="flex basis-1/12 items-center justify-center rounded-s-md border-r border-indigo-800 bg-indigo-500 text-sm font-medium text-white shadow-lg hover:bg-indigo-600 focus:outline-none focus-visible:ring-2 dark:border-tw-5 dark:bg-tw-3 dark:hover:bg-tw-5"
             >
                 <BsEmojiSmile className="mx-2 md:mx-3" />
             </button>
             <button
                 onClick={handleClick}
                 type="button"
-                className="basis-1/12 flex items-center justify-center text-sm font-medium text-white bg-indigo-500 hover:bg-indigo-600 dark:bg-tw-3 dark:hover:bg-tw-5 shadow-lg focus:outline-none focus-visible:ring-2"
+                className="flex basis-1/12 items-center justify-center bg-indigo-500 text-sm font-medium text-white shadow-lg hover:bg-indigo-600 focus:outline-none focus-visible:ring-2 dark:bg-tw-3 dark:hover:bg-tw-5"
             >
                 <BiImageAdd className="mx-2 md:mx-3" />
             </button>
@@ -140,12 +140,12 @@ function FormInput({ user }) {
                 placeholder="Type something..."
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                className="basis-9/12 pl-1 focus:outline-none text-dark"
+                className="basis-9/12 pl-1 text-dark focus:outline-none"
             />
             {/* Bottom right button */}
-            <button className="basis-1/12 flex items-center justify-center rounded-e-md text-sm font-medium text-white bg-indigo-500 hover:bg-indigo-600 dark:bg-tw-3 dark:hover:bg-tw-5 shadow-lg focus:outline-none focus-visible:ring-2">
+            <button className="flex basis-1/12 items-center justify-center rounded-e-md bg-indigo-500 text-sm font-medium text-white shadow-lg hover:bg-indigo-600 focus:outline-none focus-visible:ring-2 dark:bg-tw-3 dark:hover:bg-tw-5">
                 {isLoading ? (
-                    <BiLoader className="mx-3 md:mx-4 animate-spin" />
+                    <BiLoader className="mx-3 animate-spin md:mx-4" />
                 ) : (
                     <BsSend className="mx-3 md:mx-4" />
                 )}
@@ -165,7 +165,7 @@ function FormInput({ user }) {
             />
             {isEmojiPickerOpen && (
                 <div
-                    className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                    className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
                     ref={emojiPickerContainerRef}
                 >
                     <EmojiPicker onEmojiClick={onEmojiClick} lazyLoadEmojis />

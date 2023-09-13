@@ -1,7 +1,7 @@
 import {
     EmailAuthProvider,
     reauthenticateWithCredential,
-    deleteUser
+    deleteUser,
 } from 'firebase/auth'
 import { getMetadata, ref, deleteObject } from 'firebase/storage'
 import Swal from 'sweetalert2'
@@ -48,7 +48,7 @@ const DeleteAccount = () => {
             const currentUser = auth.currentUser
             const credential = EmailAuthProvider.credential(
                 currentUser.email,
-                password
+                password,
             )
             await reauthenticateWithCredential(currentUser, credential)
             deleteUserAccountAndData()
@@ -74,8 +74,8 @@ const DeleteAccount = () => {
                 inputAttributes: {
                     maxlength: 10,
                     autocapitalize: 'off',
-                    autocorrect: 'off'
-                }
+                    autocorrect: 'off',
+                },
             })
             if (password) {
                 confirmPassword(password)
@@ -87,7 +87,7 @@ const DeleteAccount = () => {
                 text: 'Deleting your account will permanently remove all of your personal information, saved data, and access to the game. This action cannot be undone.',
                 showCancelButton: true,
                 confirmButtonText: 'Delete Account',
-                confirmButtonColor: '#b91c1c'
+                confirmButtonColor: '#b91c1c',
             }).then(async (result) => {
                 if (result.isConfirmed) {
                     deleteUserAccountAndData()

@@ -21,24 +21,24 @@ const UpdateDisplayNameModal = ({ modalOpen, setModalOpen, uid }) => {
         register,
         handleSubmit,
         reset,
-        formState: { errors }
+        formState: { errors },
     } = useForm()
 
     const updateDisplayName = async (data) => {
         setFormLoading(true)
         try {
             await updateProfile(auth.currentUser, {
-                displayName: data.newUsername
+                displayName: data.newUsername,
             })
 
             // update displayName in Users collection
             await updateDocument(uid, {
-                displayName: data.newUsername
+                displayName: data.newUsername,
             })
 
             // Update displayName in chat room
             await updateDocuments('ChatRooms', uid, {
-                displayName: data.newUsername
+                displayName: data.newUsername,
             })
 
             setFormLoading(false)
@@ -63,42 +63,47 @@ const UpdateDisplayNameModal = ({ modalOpen, setModalOpen, uid }) => {
             isOpen={modalOpen}
             shouldCloseOnOverlayClick={true}
             onRequestClose={handleCloseModal}
-            className='modal-content'
-            overlayClassName='modal-overlay'>
+            className="modal-content"
+            overlayClassName="modal-overlay"
+        >
             <form
                 onSubmit={handleSubmit(updateDisplayName)}
-                className='flex flex-col gap-4'>
+                className="flex flex-col gap-4"
+            >
                 <span>
-                    <label className='block text-start mb-3'>
+                    <label className="mb-3 block text-start">
                         Update Username:
                     </label>
                     <input
-                        className='w-full border text-dark border-tw-1 rounded-md py-2 px-4 pr-10 focus:outline-none focus:ring-tw-5 focus:border-tw-5'
-                        type='text'
-                        autoComplete='off'
-                        placeholder='Your new username'
+                        className="w-full rounded-md border border-tw-1 px-4 py-2 pr-10 text-dark focus:border-tw-5 focus:outline-none focus:ring-tw-5"
+                        type="text"
+                        autoComplete="off"
+                        placeholder="Your new username"
                         {...register('newUsername', {
                             required: true,
-                            validate: validateUsername
+                            validate: validateUsername,
                         })}
                     />
                     {errors.newUsername && (
-                        <p className='form-error'>
+                        <p className="form-error">
                             {errors.newUsername.message}
                         </p>
                     )}
                 </span>
-                <div className='text-end'>
+                <div className="text-end">
                     {formLoading ? (
-                        <button className='form-button'>Updating{' '}<BiLoader className='animate-spin' /></button>
+                        <button className="form-button">
+                            Updating <BiLoader className="animate-spin" />
+                        </button>
                     ) : (
-                        <button className='form-button'>Update</button>
+                        <button className="form-button">Update</button>
                     )}
                 </div>
             </form>
             <button
-                className='absolute top-2 right-2 text-2xl text-tw-5'
-                onClick={handleCloseModal}>
+                className="absolute right-2 top-2 text-2xl text-tw-5"
+                onClick={handleCloseModal}
+            >
                 <AiOutlineCloseCircle />
             </button>
         </ReactModal>
@@ -108,7 +113,7 @@ const UpdateDisplayNameModal = ({ modalOpen, setModalOpen, uid }) => {
 UpdateDisplayNameModal.propTypes = {
     modalOpen: PropTypes.bool,
     setModalOpen: PropTypes.func,
-    uid: PropTypes.string
+    uid: PropTypes.string,
 }
 
 export default UpdateDisplayNameModal

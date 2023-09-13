@@ -42,9 +42,9 @@ const RecordListModal = ({ recordListOpen, setRecordListOpen, level }) => {
             className="modal-content"
             overlayClassName="modal-overlay"
         >
-            <div className="text-light min-w-[300px] md:min-w-[600px]">
-                <ul className="list-board text-sm md:text-base text-gray-900 max-h-64 md:max-h-96 overflow-auto bg-gradient-to-br from-tw-3 to-tw-4 border border-tw-5 rounded-md dark:bg-gradient-to-br dark:from-dark-blue dark:to-navy dark:border-dark-blue dark:text-white">
-                    <li className="font-semibold sticky flex text-center  top-0 border-b px-1 py-2 border-tw-5 rounded-t-md dark:border-dark-blue shadow-md bg-tw-4 dark:bg-navy">
+            <div className="min-w-[300px] text-light md:min-w-[600px]">
+                <ul className="list-board text-gray-900 max-h-64 overflow-auto rounded-md border border-tw-5 bg-gradient-to-br from-tw-3 to-tw-4 text-sm dark:border-dark-blue dark:bg-gradient-to-br dark:from-dark-blue dark:to-navy dark:text-white md:max-h-96 md:text-base">
+                    <li className="sticky top-0 flex rounded-t-md  border-b border-tw-5 bg-tw-4 px-1 py-2 text-center font-semibold shadow-md dark:border-dark-blue dark:bg-navy">
                         <span className="basis-6/12 border-r">User</span>
                         <span className="basis-3/12 border-r">Best Time</span>
                         <span className="basis-3/12">Best Turns</span>
@@ -53,13 +53,13 @@ const RecordListModal = ({ recordListOpen, setRecordListOpen, level }) => {
                         filterDocuments().map((doc, index) => (
                             <li
                                 key={doc?.id}
-                                className={`flex text-center px-1 py-2 md:px-2 md:py-2 border-b border-tw-5 ${
+                                className={`flex border-b border-tw-5 px-1 py-2 text-center md:px-2 md:py-2 ${
                                     index === documents.length - 1 &&
                                     'rounded-b-md'
-                                } dark:border-dark-blue flex justify-between`}
+                                } flex justify-between dark:border-dark-blue`}
                             >
                                 <div
-                                    className="basis-6/12 flex items-center overflow-hidden border-r border-tw-5 dark:border-dark-blue cursor-pointer"
+                                    className="flex basis-6/12 cursor-pointer items-center overflow-hidden border-r border-tw-5 dark:border-dark-blue"
                                     onClick={() =>
                                         showImage(
                                             doc?.photoURL,
@@ -69,7 +69,7 @@ const RecordListModal = ({ recordListOpen, setRecordListOpen, level }) => {
                                 >
                                     <ImageWithFallBack
                                         imageUrl={doc?.photoURL}
-                                        imageClasses="w-5 h-5 md:w-8 md:h-8 object-cover object-top rounded-full border border-tw-5 mx-2"
+                                        imageClasses="mx-2 h-5 w-5 rounded-full border border-tw-5 object-cover object-top md:h-8 md:w-8"
                                     />
                                     <span className="truncate">
                                         {doc?.displayName}
@@ -87,7 +87,7 @@ const RecordListModal = ({ recordListOpen, setRecordListOpen, level }) => {
                 </ul>
             </div>
             <button
-                className="absolute top-2 right-2 text-2xl text-dark dark:text-light"
+                className="absolute right-2 top-2 text-2xl text-dark dark:text-light"
                 onClick={handleCloseModal}
             >
                 <AiOutlineClose />

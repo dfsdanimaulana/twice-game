@@ -16,7 +16,7 @@ const useFirebaseAuth = () => {
         return () => unsubscribe()
     }, [])
 
-    return {user, loading}
+    return { user, loading }
 }
 
 export default useFirebaseAuth

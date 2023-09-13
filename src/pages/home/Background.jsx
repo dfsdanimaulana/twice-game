@@ -4,13 +4,13 @@ function Background({ user }) {
         <>
             {user ? (
                 <>
-                    <div className='absolute w-full min-h-screen bg-[url("/img/bg/bg-sm-2.jpg")] dark:bg-[url("/img/bg/bg-sm-dark.jpg")] md:bg-[url("/img/bg/all.jpeg")] dark:md:bg-[url(/img/bg/bg-1.jpg)] bg-cover bg-center -z-20'></div>
-                    <div className="absolute w-full min-h-screen bg-[rgba(0,0,0,0.2)] bg-cover bg-center -z-10"></div>
+                    <div className='absolute -z-20 min-h-screen w-full bg-[url("/img/bg/bg-sm-2.jpg")] bg-cover bg-center dark:bg-[url("/img/bg/bg-sm-dark.jpg")] md:bg-[url("/img/bg/all.jpeg")] dark:md:bg-[url(/img/bg/bg-1.jpg)]'></div>
+                    <div className="absolute -z-10 min-h-screen w-full bg-[rgba(0,0,0,0.2)] bg-cover bg-center"></div>
                 </>
             ) : (
                 <>
                     <video
-                        className="absolute w-full h-auto object-cover -z-20 hidden md:block"
+                        className="absolute -z-20 hidden h-auto w-full object-cover md:block"
                         autoPlay
                         loop
                         muted
@@ -21,7 +21,7 @@ function Background({ user }) {
                         />
                     </video>
                     <video
-                        className="absolute w-full h-auto object-cover -z-20 block md:hidden"
+                        className="absolute -z-20 block h-auto w-full object-cover md:hidden"
                         autoPlay
                         loop
                         muted
@@ -31,7 +31,7 @@ function Background({ user }) {
                             type="video/mp4"
                         />
                     </video>
-                    <div className="absolute w-full min-h-screen bg-[rgba(0,0,0,0.4)] -z-10"></div>
+                    <div className="absolute -z-10 min-h-screen w-full bg-[rgba(0,0,0,0.4)]"></div>
                 </>
             )}
         </>
@@ -39,7 +39,7 @@ function Background({ user }) {
 }
 
 Background.propTypes = {
-    user: PropTypes.object
+    user: PropTypes.object,
 }
 
 export default Background

@@ -27,28 +27,28 @@ const ForgetPassword = () => {
     }
     return (
         <div className="full-centered">
-        <div>
-            <h1 className='text-xl text-tw-5 font-medium mb-3'>
-                Send Password Reset Email
-            </h1>
-            <form onSubmit={handleSubmit(sendPasswordResetEmailWithEmail)}>
-                <label>Email:</label>
-                <input
-                    type='email'
-                    placeholder='Your email'
-                    className='form-input'
-                    {...register('email', { required: true })}
-                />
-                <div className='text-end'>
-                    {loading ? (
-                        <button className='form-button'>Sending</button>
-                    ) : (
-                        <button className='form-button'>Send</button>
-                    )}
-                </div>
-            </form>
-        </div>
-            <BackButton to='/login' />
+            <div>
+                <h1 className="mb-3 text-xl font-medium text-tw-5">
+                    Send Password Reset Email
+                </h1>
+                <form onSubmit={handleSubmit(sendPasswordResetEmailWithEmail)}>
+                    <label>Email:</label>
+                    <input
+                        type="email"
+                        placeholder="Your email"
+                        className="form-input"
+                        {...register('email', { required: true })}
+                    />
+                    <div className="text-end">
+                        {loading ? (
+                            <button className="form-button">Sending</button>
+                        ) : (
+                            <button className="form-button">Send</button>
+                        )}
+                    </div>
+                </form>
+            </div>
+            <BackButton to="/login" />
         </div>
     )
 }

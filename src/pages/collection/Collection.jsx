@@ -17,34 +17,36 @@ const Collection = () => {
             imageHeight: 500,
             showConfirmButton: false,
             imageAlt: 'Collection image',
-            showCloseButton: true
+            showCloseButton: true,
         })
     }
 
     return (
         <>
-            <div className='full-centered'>
+            <div className="full-centered">
                 {document && (
-                    <div className='flex flex-wrap max-w-full justify-center gap-x-3 mx-5 my-10'>
+                    <div className="mx-5 my-10 flex max-w-full flex-wrap justify-center gap-x-3">
                         {document?.collections.map((row, rowIndex) => (
                             <div
                                 key={rowIndex}
-                                className='flex flex-wrap justify-around gap-2 my-3 lg:my-2 p-3 rounded-lg bg-gradient-to-tr from-tw-2 to-tw-3 shadow-md dark:bg-gradient-to-tr dark:from-dark-blue dark:to-navy '>
+                                className="my-3 flex flex-wrap justify-around gap-2 rounded-lg bg-gradient-to-tr from-tw-2 to-tw-3 p-3 shadow-md dark:bg-gradient-to-tr dark:from-dark-blue dark:to-navy lg:my-2 "
+                            >
                                 {row.images.map((image, columnIndex) => (
                                     <div
                                         key={columnIndex}
-                                        className='aspect-w-3 aspect-h-4 w-28 rounded-md overflow-hidden shadow-md hover:scale-[1.05]'>
+                                        className="aspect-w-3 aspect-h-4 w-28 overflow-hidden rounded-md shadow-md hover:scale-[1.05]"
+                                    >
                                         {image.locked ? (
                                             <img
-                                                className='w-full h-full object-cover object-top'
-                                                src='/img/collection/back.png'
-                                                alt='collection image'
+                                                className="h-full w-full object-cover object-top"
+                                                src="/img/collection/back.png"
+                                                alt="collection image"
                                             />
                                         ) : (
                                             <img
-                                                className='w-full h-full object-cover object-top cursor-pointer'
+                                                className="h-full w-full cursor-pointer object-cover object-top"
                                                 src={image.src}
-                                                alt='collection image'
+                                                alt="collection image"
                                                 onClick={() =>
                                                     showImage(image.src)
                                                 }
@@ -59,10 +61,10 @@ const Collection = () => {
                 {loading && <Loading />}
                 {error && <div>{error}</div>}
             </div>
-            <div className='fixed top-1 left-1'>
-                <BackButton to='/' />
+            <div className="fixed left-1 top-1">
+                <BackButton to="/" />
             </div>
-            <div className='absolute top-3 right-3'>
+            <div className="absolute right-3 top-3">
                 <ToggleDarkMode />
             </div>
         </>

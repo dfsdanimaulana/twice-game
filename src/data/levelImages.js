@@ -22,8 +22,8 @@ const levelImages = {
             { src: '/img/level/1/ny (19).png', matched: false },
             { src: '/img/level/1/ny (20).png', matched: false },
             { src: '/img/level/1/ny (21).png', matched: false },
-            { src: '/img/level/1/ny (22).png', matched: false }
-        ]
+            { src: '/img/level/1/ny (22).png', matched: false },
+        ],
     },
     lv2: {
         images: [
@@ -42,8 +42,8 @@ const levelImages = {
             { src: '/img/level/2/jy (13).png', matched: false },
             { src: '/img/level/2/jy (14).png', matched: false },
             { src: '/img/level/2/jy (15).png', matched: false },
-            { src: '/img/level/2/jy (16).png', matched: false }
-        ]
+            { src: '/img/level/2/jy (16).png', matched: false },
+        ],
     },
     lv3: {
         images: [
@@ -68,8 +68,8 @@ const levelImages = {
             { src: '/img/level/3/mm (19).png', matched: false },
             { src: '/img/level/3/mm (20).png', matched: false },
             { src: '/img/level/3/mm (21).png', matched: false },
-            { src: '/img/level/3/mm (22).png', matched: false }
-        ]
+            { src: '/img/level/3/mm (22).png', matched: false },
+        ],
     },
     lv4: {
         images: [
@@ -99,8 +99,8 @@ const levelImages = {
             { src: '/img/level/4/sn (24).png', matched: false },
             { src: '/img/level/4/sn (25).png', matched: false },
             { src: '/img/level/4/sn (26).png', matched: false },
-            { src: '/img/level/4/sn (27).png', matched: false }
-        ]
+            { src: '/img/level/4/sn (27).png', matched: false },
+        ],
     },
     lv5: {
         images: [
@@ -125,8 +125,8 @@ const levelImages = {
             { src: '/img/level/5/jh (19).png', matched: false },
             { src: '/img/level/5/jh (20).png', matched: false },
             { src: '/img/level/5/jh (21).png', matched: false },
-            { src: '/img/level/5/jh (22).png', matched: false }
-        ]
+            { src: '/img/level/5/jh (22).png', matched: false },
+        ],
     },
     lv6: {
         images: [
@@ -152,8 +152,8 @@ const levelImages = {
             { src: '/img/level/6/mn (20).png', matched: false },
             { src: '/img/level/6/mn (21).png', matched: false },
             { src: '/img/level/6/mn (22).png', matched: false },
-            { src: '/img/level/6/mn (23).png', matched: false }
-        ]
+            { src: '/img/level/6/mn (23).png', matched: false },
+        ],
     },
     lv7: {
         images: [
@@ -179,8 +179,8 @@ const levelImages = {
             { src: '/img/level/7/dh (20).png', matched: false },
             { src: '/img/level/7/dh (21).png', matched: false },
             { src: '/img/level/7/dh (22).png', matched: false },
-            { src: '/img/level/7/dh (23).png', matched: false }
-        ]
+            { src: '/img/level/7/dh (23).png', matched: false },
+        ],
     },
     lv8: {
         images: [
@@ -204,8 +204,8 @@ const levelImages = {
             { src: '/img/level/8/cy (18).png', matched: false },
             { src: '/img/level/8/cy (19).png', matched: false },
             { src: '/img/level/8/cy (20).png', matched: false },
-            { src: '/img/level/8/cy (21).png', matched: false }
-        ]
+            { src: '/img/level/8/cy (21).png', matched: false },
+        ],
     },
     lv9: {
         images: [
@@ -231,9 +231,9 @@ const levelImages = {
             { src: '/img/level/9/ty (20).png', matched: false },
             { src: '/img/level/9/ty (21).png', matched: false },
             { src: '/img/level/9/ty (22).png', matched: false },
-            { src: '/img/level/9/ty (23).png', matched: false }
-        ]
-    }
+            { src: '/img/level/9/ty (23).png', matched: false },
+        ],
+    },
 }
 
 export default levelImages

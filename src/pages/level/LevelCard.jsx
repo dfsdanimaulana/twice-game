@@ -20,9 +20,10 @@ const LevelCard = ({ level }) => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ ease: 'easeOut', duration: 0.3 }}
             onClick={handleClick}
-            className='p-5 border-3 rounded-lg cursor-pointer hover:shadow-md relative bg-gradient-to-tr from-tw-5 to-tw-3 border-tw-4 hover:border-tw-5 dark:border-dark-blue dark:bg-gradient-to-tr dark:from-navy dark:to-dark-blue'>
-            <span className='block font-bold text-4xl mb-5'>{`LV${level.level}`}</span>
-            <div className='flex gap-1 justify-between text-lg'>
+            className="border-3 relative cursor-pointer rounded-lg border-tw-4 bg-gradient-to-tr from-tw-5 to-tw-3 p-5 hover:border-tw-5 hover:shadow-md dark:border-dark-blue dark:bg-gradient-to-tr dark:from-navy dark:to-dark-blue"
+        >
+            <span className="mb-5 block text-4xl font-bold">{`LV${level.level}`}</span>
+            <div className="flex justify-between gap-1 text-lg">
                 <span>{level.star1 ? <AiFillStar /> : <AiOutlineStar />}</span>
                 <span>{level.star2 ? <AiFillStar /> : <AiOutlineStar />}</span>
                 <span>{level.star3 ? <AiFillStar /> : <AiOutlineStar />}</span>
@@ -30,8 +31,8 @@ const LevelCard = ({ level }) => {
             {level.locked && (
                 <img
                     src={lockSVG}
-                    alt='locked'
-                    className='absolute top-2 left-0 w-full'
+                    alt="locked"
+                    className="absolute left-0 top-2 w-full"
                 />
             )}
         </motion.div>
@@ -39,7 +40,7 @@ const LevelCard = ({ level }) => {
 }
 
 LevelCard.propTypes = {
-    level: PropTypes.object
+    level: PropTypes.object,
 }
 
 export default LevelCard

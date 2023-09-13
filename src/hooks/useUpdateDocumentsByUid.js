@@ -4,17 +4,16 @@ import {
     where,
     updateDoc,
     doc,
-    getDocs
+    getDocs,
 } from 'firebase/firestore'
 import { useState } from 'react'
 
 import { db } from '@config/firebase'
 
-
 const useUpdateDocumentsByUid = () => {
     const [updateStatus, setUpdateStatus] = useState({
         loading: false,
-        error: null
+        error: null,
     })
 
     const updateDocuments = async (collectionName, uid, updateObject) => {

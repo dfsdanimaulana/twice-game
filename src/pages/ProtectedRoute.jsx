@@ -16,7 +16,7 @@ const ProtectedRoute = ({ children, redirectPath = '/', admin }) => {
     }
 
     if (admin && !user.role.includes('admin')) {
-        return <Navigate to='/' replace />
+        return <Navigate to="/" replace />
     }
 
     return children ? children : <Outlet />
@@ -25,7 +25,7 @@ const ProtectedRoute = ({ children, redirectPath = '/', admin }) => {
 ProtectedRoute.propTypes = {
     children: PropTypes.element,
     redirectPath: PropTypes.string,
-    admin: PropTypes.bool
+    admin: PropTypes.bool,
 }
 
 export default ProtectedRoute

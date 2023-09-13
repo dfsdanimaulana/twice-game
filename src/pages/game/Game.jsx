@@ -32,22 +32,22 @@ function Game() {
     // data
     const { user } = useFirebaseAuth()
     const { document } = useDocument('Users', user?.uid) // [{{},{},{}}]
-    
+
     // function
     const navigate = useNavigate()
     const { playAudio, muted, setMuted } = useAudioPlayer()
-    
+
     // modal state
     const [helpOpen, setHelpOpen] = useState(false)
     const [recordListOpen, setRecordListOpen] = useState(false)
-    
+
     // card state
     const [cards, setCards] = useState([])
     const [turns, setTurns] = useState(0)
     const [choiceOne, setChoiceOne] = useState(null)
     const [choiceTwo, setChoiceTwo] = useState(null)
     const [disabled, setDisabled] = useState(false)
-    
+
     // game state
     const [incorrectGuess, setIncorrectGuess] = useState(0)
     const [levelComplete, setLevelComplete] = useState(false)
@@ -55,30 +55,33 @@ function Game() {
     const [stars, setStars] = useState({
         star1: false,
         star2: false,
-        star3: false
+        star3: false,
     })
-    
-   // level state
+
+    // level state
     const { level: levelString } = useParams()
     const levelNumber = parseInt(levelString)
     const levels = document?.levels || []
     const levelsCount = levels.length
-    const currentLevel = levels.find(
-        (level) => level.level === levelNumber
-    )
+    const currentLevel = levels.find((level) => level.level === levelNumber)
     const isLevelCompleted = currentLevel?.completed || false
 
     // time state
     const time = 60 + levelNumber * 5
     const [timer, setTimer] = useState(time)
     const [timeCount, setTimeCount] = useState(0)
- 
+
     const fireRef = useRef(null)
     const intervalTimer = useRef(null)
     const countTimer = useRef(null)
-    
+
     const goToNextLevel = () => {
-        navigate('/game/' + `${levelNumber !== levelsCount ? levelNumber + 1 : levelsCount}`)
+        navigate(
+            '/game/' +
+                `${
+                    levelNumber !== levelsCount ? levelNumber + 1 : levelsCount
+                }`,
+        )
     }
 
     const goToPrevLevel = () => {
@@ -99,7 +102,11 @@ function Game() {
 
                     // condition
                     const bestTime =
-                        level.bestTime > timeCount ? timeCount : (level.bestTime === 60 ? timeCount : level.bestTime)
+                        level.bestTime > timeCount
+                            ? timeCount
+                            : level.bestTime === 60
+                            ? timeCount
+                            : level.bestTime
                     const bestTurns =
                         level.bestTurns > turns ? turns : level.bestTurns
 
@@ -109,7 +116,7 @@ function Game() {
                     // finish in time/2 or less
                     const star2 = level.star2
                         ? level.star2
-                        : timeCount <= Math.round(time*2/3)
+                        : timeCount <= Math.round((time * 2) / 3)
                         ? true
                         : false
 
@@ -119,7 +126,7 @@ function Game() {
                     setStars({
                         star1,
                         star2,
-                        star3
+                        star3,
                     })
 
                     return {
@@ -130,29 +137,29 @@ function Game() {
                         bestTurns,
                         star1,
                         star2,
-                        star3
+                        star3,
                     }
                 }
                 // if completed level n, set locked in level n+1 to false
                 if (level.level === levelNumber + 1) {
                     return {
                         ...level,
-                        locked: false
+                        locked: false,
                     }
                 }
 
                 return level
             })
-            
+
             // calculate user point
             const point = Math.round(levelNumber * timer * 10 - incorrectGuess)
             setGamePoint(point)
             const exp = data.exp + point
-            
+
             // update user data
             await updateDoc(docRef, {
                 levels: updatedLevelsArray,
-                exp
+                exp,
             })
             setLevelComplete(true)
         } catch (error) {
@@ -201,7 +208,7 @@ function Game() {
         if (!currentLevelImages) return
         const randomImages = getRandomValuesFromArray(
             images[`lv${levelString}`].images,
-            7 + levelNumber
+            7 + levelNumber,
         )
         const cardImages = randomImages
         const shuffledCards = [...cardImages, ...cardImages]
@@ -222,7 +229,6 @@ function Game() {
         setIncorrectGuess(0)
         setLevelComplete(false)
         setGamePoint(0)
-        
     }
 
     // handle a choice
@@ -237,7 +243,6 @@ function Game() {
         playAudio(flipAudioPath)
         choiceOne ? setChoiceTwo(card) : setChoiceOne(card)
     }
-
 
     // reset choices & increase turn
     const resetTurn = () => {
@@ -273,7 +278,7 @@ function Game() {
             console.log('Error updating document: ', err)
         }
     }
-    
+
     // compare 2 selected cards
     useEffect(() => {
         // game finished if all matched
@@ -311,7 +316,7 @@ function Game() {
             }
         }
     }, [choiceOne, choiceTwo, cards])
-    
+
     // start new game automatically
     useEffect(() => {
         shuffleCards()
@@ -325,11 +330,11 @@ function Game() {
             playAudio(failAudioPath)
             Swal.fire({
                 title: 'Time Out ☹',
-                allowOutsideClick: false
+                allowOutsideClick: false,
             })
         }
     }, [timer])
-    
+
     // prevent user writing level in url more than available level
     useEffect(() => {
         // Check if the levelNumber is a valid number within the desired range
@@ -342,28 +347,28 @@ function Game() {
         }
     }, [levelNumber])
 
-    // update user collection 
+    // update user collection
     useEffect(() => {
         document && updateCollectionArray()
     }, [document])
 
     return (
         <>
-            <div className='full-centered text-center py-12'>
+            <div className="full-centered py-12 text-center">
                 <div>
-                    <span className='indicator-box'>Turns: {turns}</span>
-                    <button className='btn-primary' onClick={shuffleCards}>
+                    <span className="indicator-box">Turns: {turns}</span>
+                    <button className="btn-primary" onClick={shuffleCards}>
                         New Game
                     </button>
-                    <span className='indicator-box'>Timer: {timer}</span>
-                    <span className='indicator-box hidden'>
+                    <span className="indicator-box">Timer: {timer}</span>
+                    <span className="indicator-box hidden">
                         Time: {timeCount}
                     </span>
-                    <span className='indicator-box hidden'>
+                    <span className="indicator-box hidden">
                         Incorrect Guess: {incorrectGuess}
                     </span>
                 </div>
-                <div className='flex flex-wrap justify-center lg:w-4/5 gap-1 my-3 lg:my-2'>
+                <div className="my-3 flex flex-wrap justify-center gap-1 lg:my-2 lg:w-4/5">
                     {cards.map((card) => (
                         <SingleCard
                             key={card.id}
@@ -380,28 +385,36 @@ function Game() {
                     ))}
                 </div>
                 <GameRecord level={currentLevel} />
-                {isLevelCompleted && <LevelNavigator levelNumber={levelNumber} next={goToNextLevel} prev={goToPrevLevel} max={levelsCount}/>}
+                {isLevelCompleted && (
+                    <LevelNavigator
+                        levelNumber={levelNumber}
+                        next={goToNextLevel}
+                        prev={goToPrevLevel}
+                        max={levelsCount}
+                    />
+                )}
             </div>
-            <div className='fixed bottom-3 right-3'>
+            <div className="fixed bottom-3 right-3">
                 <BiSolidHelpCircle
-                    className='text-pink-700 dark:text-dark-blue w-10 h-10 transition duration-150 ease-in-out hover:scale-[1.2] cursor-pointer'
+                    className="h-10 w-10 cursor-pointer text-pink-700 transition duration-150 ease-in-out hover:scale-[1.2] dark:text-dark-blue"
                     onClick={() => setHelpOpen(true)}
                 />
             </div>
-            <div className='fixed bottom-3 left-3'>
+            <div className="fixed bottom-3 left-3">
                 <BiListUl
-                    className='border rounded-md border-pink-700 dark:border-dark-blue text-pink-700 dark:text-dark-blue w-9 h-9 transition duration-150 ease-in-out hover:scale-[1.2] cursor-pointer'
+                    className="h-9 w-9 cursor-pointer rounded-md border border-pink-700 text-pink-700 transition duration-150 ease-in-out hover:scale-[1.2] dark:border-dark-blue dark:text-dark-blue"
                     onClick={() => setRecordListOpen(true)}
                 />
             </div>
-            <div className='absolute top-3 right-3 flex items-center gap-3'>
+            <div className="absolute right-3 top-3 flex items-center gap-3">
                 <div
-                    className='border border-tw-5 dark:border-light rounded-full p-1 cursor-pointer hover:bg-semi-transparent'
-                    onClick={() => setMuted(!muted)}>
+                    className="cursor-pointer rounded-full border border-tw-5 p-1 hover:bg-semi-transparent dark:border-light"
+                    onClick={() => setMuted(!muted)}
+                >
                     {muted ? (
-                        <GoMute className='text-tw-5 dark:text-light' />
+                        <GoMute className="text-tw-5 dark:text-light" />
                     ) : (
-                        <GoUnmute className='text-tw-5 dark:text-light' />
+                        <GoUnmute className="text-tw-5 dark:text-light" />
                     )}
                 </div>
                 <ToggleDarkMode />
@@ -417,7 +430,7 @@ function Game() {
                 recordListOpen={recordListOpen}
                 setRecordListOpen={setRecordListOpen}
             />
-            
+
             <LevelCompleteModal
                 levelComplete={levelComplete}
                 gamePoint={gamePoint}
@@ -425,20 +438,18 @@ function Game() {
                 goToNextLevel={goToNextLevel}
                 shuffleCards={shuffleCards}
                 level={levelString}
-                collections={
-                    document?.collections[levelNumber - 1].images
-                }
+                collections={document?.collections[levelNumber - 1].images}
                 stars={stars}
                 turns={turns}
                 timeCount={timeCount}
             />
-            <BackButton to='/level' />
+            <BackButton to="/level" />
 
             {/* https://fireworks.js.org/ */}
             <Fireworks
                 ref={fireRef}
                 options={{
-                    opacity: 0.1
+                    opacity: 0.1,
                 }}
                 style={{
                     inset: 0,
@@ -446,7 +457,7 @@ function Game() {
                     height: '100%',
                     position: 'fixed',
                     background: 'rgba(0,0,0,0.1)',
-                    zIndex: -1
+                    zIndex: -1,
                 }}
             />
         </>

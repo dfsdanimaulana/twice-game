@@ -17,39 +17,42 @@ function Message({ chat }) {
             imageHeight: 336,
             showConfirmButton: false,
             imageAlt: 'User image',
-            showCloseButton: true
+            showCloseButton: true,
         })
     }
 
     return (
-        <div className='w-full text-left p-2 md:p-3 focus:outline-none focus-visible:bg-indigo-50'>
-            <div className='flex items-start'>
+        <div className="w-full p-2 text-left focus:outline-none focus-visible:bg-indigo-50 md:p-3">
+            <div className="flex items-start">
                 <ImageWithFallback
-                    imageClasses='rounded-full items-start flex-shrink-0 mr-3 mt-1 w-8 h-8 object-cover object-top hover:border hover:border-tw-5 cursor-pointer'
+                    imageClasses="mr-3 mt-1 h-8 w-8 flex-shrink-0 cursor-pointer items-start rounded-full object-cover object-top hover:border hover:border-tw-5"
                     imageUrl={chat?.photoURL}
                     onClick={showImage}
                 />
 
                 <div
-                    className='w-full cursor-pointer'
-                    onClick={() => setModalOpen(true)}>
-                    <h4 className='text-sm font-semibold'>
+                    className="w-full cursor-pointer"
+                    onClick={() => setModalOpen(true)}
+                >
+                    <h4 className="text-sm font-semibold">
                         {chat?.displayName}
                     </h4>
-                    <div className='text-[14px] flex flex-col'>
-                        <div className='block md:flex gap-3'>
+                    <div className="flex flex-col text-[14px]">
+                        <div className="block gap-3 md:flex">
                             {chat?.image && (
                                 <img
                                     src={chat?.image}
-                                    className='object-fit max-h-48 max-w-fit rounded-md'
+                                    className="object-fit max-h-48 max-w-fit rounded-md"
                                 />
                             )}
-                            <span className='text-start whitespace-normal'>{chat?.message} </span>
+                            <span className="whitespace-normal text-start">
+                                {chat?.message}{' '}
+                            </span>
                         </div>
-                        <span className='text-[12px] text-end text-brown dark:text-slate-300'>
+                        <span className="text-end text-[12px] text-brown dark:text-slate-300">
                             {chat?.createdAt !== null &&
                                 formatDistanceToNow(chat?.createdAt?.toDate(), {
-                                    addSuffix: true
+                                    addSuffix: true,
                                 })}
                         </span>
                     </div>
@@ -65,7 +68,7 @@ function Message({ chat }) {
 }
 
 Message.propTypes = {
-    chat: PropTypes.object
+    chat: PropTypes.object,
 }
 
 export default Message

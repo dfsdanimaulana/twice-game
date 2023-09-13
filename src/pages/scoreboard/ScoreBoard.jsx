@@ -9,20 +9,20 @@ const ScoreBoard = () => {
     const { documents, error, loading } = useCollection(
         'Users',
         ['exp', '>=', 1],
-        ['exp', 'desc']
+        ['exp', 'desc'],
     )
 
     return (
         <>
             {documents && (
-                <div className='full-centered'>
+                <div className="full-centered">
                     <ScoreboardList documents={documents} />
                 </div>
             )}
             {loading && <Loading />}
             {error && <Error error={error} />}
-            <BackButton to='/' />
-            <div className='absolute top-3 right-3'>
+            <BackButton to="/" />
+            <div className="absolute right-3 top-3">
                 <ToggleDarkMode />
             </div>
         </>

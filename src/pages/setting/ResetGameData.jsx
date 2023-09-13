@@ -19,7 +19,7 @@ const ResetGameData = () => {
             text: 'Resetting your data will permanently remove all of your saved data. This action cannot be undone.',
             showCancelButton: true,
             confirmButtonText: 'Reset Data',
-            confirmButtonColor: '#b91c1c'
+            confirmButtonColor: '#b91c1c',
         }).then(async (result) => {
             if (result.isConfirmed) {
                 loadingToast.current = toast.loading('Resetting game data')
@@ -28,7 +28,7 @@ const ResetGameData = () => {
                     await updateDoc(docRef, {
                         levels: generateLevelData(),
                         collections: collectionImages,
-                        exp: 0
+                        exp: 0,
                     })
                     toast.dismiss(loadingToast.current)
                     Swal.fire('Game data reset successfully', '', 'success')
@@ -37,7 +37,7 @@ const ResetGameData = () => {
                     Swal.fire(
                         'Failed to reset game data:' + error.message,
                         '',
-                        'error'
+                        'error',
                     )
                 }
             }

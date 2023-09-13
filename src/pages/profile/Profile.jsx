@@ -5,7 +5,6 @@ import { MdVerified } from 'react-icons/md'
 import { toast } from 'react-toastify'
 import { Tooltip } from 'react-tooltip'
 
-
 // components
 import UpdateDisplayNameModal from './UpdateDisplayNameModal'
 import UpdatePasswordModal from './UpdatePasswordModal'
@@ -38,56 +37,60 @@ const Profile = () => {
     }
 
     return (
-        <div className='full-centered'>
+        <div className="full-centered">
             {user && (
-                <div className='flex flex-col border-2 p-6 rounded-lg border-light'>
-                    <div className='flex items-center border-b-2 border-b-light pb-2 mb-2'>
-                        <div className='mr-4 relative'>
+                <div className="flex flex-col rounded-lg border-2 border-light p-6">
+                    <div className="mb-2 flex items-center border-b-2 border-b-light pb-2">
+                        <div className="relative mr-4">
                             <img
                                 src={user?.photoURL}
-                                className='w-16 h-16 object-cover object-top rounded-full border border-tw-5'
+                                className="h-16 w-16 rounded-full border border-tw-5 object-cover object-top"
                                 alt={user?.displayName}
                             />
                             <button
                                 onClick={() => setPhotoModalOpen(true)}
-                                className='absolute bottom-0 right-0'
-                                data-tooltip='profile_image_tooltip'
-                                id='profile_image_tooltip'>
+                                className="absolute bottom-0 right-0"
+                                data-tooltip="profile_image_tooltip"
+                                id="profile_image_tooltip"
+                            >
                                 <BiEdit />
                             </button>
                             <Tooltip
-                                anchorSelect='#profile_image_tooltip'
-                                place='bottom-start'>
+                                anchorSelect="#profile_image_tooltip"
+                                place="bottom-start"
+                            >
                                 Update profile photo
                             </Tooltip>
                         </div>
-                        <h1 className='text-2xl font-bold'>
+                        <h1 className="text-2xl font-bold">
                             {user?.displayName}
                         </h1>
                     </div>
-                    <ul className='flex flex-col gap-2'>
-                        <li className='flex items-center justify-between'>
+                    <ul className="flex flex-col gap-2">
+                        <li className="flex items-center justify-between">
                             <span>
-                                <span className='inline-block w-24 text-sm font-semibold'>
+                                <span className="inline-block w-24 text-sm font-semibold">
                                     Username{' '}
                                 </span>
                                 : {user?.displayName}
                             </span>
                             <button
                                 onClick={() => setModalOpen(true)}
-                                data-tooltip='profile_username_tooltip'
-                                id='profile_username_tooltip'>
+                                data-tooltip="profile_username_tooltip"
+                                id="profile_username_tooltip"
+                            >
                                 <BiEdit />
                             </button>
                             <Tooltip
-                                anchorSelect='#profile_username_tooltip'
-                                place='top-start'>
+                                anchorSelect="#profile_username_tooltip"
+                                place="top-start"
+                            >
                                 Update username
                             </Tooltip>
                         </li>
-                        <li className='flex items-center justify-between'>
+                        <li className="flex items-center justify-between">
                             <span>
-                                <span className='inline-block w-24 text-sm font-semibold'>
+                                <span className="inline-block w-24 text-sm font-semibold">
                                     Email{' '}
                                 </span>
                                 : {user?.email}
@@ -95,14 +98,16 @@ const Profile = () => {
                             {user?.emailVerified ? (
                                 <>
                                     <span
-                                        className='text-blue-500'
-                                        id='verified'
-                                        data-tip='verified'>
+                                        className="text-blue-500"
+                                        id="verified"
+                                        data-tip="verified"
+                                    >
                                         <MdVerified />
                                     </span>
                                     <Tooltip
-                                        anchorSelect='#verified'
-                                        place='bottom-start'>
+                                        anchorSelect="#verified"
+                                        place="bottom-start"
+                                    >
                                         Email is verified
                                     </Tooltip>
                                 </>
@@ -110,15 +115,17 @@ const Profile = () => {
                                 <>
                                     <button onClick={handleVerifyEmail}>
                                         <span
-                                            className='text-red-500'
-                                            id='unverified'
-                                            data-tip='unverified'>
+                                            className="text-red-500"
+                                            id="unverified"
+                                            data-tip="unverified"
+                                        >
                                             <MdVerified />
                                         </span>
                                     </button>
                                     <Tooltip
-                                        anchorSelect='#unverified'
-                                        place='bottom-start'>
+                                        anchorSelect="#unverified"
+                                        place="bottom-start"
+                                    >
                                         Email not verified, click to verify your
                                         email
                                     </Tooltip>
@@ -126,16 +133,17 @@ const Profile = () => {
                             )}
                         </li>
                         <li>
-                            <span className='inline-block w-24 text-sm font-semibold'>
+                            <span className="inline-block w-24 text-sm font-semibold">
                                 Provider{' '}
                             </span>
                             : {user?.providerData[0].providerId}
                         </li>
                         {user?.providerData[0].providerId === 'password' && (
-                            <li className='text-center'>
+                            <li className="text-center">
                                 <button
-                                    className='form-button'
-                                    onClick={() => setPasswordOpen(true)}>
+                                    className="form-button"
+                                    onClick={() => setPasswordOpen(true)}
+                                >
                                     Change Password
                                 </button>
                             </li>
@@ -144,10 +152,10 @@ const Profile = () => {
                 </div>
             )}
             {loading && <Loading />}
-            <div className='absolute top-3 right-3'>
+            <div className="absolute right-3 top-3">
                 <ToggleDarkMode />
             </div>
-            <BackButton to='/' />
+            <BackButton to="/" />
             <UpdateDisplayNameModal
                 modalOpen={modalOpen}
                 setModalOpen={setModalOpen}

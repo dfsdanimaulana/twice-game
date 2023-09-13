@@ -34,12 +34,13 @@ const FullscreenButton = () => {
 
     return (
         <button
-            className='guide-full border border-tw-5 dark:border-light hover:bg-semi-transparent rounded-md p-1'
-            onClick={handleFullscreenToggle}>
+            className="guide-full rounded-md border border-tw-5 p-1 hover:bg-semi-transparent dark:border-light"
+            onClick={handleFullscreenToggle}
+        >
             {isFullscreen ? (
-                <BsFullscreenExit className='text-tw-5 dark:text-light' />
+                <BsFullscreenExit className="text-tw-5 dark:text-light" />
             ) : (
-                <BsFullscreen className='text-tw-5 dark:text-light' />
+                <BsFullscreen className="text-tw-5 dark:text-light" />
             )}
         </button>
     )

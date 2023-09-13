@@ -27,7 +27,7 @@ const useDocument = (collectionName, id) => {
                 console.log(err)
                 setLoading(false)
                 setError('Failed to get document')
-            }
+            },
         )
 
         return () => unsub()

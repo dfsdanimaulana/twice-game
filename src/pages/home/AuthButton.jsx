@@ -10,9 +10,10 @@ function AuthButton() {
             <GoogleButton />
             <GithubButton />
             <Link
-                to='/login'
-                className='text-sm underline flex items-center px-3 text-light hover:text-blue-500'>
-                <AiOutlineUser className='mr-1' />
+                to="/login"
+                className="flex items-center px-3 text-sm text-light underline hover:text-blue-500"
+            >
+                <AiOutlineUser className="mr-1" />
                 <span>Login/Register</span>
             </Link>
         </>

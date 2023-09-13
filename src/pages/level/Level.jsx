@@ -12,9 +12,9 @@ const Level = () => {
     const { document, loading, error } = useDocument('/Users', user?.uid) // return Object
 
     return (
-        <div className='full-centered'>
+        <div className="full-centered">
             {document && (
-                <div className='grid grid-cols-3 grid-rows-3 gap-10 mx-3'>
+                <div className="mx-3 grid grid-cols-3 grid-rows-3 gap-10">
                     {document?.levels.map((level) => (
                         <LevelCard key={level.level} level={level} />
                     ))}
@@ -22,8 +22,8 @@ const Level = () => {
             )}
             {(loading || userLoading) && <Loading />}
             {error && <Error error={error} />}
-            <BackButton to='/' />
-            <div className='absolute top-3 right-3'>
+            <BackButton to="/" />
+            <div className="absolute right-3 top-3">
                 <ToggleDarkMode />
             </div>
         </div>

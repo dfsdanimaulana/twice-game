@@ -4,7 +4,7 @@ import {
     deleteDoc,
     updateDoc,
     serverTimestamp,
-    setDoc
+    setDoc,
 } from 'firebase/firestore'
 import { useReducer, useEffect, useState } from 'react'
 
@@ -14,7 +14,7 @@ const initialValue = {
     document: null,
     isPending: false,
     error: null,
-    success: null
+    success: null,
 }
 
 const firestoreReducer = (state, action) => {
@@ -24,7 +24,7 @@ const firestoreReducer = (state, action) => {
                 document: null,
                 isPending: true,
                 success: false,
-                error: null
+                error: null,
             }
 
         case 'ADDED_DOCUMENT':
@@ -33,7 +33,7 @@ const firestoreReducer = (state, action) => {
                 document: action.payload,
                 isPending: false,
                 success: true,
-                error: null
+                error: null,
             }
 
         case 'DELETED_DOCUMENT':
@@ -41,7 +41,7 @@ const firestoreReducer = (state, action) => {
                 document: null,
                 isPending: false,
                 success: true,
-                error: null
+                error: null,
             }
 
         case 'ERROR':
@@ -49,7 +49,7 @@ const firestoreReducer = (state, action) => {
                 document: null,
                 isPending: false,
                 success: false,
-                error: action.payload
+                error: action.payload,
             }
 
         default:
@@ -79,7 +79,7 @@ const useFirestore = (collectionName) => {
             const addedDocumentRef = await setDoc(colRef, { ...doc, createdAt })
             dispatchIfNotCancelled({
                 type: 'ADDED_DOCUMENT',
-                payload: { ...doc, createdAt, id: addedDocumentRef.id }
+                payload: { ...doc, createdAt, id: addedDocumentRef.id },
             })
         } catch (err) {
             dispatchIfNotCancelled({ type: 'ERROR', payload: err.message })
@@ -105,7 +105,7 @@ const useFirestore = (collectionName) => {
             await updateDoc(doc(colRef, id), { ...updates, updatedAt })
             dispatchIfNotCancelled({
                 type: 'UPDATED_DOCUMENT',
-                payload: { ...updates, updatedAt, id }
+                payload: { ...updates, updatedAt, id },
             })
         } catch (err) {
             dispatchIfNotCancelled({ type: 'ERROR', payload: err.message })

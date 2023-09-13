@@ -23,7 +23,7 @@ const ImageWithFallback = ({ imageUrl, imageClasses, onClick }) => {
             src={currentImageUrl}
             onClick={handleClick}
             className={imageClasses}
-            alt='Image'
+            alt="Image"
             onError={handleImageError}
         />
     )
@@ -32,7 +32,7 @@ const ImageWithFallback = ({ imageUrl, imageClasses, onClick }) => {
 ImageWithFallback.propTypes = {
     imageUrl: PropTypes.string,
     imageClasses: PropTypes.string,
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
 }
 
 export default ImageWithFallback

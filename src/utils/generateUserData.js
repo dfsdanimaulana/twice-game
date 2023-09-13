@@ -14,12 +14,11 @@ export const generateLevelData = () => {
             bestTurns: 100,
             star1: false,
             star2: false,
-            star3: false
+            star3: false,
         })
     }
     return data
 }
-
 
 export const generateUserData = (user) => {
     const userData = {
@@ -28,7 +27,7 @@ export const generateUserData = (user) => {
         photoURL: user.photoURL,
         levels: generateLevelData(),
         collections: collectionImages,
-        createdAt: serverTimestamp()
+        createdAt: serverTimestamp(),
     }
 
     return userData

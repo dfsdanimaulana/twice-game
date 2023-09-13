@@ -47,35 +47,35 @@ function App() {
                     <BrowserRouter>
                         <Routes>
                             {/* Public Routes */}
-                            <Route path='/' element={<Home />} />
-                            <Route path='/level' element={<Level />} />
-                            <Route path='/login' element={<Login />} />
-                            <Route path='/register' element={<Register />} />
+                            <Route path="/" element={<Home />} />
+                            <Route path="/level" element={<Level />} />
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/register" element={<Register />} />
                             <Route
-                                path='/forget-password'
+                                path="/forget-password"
                                 element={<ForgetPassword />}
                             />
 
                             {/* Protected Routes */}
                             <Route element={<ProtectedRoute />}>
-                                <Route path='/game/:level' element={<Game />} />
-                                <Route path='/profile' element={<Profile />} />
+                                <Route path="/game/:level" element={<Game />} />
+                                <Route path="/profile" element={<Profile />} />
                                 <Route
-                                    path='/collection'
+                                    path="/collection"
                                     element={<Collection />}
                                 />
                                 <Route
-                                    path='/scoreboard'
+                                    path="/scoreboard"
                                     element={<ScoreBoard />}
                                 />
-                                <Route path='/setting' element={<Setting />} />
-                                <Route path='/chat' element={<Chat />} />
-                                <Route path='*' element={<ErrorPage />} />
+                                <Route path="/setting" element={<Setting />} />
+                                <Route path="/chat" element={<Chat />} />
+                                <Route path="*" element={<ErrorPage />} />
                             </Route>
                         </Routes>
                     </BrowserRouter>
                     <ToastContainer
-                        position='top-center'
+                        position="top-center"
                         autoClose={1500}
                         hideProgressBar={false}
                         newestOnTop={false}
@@ -88,8 +88,8 @@ function App() {
                     />
                 </>
             ) : (
-                <div className='full-centered'>
-                    <h1 className='text-2xl font-semibold text-tw-5'>
+                <div className="full-centered">
+                    <h1 className="text-2xl font-semibold text-tw-5">
                         Please Connect to Internet.
                     </h1>
                 </div>

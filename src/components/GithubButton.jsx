@@ -21,7 +21,7 @@ const GithubButton = () => {
                 await setDoc(userRef, userData)
             }
             toast.success(`Welcome ${user?.displayName}`, {
-                hideProgressBar: true
+                hideProgressBar: true,
             })
         } catch (error) {
             // Handle any errors that occurred during the sign-up process
@@ -29,7 +29,7 @@ const GithubButton = () => {
                 error.code === 'auth/account-exists-with-different-credential'
             ) {
                 toast.error(
-                    'The email address is already in use by another account.'
+                    'The email address is already in use by another account.',
                 )
             } else {
                 console.log(error.message)
@@ -38,8 +38,8 @@ const GithubButton = () => {
     }
 
     return (
-        <button onClick={signUpWithGithub} className='auth-button'>
-            <span className='mr-2 text-lg'>
+        <button onClick={signUpWithGithub} className="auth-button">
+            <span className="mr-2 text-lg">
                 <BsGithub />
             </span>
             Continue with Github

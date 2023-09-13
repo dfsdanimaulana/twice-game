@@ -4,23 +4,23 @@ import { Tooltip } from 'react-tooltip'
 
 function Header({ user }) {
     return (
-        <header className="pt-3 pb-2 px-5 border-b border-tw-5 dark:border-light ">
-            <div className="flex justify-between items-center">
+        <header className="border-b border-tw-5 px-5 pb-2 pt-3 dark:border-light ">
+            <div className="flex items-center justify-between">
                 {/* Image + name */}
                 <div className="flex items-center">
-                    <a className="inline-flex items-start mr-3" href="#0">
+                    <a className="mr-3 inline-flex items-start" href="#0">
                         <img
-                            className="rounded-full w-11 h-11 object-cover object-top"
+                            className="h-11 w-11 rounded-full object-cover object-top"
                             src={user?.photoURL}
                             alt="photoURL"
                         />
                     </a>
                     <div className="pr-1">
                         <a
-                            className="inline-flex text-gray-800 hover:text-gray-900"
+                            className="text-gray-800 hover:text-gray-900 inline-flex"
                             href="#0"
                         >
-                            <h2 className="text-xl leading-snug font-bold">
+                            <h2 className="text-xl font-bold leading-snug">
                                 {user?.displayName}
                             </h2>
                         </a>
@@ -34,7 +34,7 @@ function Header({ user }) {
                 </div>
                 {/* Settings button */}
                 <div className="relative inline-flex flex-shrink-0" id="q-chat">
-                    <button className="text-2xl text-dark dark:text-light rounded-full focus:ring-0 outline-none focus:outline-none">
+                    <button className="rounded-full text-2xl text-dark outline-none focus:outline-none focus:ring-0 dark:text-light">
                         <span className="sr-only">Guide</span>
                         <BsQuestionCircle />
                     </button>
@@ -51,7 +51,7 @@ function Header({ user }) {
 }
 
 Header.propTypes = {
-    user: PropTypes.object
+    user: PropTypes.object,
 }
 
 export default Header

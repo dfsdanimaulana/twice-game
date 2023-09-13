@@ -14,7 +14,7 @@ import useUpdateDocumentsByUid from '@hooks/useUpdateDocumentsByUid'
 
 const UpdatePhotoModal = ({ photoModalOpen, setPhotoModalOpen }) => {
     const { user } = useFirebaseAuth()
-    const { updateDocuments} = useUpdateDocumentsByUid()
+    const { updateDocuments } = useUpdateDocumentsByUid()
     const { updateDocument } = useFirestore('Users')
     const [formLoading, setFormLoading] = useState(false)
     const [previewImage, setPreviewImage] = useState(null)
@@ -27,31 +27,31 @@ const UpdatePhotoModal = ({ photoModalOpen, setPhotoModalOpen }) => {
     }
 
     const handleFileSelect = (file) => {
-      setSelectedFile(file)
+        setSelectedFile(file)
     }
 
     const handleImagePreview = (file) => {
-      const reader = new FileReader()
-      reader.onloadend = () => {
-          setPreviewImage(reader.result)
-      }
-      reader.readAsDataURL(file)
+        const reader = new FileReader()
+        reader.onloadend = () => {
+            setPreviewImage(reader.result)
+        }
+        reader.readAsDataURL(file)
     }
 
     const handleImageChange = (e) => {
-      const file = e.target.files[0]
-      const maxSize = 5 * 1024 * 1024 // 5mb
-      
-      if (!file) {
-        toast.warn('Please select a file.');
-      } else if (!file.type.startsWith('image/')) {
-        toast.warn('Please select an image file.');
-      } else if (file.size > maxSize) {
-        toast.warn('File size exceeds 5 MB.');
-      } else {
-        handleImagePreview(file)
-        handleFileSelect(file)
-      }
+        const file = e.target.files[0]
+        const maxSize = 5 * 1024 * 1024 // 5mb
+
+        if (!file) {
+            toast.warn('Please select a file.')
+        } else if (!file.type.startsWith('image/')) {
+            toast.warn('Please select an image file.')
+        } else if (file.size > maxSize) {
+            toast.warn('File size exceeds 5 MB.')
+        } else {
+            handleImagePreview(file)
+            handleFileSelect(file)
+        }
     }
 
     const handleFileUpload = async () => {
@@ -67,17 +67,17 @@ const UpdatePhotoModal = ({ photoModalOpen, setPhotoModalOpen }) => {
                 // Get the download URL of the uploaded file
                 const downloadURL = await getDownloadURL(snapshot.ref)
                 await updateProfile(auth.currentUser, {
-                    photoURL: downloadURL
+                    photoURL: downloadURL,
                 })
 
                 // update photoURL in Users collection
                 await updateDocument(user.uid, {
-                    photoURL: downloadURL
+                    photoURL: downloadURL,
                 })
 
                 // Update photoURL in chat room
                 await updateDocuments('ChatRooms', user.uid, {
-                    photoURL: downloadURL
+                    photoURL: downloadURL,
                 })
 
                 setFormLoading(false)
@@ -104,35 +104,39 @@ const UpdatePhotoModal = ({ photoModalOpen, setPhotoModalOpen }) => {
             isOpen={photoModalOpen}
             shouldCloseOnOverlayClick={true}
             onRequestClose={handleModalClose}
-            className='modal-content'
-            overlayClassName='modal-overlay'>
-            <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
-                <label htmlFor='profile_image' className='mb-3 cursor-pointer'>
+            className="modal-content"
+            overlayClassName="modal-overlay"
+        >
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                <label htmlFor="profile_image" className="mb-3 cursor-pointer">
                     <img
                         src={previewImage ? previewImage : user?.photoURL}
-                        alt='Preview'
-                        className='h-64 w-64 object-cover object-top border rounded-lg m-3 border-tw-5'
+                        alt="Preview"
+                        className="m-3 h-64 w-64 rounded-lg border border-tw-5 object-cover object-top"
                     />
                 </label>
                 <input
-                    className='form-input hidden'
-                    type='file'
-                    id='profile_image'
+                    className="form-input hidden"
+                    type="file"
+                    id="profile_image"
                     accept="image/*"
                     onChange={handleImageChange}
                 />
 
-                <div className='text-center'>
+                <div className="text-center">
                     {formLoading ? (
-                        <button className='form-button'>Updating{' '}<BiLoader className='animate-spin' /></button>
+                        <button className="form-button">
+                            Updating <BiLoader className="animate-spin" />
+                        </button>
                     ) : (
-                        <button className='form-button'>Update</button>
+                        <button className="form-button">Update</button>
                     )}
                 </div>
             </form>
             <button
-                className='absolute top-2 right-2 text-2xl text-tw-5'
-                onClick={handleModalClose}>
+                className="absolute right-2 top-2 text-2xl text-tw-5"
+                onClick={handleModalClose}
+            >
                 <AiOutlineCloseCircle />
             </button>
         </ReactModal>
@@ -141,7 +145,7 @@ const UpdatePhotoModal = ({ photoModalOpen, setPhotoModalOpen }) => {
 
 UpdatePhotoModal.propTypes = {
     photoModalOpen: PropTypes.bool,
-    setPhotoModalOpen: PropTypes.func
+    setPhotoModalOpen: PropTypes.func,
 }
 
 export default UpdatePhotoModal

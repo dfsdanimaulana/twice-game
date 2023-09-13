@@ -1,184 +1,183 @@
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  font-family: "Inter", sans-serif;
-  @apply text-dark dark:text-light bg-gradient-to-t from-tw-3 to-tw-1 dark:bg-gradient-to-tl dark:from-dark dark:to-brown;
+    font-family: 'Inter', sans-serif;
+    @apply bg-gradient-to-t from-tw-3 to-tw-1 text-dark dark:bg-gradient-to-tl dark:from-dark dark:to-brown dark:text-light;
 }
 
 .full-centered {
-  @apply w-full min-h-screen grid place-items-center;
+    @apply grid min-h-screen w-full place-items-center;
 }
 .btn-primary {
-  @apply text-white border-2 border-tw-5 dark:border-dark-blue font-bold rounded-lg py-1 px-4 m-3 bg-tw-3 hover:bg-tw-4 dark:bg-navy dark:hover:bg-blue-600 hover:shadow-md  transition duration-150 ease-in-out hover:scale-[1.1];
+    @apply m-3 rounded-lg border-2 border-tw-5 bg-tw-3 px-4 py-1 font-bold text-white transition duration-150 ease-in-out hover:scale-[1.1] hover:bg-tw-4  hover:shadow-md dark:border-dark-blue dark:bg-navy dark:hover:bg-blue-600;
 }
 
 .btn-secondary {
-  @apply text-2xl border border-light dark:border-dark-blue p-1 rounded-md bg-transparent hover:bg-semi-transparent text-tw-5 shadow-sm hover:shadow-md hover:scale-[1.1];
+    @apply rounded-md border border-light bg-transparent p-1 text-2xl text-tw-5 shadow-sm hover:scale-[1.1] hover:bg-semi-transparent hover:shadow-md dark:border-dark-blue;
 }
 
 .home {
-  @apply w-full min-h-screen grid place-items-center;
+    @apply grid min-h-screen w-full place-items-center;
 }
 
 .menu-icon {
-  @apply text-3xl text-light border-light p-1 rounded-md border-2 bg-gradient-to-r from-tw-4 via-tw-3 to-tw-2 dark:bg-gradient-to-tr dark:from-dark-blue dark:to-navy hover:bg-gradient-to-r hover:from-tw-5 hover:via-tw-4 hover:to-tw-3 hover:shadow-md transition duration-150 ease-in-out hover:scale-[1.2];
+    @apply rounded-md border-2 border-light bg-gradient-to-r from-tw-4 via-tw-3 to-tw-2 p-1 text-3xl text-light transition duration-150 ease-in-out hover:scale-[1.2] hover:bg-gradient-to-r hover:from-tw-5 hover:via-tw-4 hover:to-tw-3 hover:shadow-md dark:bg-gradient-to-tr dark:from-dark-blue dark:to-navy;
 }
 
 .form-title {
-  @apply font-bold text-3xl mb-5 text-tw-5;
+    @apply mb-5 text-3xl font-bold text-tw-5;
 }
 
 .form-input {
-  @apply w-full border border-tw-1  rounded-md py-2 px-4 pr-10 focus:outline-none focus:ring-tw-5 focus:border-tw-5 bg-light text-dark;
+    @apply w-full rounded-md border  border-tw-1 bg-light px-4 py-2 pr-10 text-dark focus:border-tw-5 focus:outline-none focus:ring-tw-5;
 }
 
 .form-button {
-  @apply border inline-flex items-center gap-2 justify-center max-w-fit py-1 px-6 mt-3 rounded-lg bg-tw-3 hover:bg-tw-4 border-tw-4 hover:border-tw-5 hover:shadow-md text-slate-100;
+    @apply mt-3 inline-flex max-w-fit items-center justify-center gap-2 rounded-lg border border-tw-4 bg-tw-3 px-6 py-1 text-slate-100 hover:border-tw-5 hover:bg-tw-4 hover:shadow-md;
 }
 
 .form-error {
-  @apply text-sm text-red-500 mt-2;
+    @apply mt-2 text-sm text-red-500;
 }
 
 .indicator-box {
-  @apply bg-tw-2 text-white font-semibold m-1 lg:m-5 border-2 border-tw-5 rounded-md py-1 px-3 dark:bg-navy dark:hover:bg-blue-600 dark:border-dark-blue;
+    @apply m-1 rounded-md border-2 border-tw-5 bg-tw-2 px-3 py-1 font-semibold text-white dark:border-dark-blue dark:bg-navy dark:hover:bg-blue-600 lg:m-5;
 }
 
 .auth-button {
-  @apply border border-light hover:bg-semi-transparent hover:scale-[1.05] text-light rounded-md flex px-3 py-1 items-center hover:shadow-md transition duration-150 ease-in-out mb-3 lg:w-60 justify-center;
+    @apply mb-3 flex items-center justify-center rounded-md border border-light px-3 py-1 text-light transition duration-150 ease-in-out hover:scale-[1.05] hover:bg-semi-transparent hover:shadow-md lg:w-60;
 }
 
 .modal-content {
-  @apply p-7 rounded-lg bg-tw-1 dark:bg-dark-blue relative;
+    @apply relative rounded-lg bg-tw-1 p-7 dark:bg-dark-blue;
 }
 
 .modal-overlay {
-  @apply fixed inset-0 bg-[rgba(0,0,0,.2)] grid place-items-center;
+    @apply fixed inset-0 grid place-items-center bg-[rgba(0,0,0,.2)];
 }
 
 .setting-list {
-  @apply cursor-pointer flex items-center gap-2 hover:underline;
+    @apply flex cursor-pointer items-center gap-2 hover:underline;
 }
 
 @keyframes dot {
-  0%,
-  20% {
-    content: ".";
-  }
-  40% {
-    content: "..";
-  }
-  60% {
-    content: "...";
-  }
-  80% {
-    content: "....";
-  }
+    0%,
+    20% {
+        content: '.';
+    }
+    40% {
+        content: '..';
+    }
+    60% {
+        content: '...';
+    }
+    80% {
+        content: '....';
+    }
 }
 
 .loading-text {
-  position: relative;
+    position: relative;
 }
 
 .loading-text::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 100%;
-  animation: dot 1s infinite steps(1);
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 100%;
+    animation: dot 1s infinite steps(1);
 }
 
 /* React Modal */
 
 .ReactModal__Overlay {
-  opacity: 0;
-  transition: all 300ms ease-in-out;
+    opacity: 0;
+    transition: all 300ms ease-in-out;
 }
 
 .ReactModal__Overlay--after-open {
-  opacity: 1;
+    opacity: 1;
 }
 
 .ReactModal__Overlay--before-close {
-  opacity: 0;
+    opacity: 0;
 }
 
 .ReactModal__Content--after-open {
-  animation: popupFadeIn 0.5s ease-in-out;
+    animation: popupFadeIn 0.5s ease-in-out;
 }
 
 @keyframes popupFadeIn {
-  0% {
-    scale: 0;
-    opacity: 0;
-  }
-  50% {
-    scale: 1.05;
-    opacity: 1;
-  }
-  75% {
-    scale: 0.9;
-  }
-  100% {
-    scale: 1;
-    opacity: 1;
-  }
+    0% {
+        scale: 0;
+        opacity: 0;
+    }
+    50% {
+        scale: 1.05;
+        opacity: 1;
+    }
+    75% {
+        scale: 0.9;
+    }
+    100% {
+        scale: 1;
+        opacity: 1;
+    }
 }
 
 /* Toogle Switch Dark Mode */
 .switch {
-  @apply w-[45px] h-[25px] flex justify-start border items-center p-1 border-tw-5 dark:border-light rounded-[50px] cursor-pointer;
+    @apply flex h-[25px] w-[45px] cursor-pointer items-center justify-start rounded-[50px] border border-tw-5 p-1 dark:border-light;
 }
 
-.switch[data-is-on="true"] {
-  @apply justify-end;
+.switch[data-is-on='true'] {
+    @apply justify-end;
 }
 
 .handle {
-  @apply w-[18px] h-[18px] rounded-full;
+    @apply h-[18px] w-[18px] rounded-full;
 }
 
 /* front of card - the picture */
 .front {
-  transform: rotateY(90deg);
-  transition: all ease-in 0.2s;
-  position: absolute;
+    transform: rotateY(90deg);
+    transition: all ease-in 0.2s;
+    position: absolute;
 }
 .flipped .front {
-  transform: rotateY(0deg);
-  transition-delay: 0.2s;
+    transform: rotateY(0deg);
+    transition-delay: 0.2s;
 }
 
 /* back of card - cover */
 .back {
-  transition: all ease-in 0.2s;
-  transition-delay: 0.2s;
+    transition: all ease-in 0.2s;
+    transition-delay: 0.2s;
 }
 .flipped .back {
-  transform: rotateY(90deg);
-  transition-delay: 0s;
+    transform: rotateY(90deg);
+    transition-delay: 0s;
 }
 
 .video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
 }
 
 /* Custom style for sweet alert 2 modal */
 .swal2-modal {
-  @apply bg-light dark:bg-gradient-to-tl dark:from-dark dark:to-slate-800 dark:text-light;
-  
+    @apply bg-light dark:bg-gradient-to-tl dark:from-dark dark:to-slate-800 dark:text-light;
 }
 
 .swal2-image {
-  @apply object-cover object-top;
+    @apply object-cover object-top;
 }

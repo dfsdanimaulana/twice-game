@@ -7,14 +7,15 @@ const BackButton = ({ to = -1 }) => {
     const navigate = useNavigate()
 
     return (
-        <div className='back-button absolute top-2 left-2 md:top-5 md:left-5'>
+        <div className="back-button absolute left-2 top-2 md:left-5 md:top-5">
             <button
-                className='btn-secondary'
+                className="btn-secondary"
                 onClick={() => navigate(to)}
-                data-tooltip='back-button'>
-                <AiOutlineArrowLeft className='dark:text-light' />
+                data-tooltip="back-button"
+            >
+                <AiOutlineArrowLeft className="dark:text-light" />
             </button>
-            <Tooltip anchorSelect='.back-button' place='bottom-start'>
+            <Tooltip anchorSelect=".back-button" place="bottom-start">
                 Back
             </Tooltip>
         </div>
@@ -22,7 +23,7 @@ const BackButton = ({ to = -1 }) => {
 }
 
 BackButton.propTypes = {
-    to: PropTypes.any
+    to: PropTypes.any,
 }
 
 export default BackButton
