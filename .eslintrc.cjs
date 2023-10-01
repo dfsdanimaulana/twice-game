@@ -22,7 +22,7 @@ module.exports = {
                     ['@data', './src/data'],
                     ['@pages', './src/pages'],
                     ['@utils', './src/utils'],
-                    ['@hooks', './src/hooks']
+                    ['@hooks', './src/hooks'],
                 ],
                 extensions: ['.js', '.jsx', '.json'],
             },

@@ -3,7 +3,7 @@ export default {
     content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
     theme: {
         container: {
-            center: true
+            center: true,
         },
 
         extend: {
@@ -23,7 +23,7 @@ export default {
                     2: '#fdb3a5',
                     3: '#fe97a4',
                     4: '#fe7ba3',
-                    5: '#ff5fa2'
+                    5: '#ff5fa2',
                 },
                 ny: '#49c0ec',
                 jy: '#a3cc54',
@@ -33,13 +33,13 @@ export default {
                 mn: '#71c7d4',
                 dh: '#fefefe',
                 cy: '#e62722',
-                ty: '#2253a3'
-            }
+                ty: '#2253a3',
+            },
         },
         fontFamily: {
-            bn: ['Bebas Neue', 'sans-serif']
-        }
+            bn: ['Bebas Neue', 'sans-serif'],
+        },
     },
     plugins: [],
-    darkMode: 'class'
+    darkMode: 'class',
 }

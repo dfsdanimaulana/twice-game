@@ -9,11 +9,14 @@
         "build": "vite build",
         "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
         "preview": "vite preview",
-        "prettier-check": "prettier --check 'src/**/*.{js,jsx,ts,tsx,json,css,scss,html}'",
-        "prettier": "prettier --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,html}'"
+        "format": "prettier --write .",
+        "format:check": "prettier -c .",
+        "prepare": "husky install",
+        "lint-staged": "lint-staged"
     },
     "dependencies": {
         "@fireworks-js/react": "^2.10.7",
+        "@nextui-org/react": "^2.1.13",
         "date-fns": "^2.30.0",
         "emoji-picker-react": "^4.4.12",
         "firebase": "^9.23.0",
@@ -31,6 +34,8 @@
         "sweetalert2": "^11.7.18"
     },
     "devDependencies": {
+        "@commitlint/cli": "^17.7.2",
+        "@commitlint/config-conventional": "^17.7.0",
         "@types/react": "^18.0.37",
         "@types/react-dom": "^18.0.11",
         "@vitejs/plugin-react": "^4.0.0",
@@ -42,10 +47,17 @@
         "eslint-plugin-react": "^7.32.2",
         "eslint-plugin-react-hooks": "^4.6.0",
         "eslint-plugin-react-refresh": "^0.3.4",
+        "husky": "^8.0.0",
+        "lint-staged": "^14.0.1",
         "postcss": "^8.4.24",
         "prettier": "^3.0.3",
         "prettier-plugin-tailwindcss": "^0.5.4",
         "tailwindcss": "^3.3.2",
         "vite": "^4.3.9"
+    },
+    "lint-staged": {
+        "**/*.{js,jsx,ts,tsx,html,css,json}": [
+            "npm run format"
+        ]
     }
 }
